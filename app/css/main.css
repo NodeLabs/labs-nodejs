@@ -1,0 +1,62 @@
+body{
+    font-family: sans-serif;
+    color: #222;
+}
+a{
+    color:#008CBA;
+    text-decoration: none;
+}
+a:hover{
+    color:#444444;
+}
+h1{
+    font-size:19px;
+}
+header,
+main{
+    width:800px;
+    margin:auto;
+}
+
+header{
+    height:50px;
+    background: url('logo.png') no-repeat left center;
+    border-bottom:2px solid #008CBA;
+    margin-bottom:20px;
+}
+
+header nav{
+    margin-left: 130px;
+    padding-top: 7px;
+    float:right;
+}
+header nav ul{
+    margin:0px;
+    padding:0px;
+    list-style: none;
+}
+
+header nav ul li {
+    float:left;
+    margin:0px 5px;
+}
+header nav ul li a{
+    display:block;
+    padding:5px 10px;
+}
+
+table{
+    margin:15px 10px;
+}
+
+input[type='text']{
+    border:1px solid #999;
+    width:300px;
+    padding:4px 5px;
+    margin:5px;
+}
+
+.form-group{
+    margin-left:0 !important;
+    margin-right:0px !important;
+}

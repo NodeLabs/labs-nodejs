@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Valtech Training</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/lib/jquery-2.1.1.min.js"></script>
+    <script src="/js/squaregame.js"></script>
+    <link href="/css/main.css" type="text/css" rel="stylesheet" />
+    <link href="/css/squaregame.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <%
+            for(var i = 0; i < menu.length; i++){
+            %>
+            <li><a href="<%= menu[i].href %>"><%= menu[i].short %></a></li>
+            <%
+            }
+            %>
+        </ul>
+    </nav>
+</header>
+
+<main>

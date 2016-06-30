@@ -1,0 +1,29 @@
+<% include header.html %>
+
+<%
+ switch(page){
+     default:
+         %>
+            <h1>Vous êtes au sous-sol, choisissez un self</h1>
+            <ul>
+         <%
+             for(var i = 0; i < submenu.length; i++){
+             %><li><a href="<%= submenu[i].href %>"><%= submenu[i].text %></a></li><%
+             }
+         %>
+            </ul>
+         <%
+         break;
+     case '1':
+     case '2':
+        %>Vous avez choisi le self <%= page %>, bon choix<%
+            break;
+
+     case 'cave-a-vin':
+        %>La cave à vin, bon choix.<%
+        break;
+ }
+
+%>
+
+<% include footer.html %>
