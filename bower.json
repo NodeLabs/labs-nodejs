@@ -1,0 +1,16 @@
+{
+  "name": "node-tp9",
+  "description": "",
+
+  "authors": [
+    "Romain Lenzotti <rom.lenzotti@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Romakita/tp-nodejs",
+
+  "dependencies": {
+    "lodash": "^4.13.1",
+    "jquery": "^2.2.4",
+    "Materialize": "materialize#^0.97.6"
+  }
+}

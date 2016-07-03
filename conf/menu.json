@@ -1,0 +1,28 @@
+[
+  {
+    "title":"Contact", 
+    "description": "Contacter une personne", 
+    "href": "/contact",
+    "picture":"/images/contact.jpg"
+
+  },
+  {
+    "title":"Inscription", 
+    "description": "Vous souhaitez participer à session Training ? Choisissez et incrivez-vous à l'une de nos formations.",
+    "href": "/participants",
+    "picture":"/images/inscription.jpg"
+  },
+  {
+    "title":"Self & Cave",
+    "description": "Il est l'heure de se restaurer. Profitez de deux magnifiques Self, avec un choix large et varié ! Vous êtes amateur de bon vin ? Visitez notre cave à vin !",
+    "href": "/etages",
+    "picture":"/images/cave.jpg"
+  },
+
+  {
+    "title":"Espace Détente",
+    "description": "Aller à Espace détente. Retrouvez-y des jeux addictifs !",
+    "href": "/etage/espace-detente",
+    "picture":"/images/espace-detente.jpg"
+  }
+]

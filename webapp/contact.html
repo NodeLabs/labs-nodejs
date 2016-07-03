@@ -1,0 +1,35 @@
+<% include partials/header.html %>
+
+<div class="container">
+
+    <%
+    if(prenom && nom){
+    %>
+        <p>Veuillez patienter, nous contactons <%= prenom %> <%= nom %></p>
+    <%
+    }
+    else{
+    %>
+
+    <h3>Qui voulez-vous contacter ?</h3>
+
+    <form method="get" action="/contact">
+
+        <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" name="nom" class="form-control" id="name" placeholder="Nom">
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Prénom</label>
+            <input type="text" name="prenom" class="form-control" id="lastName" placeholder="Prénom">
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Contacter</button>
+    </form>
+    <%
+    }
+    %>
+</div>
+<% include partials/footer.html %>

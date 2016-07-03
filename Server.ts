@@ -1,37 +1,45 @@
 
 import * as Express from "express";
-import IndexController from "./controllers/IndexController";
-import ContactController from "./controllers/ContactController";
-import RestController from "./controllers/RestController";
-import FloorController from "./controllers/FloorController";
-import ParticipantController from "./controllers/ParticipantController";
-import MongooseConnect from "./lib/MongooseConnect";
+import {IndexController} from "./app/controllers/pages";
+import {RestController} from "./app/controllers/rest";
+import MongooseConnect from "./app/services/MongooseConnect";
 
 export default class Server {
 
     private app: Express.Application = Express();
     private mongooseConnect = new MongooseConnect('localhost', 'valtechtraining');
 
-    constructor(port: number = 8080){
+    constructor(private port: number = 8080){
 
         this.app.set('view engine', 'ejs');
 
-        this.mongooseConnect
-            .connect()
+        this.connect()
             .on('connect', () => {
+
                 console.log('DB Connected');
+
                 this.importMiddlewares();
-                this.importControllers();
 
-                this.app.listen(port, () => {
-                    console.log(`Server binded on port ${port}`);
-                });
+                if (this.port) {
+                    this.app.listen(this.port, () => {
+                        console.log(`Server binded on port ${this.port}`);
+                    });
+                }
 
-            })
+            });
+
+    }
+
+    /**
+     *
+     * @returns {MongooseConnect}
+     */
+    public connect(): MongooseConnect {
+        return this.mongooseConnect
+            .connect()
             .on('error', (err) => {
                 console.error(err);
             });
-
     }
 
     /**
@@ -40,9 +48,6 @@ export default class Server {
     public importControllers(): Server {
 
         new IndexController().route(this.app);
-        new ContactController().route(this.app);
-        new FloorController().route(this.app);
-        new ParticipantController().route(this.app);
         new RestController().route(this.app);
 
         return this;
@@ -74,13 +79,13 @@ export default class Server {
         }));
 
         //Bonus - On indique que le dossier App est notre dossier contenant les css et script js front-end
-        this.app.use(serveStatic('app'));
+        this.app.use(serveStatic('webapp'));
 
         // Bonus - On utilise l'extension .html en lieu et place de l'extension .ejs
         this.app.engine('.html', require('ejs').__express);
 
         // Bonus - On change le dossier de base
-        this.app.set('views', './app/views');
+        this.app.set('views', './webapp');
 
         // Bonus - Permet de ne pas spécifier l'extension lors de l'utilisation de res.render()
         this.app.set('view engine', 'html');
@@ -88,29 +93,62 @@ export default class Server {
         //Bonus - Création d'un middleware ajoutant une variable globals
         this.app.use(Server.MiddlewareMenu);
 
+        this.importControllers();
+
+        this.app.use(Server.RenderError404);
+        this.app.use(Server.GlobalErrorsHandler);
 
         return this;
     }
 
     /**
      *
-     * @param req
-     * @param res
+     * @param request
+     * @param response
      * @param next
      */
-    static MiddlewareMenu(req, res, next) {
+    static MiddlewareMenu(request: Express.Request, response: Express.Response, next: Express.NextFunction) {
 
-        res.locals = {
-            menu: [
-                {short:'Contact', text: 'Contacter une personne', href: "/contact"},
-                {short:'Inscription', text: 'S\'inscrire à la session Node.js', href: "/participants"},
-                {short:'Self & Cave', text: 'Aller au sous-sol (self & cave à vin)', href: "/sous-sol"},
-                {short:'Bureaux', text: 'Aller à l\'étage n°1 bureaux', href: "/etage/1"},
-                {short:'Détente', text: 'Aller à l\'étage n°2 Espace détente', href: "/etage/2"}
-            ]
+        const menu: ICard[] = require('./conf/menu.json');
+
+        response.locals = {
+            menu: menu
         };
+
         next();
 
+    }
+
+    static RenderError404(request: Express.Request, response: Express.Response, next: Express.NextFunction) {
+        response.render('404', { status: 404, url: request.url });
+    }
+    /**
+     *
+     * @param error
+     * @param request
+     * @param response
+     * @param next
+     * @constructor
+     */
+    static GlobalErrorsHandler(error: any, request: Express.Request, response: Express.Response, next: Express.NextFunction): void {
+
+        if (response.headersSent) {
+            return next(error);
+        }
+
+        /*if (error instanceof Exception) {
+            response.status(error.status).send(error.message);
+            return next();
+        }*/
+
+        if (error.name === "CastError" || error.name === "ObjectID" || error.name === "ValidationError") {
+            response.status(400).send("Bad Request");
+            return next();
+        }
+
+        response.status(error.status || 500).render("500", {stackError: error.stack});
+
+        return next();
     }
 }
 

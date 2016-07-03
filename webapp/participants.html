@@ -1,0 +1,33 @@
+<% partials/include header.html %>
+
+<h1>Participants à la session Node.js</h1>
+
+<% participants.forEach(function(todo, index) { %>
+
+<form class="form-inline" action="/rest/participants/<%= todo._id %>" method="post">
+
+    <a class="btn btn-default" href="/rest/participants/<%= todo._id %>">✘</a>
+
+    <div class="form-group">
+        <input type="text" name="editparticipant" value="<%= todo.name %>" class="form-control" id="editparticipant" placeholder="Nom & Prénom">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+
+</form>
+
+
+<% }); %>
+
+
+<form action="/rest/participants" method="post">
+
+    <div class="form-group">
+        <label for="newparticipant">Saisissez votre nom et prénom :</label>
+        <input type="text" name="newparticipant" class="form-control" id="newparticipant" placeholder="Nom & Prénom">
+    </div>
+
+    <button class="btn btn-primary" type="submit">Ajouter</button>
+</form>
+
+<% include partials/footer.html %>

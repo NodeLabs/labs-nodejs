@@ -43,7 +43,7 @@ declare module "express-serve-static-core" {
             * of the user. Once the `next()` function is invoked, just like middleware
             * it will continue on to execute the route, or subsequent parameter functions.
             *
-            *      app.param('user_id', function(req, res, next, id){
+            *      webapp.param('user_id', function(req, res, next, id){
             *        User.find(id, function(err, user){
             *          if (err) {
             *            next(err);
@@ -62,7 +62,7 @@ declare module "express-serve-static-core" {
         param(name: string, handler: RequestParamHandler): T;
         param(name: string, matcher: RegExp): T;
         param(name: string, mapper: (param: any) => any): T;
-        // Alternatively, you can pass only a callback, in which case you have the opportunity to alter the app.param() API
+        // Alternatively, you can pass only a callback, in which case you have the opportunity to alter the webapp.param() API
         param(callback: (name: string, matcher: RegExp) => RequestParamHandler): T;
 
         /**
@@ -505,7 +505,7 @@ declare module "express-serve-static-core" {
             *  dynamic situations. The code backing `res.sendFile()` is actually
             *  the same code, so HTTP cache support etc is identical.
             *
-            *     app.get('/user/:uid/photos/:file', function(req, res){
+            *     webapp.get('/user/:uid/photos/:file', function(req, res){
             *       var uid = req.params.uid
             *         , file = req.params.file;
             *
@@ -815,14 +815,14 @@ declare module "express-serve-static-core" {
             * file extension. For example if you try to render
             * a "foo.jade" file Express will invoke the following internally:
             *
-            *     app.engine('jade', require('jade').__express);
+            *     webapp.engine('jade', require('jade').__express);
             *
             * For engines that do not provide `.__express` out of the box,
             * or if you wish to "map" a different extension to the template engine
             * you may use this method. For example mapping the EJS template engine to
             * ".html" files:
             *
-            *     app.engine('html', require('ejs').renderFile);
+            *     webapp.engine('html', require('ejs').renderFile);
             *
             * In this case EJS provides a `.renderFile()` method with
             * the same signature that Express expects: `(path, options, callback)`,
@@ -840,11 +840,11 @@ declare module "express-serve-static-core" {
         /**
             * Assign `setting` to `val`, or return `setting`'s value.
             *
-            *    app.set('foo', 'bar');
-            *    app.get('foo');
+            *    webapp.set('foo', 'bar');
+            *    webapp.get('foo');
             *    // => "bar"
-            *    app.set('foo', ['bar', 'baz']);
-            *    app.get('foo');
+            *    webapp.set('foo', ['bar', 'baz']);
+            *    webapp.get('foo');
             *    // => ["bar", "baz"]
             *
             * Mounted servers inherit their parent server's settings.
@@ -859,7 +859,7 @@ declare module "express-serve-static-core" {
         };
 
         /**
-            * Return the app's absolute pathname
+            * Return the webapp's absolute pathname
             * based on the parent(s) that have
             * mounted it.
             *
@@ -873,11 +873,11 @@ declare module "express-serve-static-core" {
         /**
             * Check if `setting` is enabled (truthy).
             *
-            *    app.enabled('foo')
+            *    webapp.enabled('foo')
             *    // => false
             *
-            *    app.enable('foo')
-            *    app.enabled('foo')
+            *    webapp.enable('foo')
+            *    webapp.enabled('foo')
             *    // => true
             */
         enabled(setting: string): boolean;
@@ -885,11 +885,11 @@ declare module "express-serve-static-core" {
         /**
             * Check if `setting` is disabled.
             *
-            *    app.disabled('foo')
+            *    webapp.disabled('foo')
             *    // => true
             *
-            *    app.enable('foo')
-            *    app.disabled('foo')
+            *    webapp.enable('foo')
+            *    webapp.disabled('foo')
             *    // => false
             *
             * @param setting
@@ -918,15 +918,15 @@ declare module "express-serve-static-core" {
             *
             * Examples:
             *
-            *    app.configure(function(){
+            *    webapp.configure(function(){
             *      // executed for all envs
             *    });
             *
-            *    app.configure('stage', function(){
+            *    webapp.configure('stage', function(){
             *      // executed staging env
             *    });
             *
-            *    app.configure('stage', 'production', function(){
+            *    webapp.configure('stage', 'production', function(){
             *      // executed for stage and production
             *    });
             *
@@ -966,7 +966,7 @@ declare module "express-serve-static-core" {
             *
             * Example:
             *
-            *    app.render('email', { name: 'Tobi' }, function(err, html){
+            *    webapp.render('email', { name: 'Tobi' }, function(err, html){
             *      // ...
             *    })
             *
@@ -990,10 +990,10 @@ declare module "express-serve-static-core" {
             *    var http = require('http')
             *      , https = require('https')
             *      , express = require('express')
-            *      , app = express();
+            *      , webapp = express();
             *
-            *    http.createServer(app).listen(80);
-            *    https.createServer({ ... }, app).listen(443);
+            *    http.createServer(webapp).listen(80);
+            *    https.createServer({ ... }, webapp).listen(443);
             */
         listen(port: number, hostname: string, backlog: number, callback?: Function): http.Server;
         listen(port: number, hostname: string, callback?: Function): http.Server;
