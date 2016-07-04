@@ -23,6 +23,6 @@ export default class IndexController extends Router {
      * @param response
      */
     private render = (request: Express.Request, response: Express.Response): void => {
-        response.render('home');
+        response.render('home', {home: true});
     }
 }

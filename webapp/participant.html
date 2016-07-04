@@ -1,0 +1,83 @@
+<% include partials/header.html %>
+
+<div class="container">
+
+    <h2 class="header center light-blue-text"><%= title %></h2>
+    <!--participant._id ? ('/'+participant._id) : ''-->
+
+
+    <form action="/rest/participants" method="post" participant="">
+
+        <input type="hidden" name="_id" value="<%= participant._id %>" />
+
+        <div class="row">
+
+
+            <div class="input-field col s12 m6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="firstName"
+                       name="firstName"
+                       type="text"
+                       class="validate"
+                       value="<%= participant.firstName %>">
+                <label for="firstName">Nom</label>
+            </div>
+
+
+            <div class="input-field col s12 m6">
+                <input id="lastName"
+                       name="lastName"
+                       type="text"
+                       class="validate"
+                       value="<%= participant.lastName %>">
+                <label for="lastName">Prénom</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <i class="material-icons prefix">mail</i>
+                <input id="email"
+                       type="email"
+                       class="validate"
+                       value="<%= participant.email %>">
+                <label for="email" data-error="wrong" data-success="right">E-mail</label>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="input-field col s12 m6">
+
+                <i class="material-icons prefix">folder</i>
+
+                <select name="course" class="icons">
+                    <option value=""
+                            disabled
+                            <%= !participant.course ? 'selected' : '' %>>Choisissez le cours</option>
+
+                    <%
+                        courses.forEach(function(course, index){
+                    %>
+                        <option value="<%= course.value %>"
+                                data-icon="images/<%= course.icon %>"
+                                class="left circle"
+                                <%= course.value == participant.course ? 'selected' :'' %>><%= course.label %></option>
+                    <%
+                        });
+                    %>
+
+
+                </select>
+
+                <label>Cours</label>
+            </div>
+        </div>
+
+
+
+        <button class="btn waves-effect waves-light" type="submit">Enregistrer</button>
+    </form>
+</div>
+
+<% include partials/footer.html %>

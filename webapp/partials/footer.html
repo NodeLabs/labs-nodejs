@@ -6,6 +6,7 @@
     <script type="text/javascript" src="/bower_components/Materialize/dist/js/materialize.min.js"></script>
 
     <!-- app script -->
+    <script src="/js/participants.js"></script>
     <script src="/js/squaregame.js"></script>
 
 
@@ -13,7 +14,13 @@
         $(document).ready(function(){
             $('.parallax').parallax();
         });
+
+        $(document).ready(function() {
+            $('select').material_select();
+        });
     </script>
+
+
 
 </body>
 </html>

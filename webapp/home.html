@@ -1,33 +1,41 @@
+
 <% include partials/header.html %>
 
-<div class="container">
-    <h1 class="header center orange-text">Valtech Training</h1>
-    <div class="row center">
-        <h5 class="header col s12 light">Bienvenue. Où souhaitez-vous allez ?</h5>
-    </div>
+<div class="parallax-container parallax-home" style="top:-70px;margin-bottom:-70px">
+    <div class="parallax"><img src="/images/france-top-media-.png"></div>
+    <h2 class="header center white-text">Valtech Training</h2>
+</div>
 
-    <div class="row">
-        <%
-        for(var i = 0; i < menu.length; i++){
-        var card = menu[i];
-        %>
-        <div class="col s1 m3">
-            <% include partials/card.html %>
+<div class="section white">
+    <div class="">
+
+        <div class="row center">
+            <h5 class="header col s12 light">Bienvenue. Où souhaitez-vous allez ?</h5>
         </div>
-        <%
-        }
-        %>
+
+        <div class="row">
+            <%
+            for(var i = 0; i < menu.length; i++){
+            var card = menu[i];
+            %>
+            <div class="col s1 m3">
+                <% include partials/card.html %>
+            </div>
+            <%
+            }
+            %>
+
+        </div>
+
+        <div class="row center">
+            <h5 class="header col s12 light">Documents</h5>
+        </div>
+
+        <div class="row center">
+            <a href="rest/documents/1" download="" name="feuille de cours" id="download-button" class="btn-large waves-effect waves-light orange">Feuille de cours</a>
+        </div>
 
     </div>
-
-    <div class="row center">
-        <h5 class="header col s12 light">Documents</h5>
-    </div>
-
-    <div class="row center">
-        <a href="rest/documents/1" download="" name="feuille de cours" id="download-button" class="btn-large waves-effect waves-light orange">Feuille de cours</a>
-    </div>
-
 </div>
 
 <% include partials/footer.html %>

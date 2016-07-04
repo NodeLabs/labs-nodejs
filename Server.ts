@@ -112,7 +112,8 @@ export default class Server {
         const menu: ICard[] = require('./conf/menu.json');
 
         response.locals = {
-            menu: menu
+            menu: menu,
+            home: false
         };
 
         next();
@@ -148,7 +149,7 @@ export default class Server {
 
         response.status(error.status || 500).render("500", {stackError: error.stack});
 
-        return next();
+        //return next();
     }
 }
 

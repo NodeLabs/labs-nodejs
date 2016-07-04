@@ -46,7 +46,8 @@ export default class FloorController extends Router {
      */
     private render = (request: Express.Request, response: Express.Response) => {
         response.render("etages", {
-            etageMenu: this.menu
+            etageMenu: this.menu,
+            home: true
         });
     };
     /**
@@ -93,7 +94,8 @@ export default class FloorController extends Router {
                 response.render('cave-vin', {
                     bordeaux: bordeaux,
                     bourgogne: bourgogne,
-                    champagne: champagne
+                    champagne: champagne,
+                    home: true
                 });
 
             })
