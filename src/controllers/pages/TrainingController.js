@@ -4,15 +4,14 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Router_1 = require("../../services/Router");
-var Courses = require("../../services/Courses");
+var Router_1 = require("../../utils/Router");
 var ParticipantService_1 = require("../../services/ParticipantService");
 var TrainingController = (function (_super) {
     __extends(TrainingController, _super);
     function TrainingController() {
         var _this = this;
         _super.call(this, "");
-        this.participantService = new ParticipantService_1.ParticipantService();
+        this.participantService = new ParticipantService_1.default();
         /**
          *
          * @param request

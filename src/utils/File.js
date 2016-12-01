@@ -4,14 +4,14 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var path = require('path'), appDir = path.resolve('./');
+var path = require('path'), appDir = path.resolve('./../');
 var Fs = require("fs");
 var events_1 = require("events");
 var File = (function (_super) {
     __extends(File, _super);
     function File(fileName) {
         _super.call(this);
-        this.fileName = path.resolve(appDir + "/public/" + fileName);
+        this.fileName = path.resolve(appDir + "/resources/" + fileName);
     }
     /**
      *

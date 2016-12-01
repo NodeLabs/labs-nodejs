@@ -1,4 +1,4 @@
-import {Router} from "../../services/Router";
+import {Router} from "../../utils/Router";
 import * as Express from "express";
 import DocumentController from "./DocumentController";
 import ParticipantController from "./ParticipantController";

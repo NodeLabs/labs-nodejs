@@ -36,12 +36,12 @@ jspm_packages
 .node_repl_history
 
 .idea
-Server.js
-Server.js.map
-index.js
-index.js.map
-app/*.js
-app/**/*.js
-app/*.js.map
-app/**/*.js.map
+server.js
+server.js.map
+app.js
+app.js.map
+src/*.js
+src/**/*.js
+src/*.js.map
+src/**/*.js.map
 /webapp/bower_components

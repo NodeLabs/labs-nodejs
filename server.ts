@@ -2,7 +2,7 @@
 import * as Express from "express";
 import {IndexController} from "./src/controllers/pages";
 import {RestController} from "./src/controllers/rest";
-import MongooseConnect from "./src/services/MongooseConnect";
+import MongooseConnectService from "./src/services/MongooseConnectService";
 
 export default class Server {
     /**
@@ -12,9 +12,9 @@ export default class Server {
     private app: Express.Application = Express();
     /**
      *
-     * @type {MongooseConnect}
+     * @type {MongooseConnectService}
      */
-    private mongooseConnect = new MongooseConnect('localhost', 'valtechtraining');
+    private mongooseConnect = new MongooseConnectService('localhost', 'valtechtraining');
 
     /**
      *
@@ -41,9 +41,9 @@ export default class Server {
 
     /**
      *
-     * @returns {MongooseConnect}
+     * @returns {MongooseConnectService}
      */
-    public connect(): MongooseConnect {
+    public connect(): MongooseConnectService {
         return this.mongooseConnect
             .connect()
             .on('error', (err) => {

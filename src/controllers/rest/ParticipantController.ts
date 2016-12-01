@@ -1,4 +1,4 @@
-import {Router} from "../../services/Router";
+import {Router} from "../../utils/Router";
 import * as Express from "express";
 import {IParticipant, Model} from "../../models/Participant";
 import {ParticipantService} from "../../services/ParticipantService";

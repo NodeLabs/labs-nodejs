@@ -1,5 +1,5 @@
 
-import {Router} from "../../services/Router";
+import {Router} from "../../utils/Router";
 import * as Express from "express";
 import ContactController from "./ContactController";
 import FloorController from "./FloorController";

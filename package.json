@@ -23,6 +23,7 @@
     "@types/socket.io": "^1.4.27",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
+    "method-override": "^2.3.5",
     "ejs": "^2.4.2",
     "express": "^4.14.0",
     "express-session": "^1.13.0",
@@ -34,8 +35,17 @@
     "ts-httpexceptions": "^2.1.2"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.32",
+    "@types/mocha": "^2.2.31",
+    "@types/superagent": "^2.0.34",
+    "@types/supertest": "^1.1.30",
     "bower": "^1.7.9",
+    "tslint": "3.15.1",
     "typescript": "^2.0.10",
+    "mocha": "^3.1.2",
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.2",
+    "supertest": "^2.0.1",
     "source-map-support": "^0.4.1"
   }
 }

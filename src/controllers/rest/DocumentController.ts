@@ -1,5 +1,5 @@
-import {Router} from "../../services/Router";
-import {File} from "../../services/File";
+import {Router} from "../../utils/Router";
+import {File} from "../../utils/File";
 import * as Express from "express";
 
 export default class DocumentController extends Router {

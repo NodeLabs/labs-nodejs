@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Router_1 = require("../../services/Router");
+var Router_1 = require("../../utils/Router");
 var DocumentController_1 = require("./DocumentController");
 var ParticipantController_1 = require("./ParticipantController");
 var RestController = (function (_super) {

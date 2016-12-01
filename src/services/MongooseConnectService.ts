@@ -3,7 +3,7 @@ import {EventEmitter} from "events";
 
 (<any>Mongoose).Promise = Promise;
 
-export default class MongooseConnect extends EventEmitter {
+export default class MongooseConnectService extends EventEmitter {
     private db = null;
 
     constructor(private host: string, private dbName: string) {

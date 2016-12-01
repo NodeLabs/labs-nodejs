@@ -7,9 +7,9 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Mongoose = require('mongoose');
 var events_1 = require("events");
 Mongoose.Promise = Promise;
-var MongooseConnect = (function (_super) {
-    __extends(MongooseConnect, _super);
-    function MongooseConnect(host, dbName) {
+var MongooseConnectService = (function (_super) {
+    __extends(MongooseConnectService, _super);
+    function MongooseConnectService(host, dbName) {
         _super.call(this);
         this.host = host;
         this.dbName = dbName;
@@ -21,7 +21,7 @@ var MongooseConnect = (function (_super) {
     /**
      *
      */
-    MongooseConnect.prototype.connect = function () {
+    MongooseConnectService.prototype.connect = function () {
         var _this = this;
         if (this.db === null) {
             console.log('Mongoose attempt to connect to ' + 'mongodb://' + this.host + '/' + this.dbName);
@@ -43,15 +43,15 @@ var MongooseConnect = (function (_super) {
      *
      * @returns {function(any, any, any): undefined}
      */
-    MongooseConnect.prototype.middleware = function () {
+    MongooseConnectService.prototype.middleware = function () {
         var _this = this;
         return function (request, response, next) {
             request.db = _this.db;
             next();
         };
     };
-    return MongooseConnect;
+    return MongooseConnectService;
 }(events_1.EventEmitter));
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = MongooseConnect;
-//# sourceMappingURL=MongooseConnect.js.map
+exports.default = MongooseConnectService;
+//# sourceMappingURL=MongooseConnectService.js.map

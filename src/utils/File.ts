@@ -1,5 +1,5 @@
 let path = require('path'),
-    appDir = path.resolve('./');
+    appDir = path.resolve('./../');
 
 import * as Fs from "fs";
 import {EventEmitter} from "events";
@@ -10,7 +10,7 @@ export class File extends EventEmitter {
 
     constructor(fileName: string) {
         super();
-        this.fileName = path.resolve(`${appDir}/public/${fileName}`);
+        this.fileName = path.resolve(`${appDir}/resources/${fileName}`);
     }
 
     /**
@@ -112,7 +112,7 @@ export class File extends EventEmitter {
                     return;
                 }
 
-                var data = buffer.toString("utf8", 0, buffer.length);
+                const data = buffer.toString("utf8", 0, buffer.length);
 
                 Fs.close(fd);
 

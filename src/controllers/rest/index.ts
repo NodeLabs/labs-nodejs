@@ -1,6 +1,1 @@
-
-import RestController from "./RestController";
-
-export {
-    RestController
-};
+export * from "./RestController";

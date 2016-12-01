@@ -1,10 +1,10 @@
 
-import {Router} from "../../services/Router";
+import {Router} from "../../utils/Router";
 import * as Express from "express";
-import * as Courses from "../../services/Courses";
-import {ParticipantService} from "../../services/ParticipantService";
+import ParticipantService from "../../services/ParticipantService";
 import {IParticipant} from "../../models/Participant";
 import {NextFunction} from "express";
+import * as CoursesService from "../../services/CoursesService"
 
 
 export default class TrainingController extends Router {
@@ -23,6 +23,7 @@ export default class TrainingController extends Router {
      *
      * @param request
      * @param response
+     * @param next
      */
     private renderEdit = (request: Express.Request, response: Express.Response, next: NextFunction): void => {
 
@@ -34,9 +35,10 @@ export default class TrainingController extends Router {
                 .get(request.params.id)
                 .then((participant: IParticipant) => {
                     response.render('training-participant', {
-                        courses: Courses.getCourses(),
+                        courses: CoursesService.getCourses(),
                         participant: participant
                     });
+
                 }, next);
         }
 
@@ -49,11 +51,11 @@ export default class TrainingController extends Router {
      */
     private renderTrainingRegister = (request: Express.Request, response: Express.Response): void => {
 
-        if (!Courses.courseExists(request.params.course)) {
+        if (!CoursesService.courseExists(request.params.course)) {
             response.redirect('/training');
         } else {
             response.render('training-inscription', {
-                courses: Courses.getCourses(),
+                courses: CoursesService.getCourses(),
                 participant: {
                     _id: '',
                     firstName: '',
@@ -70,6 +72,7 @@ export default class TrainingController extends Router {
      *
      * @param request
      * @param response
+     * @param next
      */
     private renderTraining = (request: Express.Request, response: Express.Response, next: Express.NextFunction): void => {
 
@@ -79,7 +82,7 @@ export default class TrainingController extends Router {
             .find(query)
             .then((participants: IParticipant[]) => {
                 response.render('training', {
-                    courses: Courses.getCourses(),
+                    courses: CoursesService.getCourses(),
                     participants: participants
                 });
             }, next);

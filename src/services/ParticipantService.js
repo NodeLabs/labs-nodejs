@@ -1,6 +1,6 @@
 "use strict";
 var Participant_1 = require("../models/Participant");
-var Courses = require("./Courses");
+var CoursesService = require("./CoursesService");
 var ParticipantService = (function () {
     function ParticipantService() {
     }
@@ -37,7 +37,7 @@ var ParticipantService = (function () {
     ParticipantService.prototype.populateCourse = function (participants) {
         return participants.map(function (participant) {
             return Object.assign(participant.toObject(), {
-                course: Courses.getCourse(participant.course || 'angular1')
+                course: CoursesService.getCourse(participant.course || 'angular1')
             });
         });
     };
@@ -105,5 +105,6 @@ var ParticipantService = (function () {
     };
     return ParticipantService;
 }());
-exports.ParticipantService = ParticipantService;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = ParticipantService;
 //# sourceMappingURL=ParticipantService.js.map

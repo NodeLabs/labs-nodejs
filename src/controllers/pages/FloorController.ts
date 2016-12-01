@@ -1,7 +1,7 @@
 
-import {Router} from "../../services/Router";
+import {Router} from "../../utils/Router";
 import * as Express from "express";
-import {File} from "../../services/File";
+import {File} from "../../utils/File";
 
 export default class FloorController extends Router {
 

@@ -1,7 +1,7 @@
 import {Model, IParticipant, IDocParticipant} from "../models/Participant";
-import * as Courses from "./Courses";
+import * as CoursesService from "./CoursesService";
 
-export class ParticipantService {
+export default class ParticipantService {
 
     constructor() {
 
@@ -48,7 +48,7 @@ export class ParticipantService {
     private populateCourse(participants: IParticipant[]) {
         return participants.map((participant: IDocParticipant) => {
             return Object.assign(<IParticipant> participant.toObject(), {
-                course:  Courses.getCourse(<string> participant.course||'angular1')
+                course:  CoursesService.getCourse(<string> participant.course||'angular1')
             });
         });
     }

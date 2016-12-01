@@ -1,4 +1,4 @@
-import {Router} from "../../services/Router";
+import {Router} from "../../utils/Router";
 import * as Express from "express";
 
 export default class ContactController extends Router {
