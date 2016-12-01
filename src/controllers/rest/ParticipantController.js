@@ -12,7 +12,7 @@ var ParticipantController = (function (_super) {
     function ParticipantController() {
         var _this = this;
         _super.call(this, "/participants");
-        this.participantService = new ParticipantService_1.ParticipantService();
+        this.participantService = new ParticipantService_1.default();
         /**
          *
          * @param request

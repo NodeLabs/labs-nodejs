@@ -6,6 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Router_1 = require("../../utils/Router");
 var ParticipantService_1 = require("../../services/ParticipantService");
+var CoursesService = require("../../services/CoursesService");
 var TrainingController = (function (_super) {
     __extends(TrainingController, _super);
     function TrainingController() {
@@ -16,6 +17,7 @@ var TrainingController = (function (_super) {
          *
          * @param request
          * @param response
+         * @param next
          */
         this.renderEdit = function (request, response, next) {
             if (request.params.id === undefined) {
@@ -26,7 +28,7 @@ var TrainingController = (function (_super) {
                     .get(request.params.id)
                     .then(function (participant) {
                     response.render('training-participant', {
-                        courses: Courses.getCourses(),
+                        courses: CoursesService.getCourses(),
                         participant: participant
                     });
                 }, next);
@@ -38,12 +40,12 @@ var TrainingController = (function (_super) {
          * @param response
          */
         this.renderTrainingRegister = function (request, response) {
-            if (!Courses.courseExists(request.params.course)) {
+            if (!CoursesService.courseExists(request.params.course)) {
                 response.redirect('/training');
             }
             else {
                 response.render('training-inscription', {
-                    courses: Courses.getCourses(),
+                    courses: CoursesService.getCourses(),
                     participant: {
                         _id: '',
                         firstName: '',
@@ -58,6 +60,7 @@ var TrainingController = (function (_super) {
          *
          * @param request
          * @param response
+         * @param next
          */
         this.renderTraining = function (request, response, next) {
             var query = {}; // Change query
@@ -65,7 +68,7 @@ var TrainingController = (function (_super) {
                 .find(query)
                 .then(function (participants) {
                 response.render('training', {
-                    courses: Courses.getCourses(),
+                    courses: CoursesService.getCourses(),
                     participants: participants
                 });
             }, next);

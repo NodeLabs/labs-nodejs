@@ -4,7 +4,7 @@ let path = require('path'),
 import * as Fs from "fs";
 import {EventEmitter} from "events";
 
-export class File extends EventEmitter {
+export class FileUtils extends EventEmitter {
 
     private fileName: string;
 
@@ -13,6 +13,7 @@ export class File extends EventEmitter {
         this.fileName = path.resolve(`${appDir}/resources/${fileName}`);
     }
 
+    public getFileName = () => this.fileName;
     /**
      *
      * @returns {Promise<string>}
@@ -31,6 +32,14 @@ export class File extends EventEmitter {
             })
             .then((fd) => {
                 return this.readFile(fd, stats);
+            })
+            .then((content: string) =>{
+                this.emit('success', content);
+                return content;
+            })
+            .catch((err) => {
+                this.emit('error', err);
+                return Promise.reject(err);
             });
 
     }
@@ -46,7 +55,7 @@ export class File extends EventEmitter {
                 if (exists) {
                     resolve();
                 } else {
-                    reject(false);
+                    reject(new Error('File not found'));
                 }
             });
         });

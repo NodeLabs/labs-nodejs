@@ -5,7 +5,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Router_1 = require("../../utils/Router");
-var File_1 = require("../../utils/File");
+var FileUtils_1 = require("../../utils/FileUtils");
 var DocumentController = (function (_super) {
     __extends(DocumentController, _super);
     function DocumentController() {
@@ -17,7 +17,7 @@ var DocumentController = (function (_super) {
          * @param next
          */
         this.getDocument = function (request, response, next) {
-            new File_1.File("document" + request.params.id + ".txt")
+            new FileUtils_1.FileUtils("document" + request.params.id + ".txt")
                 .read()
                 .then(function (data) {
                 response.setHeader('Context-Type', 'plain/text');
@@ -29,7 +29,7 @@ var DocumentController = (function (_super) {
              console.log('Error : ', err);
              response.send(500, 'Erreur lors de la lecture du fichier');
              } else {
-             response.send(404, 'File not found');
+             response.send(404, 'FileUtils not found');
              }
              }*/
         };

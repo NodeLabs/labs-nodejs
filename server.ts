@@ -1,7 +1,7 @@
 
 import * as Express from "express";
-import {IndexController} from "./src/controllers/pages";
-import {RestController} from "./src/controllers/rest";
+import IndexController from "./src/controllers/pages/IndexController";
+import RestController from "./src/controllers/rest/RestController";
 import MongooseConnectService from "./src/services/MongooseConnectService";
 
 export default class Server {

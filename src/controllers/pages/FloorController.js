@@ -5,7 +5,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Router_1 = require("../../utils/Router");
-var File_1 = require("../../utils/File");
+var FileUtils_1 = require("../../utils/FileUtils");
 var FloorController = (function (_super) {
     __extends(FloorController, _super);
     /**
@@ -69,9 +69,9 @@ var FloorController = (function (_super) {
          */
         this.renderWineVault = function (request, response, next) {
             var promises = [];
-            promises.push(new File_1.File('bordeaux.txt').read());
-            promises.push(new File_1.File('bourgogne.txt').read());
-            promises.push(new File_1.File('champagne.txt').read());
+            promises.push(new FileUtils_1.FileUtils('bordeaux.txt').read());
+            promises.push(new FileUtils_1.FileUtils('bourgogne.txt').read());
+            promises.push(new FileUtils_1.FileUtils('champagne.txt').read());
             Promise
                 .all(promises)
                 .then(function (contents) {

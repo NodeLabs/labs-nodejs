@@ -6,16 +6,18 @@
   "author": "Lenzotti Romain",
   "license": "ISC",
   "scripts": {
-    "build": "npm run tsc:es5",
-    "coverage": "npm run test-cov && npm run test-remap",
+    "build": "npm run tsc:compile",
+    "bower:install": "bower install",
     "postinstall": "npm run build",
-    "tslint": "tslint ./*.ts ./lib/*.ts",
+    "tslint": "tslint ./*.ts ./src/*.ts",
     "test": "mocha --reporter spec --check-leaks --bail test/",
+    "test:cov": "istanbul cover -x \"examples/**\" node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/ && npm run test:remap",
+    "test:remap": "./node_modules/.bin/remap-istanbul -i coverage/coverage.json -o coverage/lcov-report -t html",
+    "test:travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "tsc:compile": "tsc --project tsconfig.json",
-    "start": "bower install && concurrently \"npm run tsc:w\" \"nodemon app.js --ignore *.ts\"",
-    "bower:install": "bower install"
+    "start": "bower install && concurrently \"npm run tsc:w\" \"nodemon app.js --ignore *.ts\""
   },
   "dependencies": {
     "@types/express": "^4.0.34",

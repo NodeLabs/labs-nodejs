@@ -1,7 +1,7 @@
 
 import {Router} from "../../utils/Router";
 import * as Express from "express";
-import {File} from "../../utils/File";
+import {FileUtils} from "../../utils/FileUtils";
 
 export default class FloorController extends Router {
 
@@ -80,9 +80,9 @@ export default class FloorController extends Router {
 
         let promises: Promise<string>[]  = [];
 
-        promises.push(new File('bordeaux.txt').read());
-        promises.push(new File('bourgogne.txt').read());
-        promises.push(new File('champagne.txt').read());
+        promises.push(new FileUtils('bordeaux.txt').read());
+        promises.push(new FileUtils('bourgogne.txt').read());
+        promises.push(new FileUtils('champagne.txt').read());
 
         Promise
             .all(promises)

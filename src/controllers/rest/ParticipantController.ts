@@ -1,7 +1,7 @@
 import {Router} from "../../utils/Router";
 import * as Express from "express";
 import {IParticipant, Model} from "../../models/Participant";
-import {ParticipantService} from "../../services/ParticipantService";
+import ParticipantService from "../../services/ParticipantService";
 import {BadRequest} from "ts-httpexceptions";
 
 export default class ParticipantController extends Router {

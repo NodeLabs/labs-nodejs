@@ -1,5 +1,5 @@
 import {Router} from "../../utils/Router";
-import {File} from "../../utils/File";
+import {FileUtils} from "../../utils/FileUtils";
 import * as Express from "express";
 
 export default class DocumentController extends Router {
@@ -18,7 +18,7 @@ export default class DocumentController extends Router {
      */
     private getDocument = (request: Express.Request, response: Express.Response, next: Express.NextFunction) => {
 
-        new File(`document${request.params.id}.txt`)
+        new FileUtils(`document${request.params.id}.txt`)
             .read()
             .then((data) => {
                 response.setHeader('Context-Type', 'plain/text');
@@ -31,7 +31,7 @@ export default class DocumentController extends Router {
          console.log('Error : ', err);
          response.send(500, 'Erreur lors de la lecture du fichier');
          } else {
-         response.send(404, 'File not found');
+         response.send(404, 'FileUtils not found');
          }
          }*/
 
