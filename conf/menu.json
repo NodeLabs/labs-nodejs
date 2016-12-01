@@ -7,9 +7,9 @@
 
   },
   {
-    "title":"Inscription", 
+    "title":"Training",
     "description": "Vous souhaitez participer à session Training ? Choisissez et incrivez-vous à l'une de nos formations.",
-    "href": "/participants",
+    "href": "/training",
     "picture":"/images/inscription.jpg"
   },
   {

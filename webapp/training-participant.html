@@ -1,17 +1,16 @@
 <% include partials/header.html %>
 
-<div class="container">
+<section class="container">
 
-    <h2 class="header center light-blue-text"><%= title %></h2>
-    <!--participant._id ? ('/'+participant._id) : ''-->
+    <header>
+        <h2>Participant</h2>
+    </header>
 
-
-    <form action="/rest/participants" method="post" participant="">
+    <form action="/rest/participants/<%= participant._id %>" method="post" participant="">
 
         <input type="hidden" name="_id" value="<%= participant._id %>" />
 
         <div class="row">
-
 
             <div class="input-field col s12 m6">
                 <i class="material-icons prefix">account_circle</i>
@@ -40,7 +39,9 @@
                 <input id="email"
                        type="email"
                        class="validate"
+                       name="email"
                        value="<%= participant.email %>">
+
                 <label for="email" data-error="wrong" data-success="right">E-mail</label>
             </div>
         </div>
@@ -53,14 +54,14 @@
 
                 <select name="course" class="icons">
                     <option value=""
-                            disabled
+                            disabled="disabled"
                             <%= !participant.course ? 'selected' : '' %>>Choisissez le cours</option>
 
                     <%
                         courses.forEach(function(course, index){
                     %>
                         <option value="<%= course.value %>"
-                                data-icon="images/<%= course.icon %>"
+                                data-icon="/images/<%= course.icon %>"
                                 class="left circle"
                                 <%= course.value == participant.course ? 'selected' :'' %>><%= course.label %></option>
                     <%
@@ -74,10 +75,8 @@
             </div>
         </div>
 
-
-
         <button class="btn waves-effect waves-light" type="submit">Enregistrer</button>
     </form>
-</div>
+</section>
 
 <% include partials/footer.html %>

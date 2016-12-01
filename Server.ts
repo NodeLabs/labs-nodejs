@@ -1,17 +1,19 @@
 
 import * as Express from "express";
-import {IndexController} from "./app/controllers/pages";
-import {RestController} from "./app/controllers/rest";
-import MongooseConnect from "./app/services/MongooseConnect";
+import {IndexController} from "./controllers/pages";
+import {RestController} from "./controllers/rest";
+import MongooseConnect from "./services/MongooseConnect";
 
 export default class Server {
 
     private app: Express.Application = Express();
     private mongooseConnect = new MongooseConnect('localhost', 'valtechtraining');
 
+    /**
+     *
+     * @param port
+     */
     constructor(private port: number = 8080){
-
-        this.app.set('view engine', 'ejs');
 
         this.connect()
             .on('connect', () => {
@@ -113,7 +115,7 @@ export default class Server {
 
         response.locals = {
             menu: menu,
-            home: false
+            navClass: ''
         };
 
         next();

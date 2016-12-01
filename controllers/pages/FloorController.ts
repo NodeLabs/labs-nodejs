@@ -8,19 +8,19 @@ export default class FloorController extends Router {
 
     private menu: ICard[] = [
         {
-            title: 'Self 1',
+            label: 'Self 1',
             description: '',
             href: '/etages/self/1',
             picture: '/images/self1.jpg'
         },
         {
-            title: 'Self 2',
+            label: 'Self 2',
             description: '',
             href: '/etages/self/2',
             picture: '/images/self2.jpg'
         },
         {
-            title: 'Cave à vin',
+            label: 'Cave à vin',
             description: '',
             href: '/etages/cave-vin',
             picture: '/images/cave.jpg'
@@ -47,7 +47,7 @@ export default class FloorController extends Router {
     private render = (request: Express.Request, response: Express.Response) => {
         response.render("etages", {
             etageMenu: this.menu,
-            home: true
+            navClass: "transparent white-text"
         });
     };
     /**
@@ -95,7 +95,7 @@ export default class FloorController extends Router {
                     bordeaux: bordeaux,
                     bourgogne: bourgogne,
                     champagne: champagne,
-                    home: true
+                    navClass: "darker white-text"
                 });
 
             })

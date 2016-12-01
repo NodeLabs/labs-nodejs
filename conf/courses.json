@@ -1,0 +1,30 @@
+[
+  {
+    "label":"Angular 1",
+    "value":"angular1",
+    "icon":"angular.png",
+    "picture":"/images/angular-256.png",
+    "btn":"M'inscrire"
+  },
+  {
+    "label":"Angular 2",
+    "value":"angular2",
+    "icon":"angular.png",
+    "picture":"/images/angular-256.png",
+    "btn":"M'inscrire"
+  },
+  {
+    "label":"Node.js",
+    "value":"nodejs",
+    "icon":"nodejs.png",
+    "picture":"/images/nodejs-256.png",
+    "btn":"M'inscrire"
+  },
+  {
+    "label":"TypeScript",
+    "value":"typescript",
+    "icon":"ts.png",
+    "picture":"/images/ts-256.png",
+    "btn":"M'inscrire"
+  }
+]

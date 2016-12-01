@@ -1,6 +1,7 @@
 declare interface ICard {
-    title: string;
+    label: string;
     description?: string;
     href: string;
     picture?: string;
+    btn?: string;
 }

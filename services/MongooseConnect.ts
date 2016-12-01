@@ -1,6 +1,8 @@
 import * as Mongoose from 'mongoose';
 import {EventEmitter} from "events";
 
+Mongoose.Promise = require('bluebird');
+
 export default class MongooseConnect extends EventEmitter {
     private db = null;
 

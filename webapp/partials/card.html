@@ -5,15 +5,15 @@
     </div>
     <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">
-            <%= card.title %> <i class="material-icons right">more_vert</i>
+            <%= card.label %> <i class="material-icons right">more_vert</i>
         </span>
 
-        <p><a href="<%= card.href %>">Y aller !</a></p>
+        <p><a href="<%= card.href %>"><%= card.btn ? card.btn : "Y aller !" %></a></p>
     </div>
 
     <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">
-            <%= card.title %> <i class="material-icons right">fermer</i>
+            <%= card.label %> <i class="material-icons right">fermer</i>
         </span>
         <p><%= card.description %></p>
     </div>

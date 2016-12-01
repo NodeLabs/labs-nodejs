@@ -3,7 +3,7 @@ import {Router} from "../../services/Router";
 import * as Express from "express";
 import ContactController from "./ContactController";
 import FloorController from "./FloorController";
-import ParticipantController from "./ParticipantController";
+import ParticipantController from "./TrainingController";
 
 export default class IndexController extends Router {
 
@@ -23,6 +23,6 @@ export default class IndexController extends Router {
      * @param response
      */
     private render = (request: Express.Request, response: Express.Response): void => {
-        response.render('home', {home: true});
+        response.render('home', {navClass: "transparent white-text"});
     }
 }

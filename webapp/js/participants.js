@@ -1,8 +1,8 @@
-$(document).ready(function() => {
+$(document).ready(() => {
 
     var form = $('form[participant]');
 
-    form.submit(function(evt) {
+    form.submit((evt) => {
 
         evt.preventDefault();
 
@@ -10,15 +10,16 @@ $(document).ready(function() => {
 
         $.ajax({
             type: id ? 'PUT' : 'POST',
-            url: form.attr("target"),
+            url: form.attr("action"),
             data: form.serialize(),
 
-            success: function() => {
-                document.location.href = '/participants';
+            success: () => {
+                document.location.href = '/training';
             }
 
         });
 
+        return false;
     });
 
 

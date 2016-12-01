@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+/*@font-face {
+    font-family: "azf-picto";
+    src:url("../fonts/valtechse.eot");
+    src:url("../fonts/valtechse.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/valtechse.woff") format("woff"),
+    url("../fonts/valtechse.ttf") format("truetype"),
+    url("../fonts/valtechse.svg#azf-picto") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@font-face {
+    font-family:"valtechse-glyphs";
+    src:url(../fonts/valtechse.eot);
+    src:local("caoncfazifeaef"), url(../fonts/valtechse.woff) format("woff"),url(../fonts/valtechse.ttf) format("truetype"),url(../fonts/valtechse.svg) format("svg");
+    font-weight:400;
+    font-style:normal
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+        font-family: "valtechse-glyphs";
+        src:url(../fonts/valtechse.svg) format("svg")
+    }
+}
+
+[data-icon]:before {
+    font-family: "valtechse-glyphs" !important;
+    content: attr(data-icon);
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="glyph"]:before,
+[class*="glyph"]:before {
+    font-family: "valtechse-glyphs" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glyph{
+    font-family:"valtechse-glyphs";
+    font-style:normal
+}
+.glyph[data-icon*=close]:before {
+    content:""
+}
+.glyph[data-icon*=instagram]:before {
+    content:""
+}
+.glyph[data-icon*=twitter]:before {
+    content:""
+}
+.glyph[data-icon*=facebook]:before {
+    content:""
+}
+.glyph[data-icon*=github]:before {
+    content:""
+}
+.glyph[data-icon*=google]:before {
+    content:""
+}
+.glyph[data-icon*=vimeo]:before {
+    content:""
+}
+.glyph[data-icon*=search]:before {
+    content:""
+}
+.glyph[data-icon*=phone]:before {
+    content:""
+}
+.glyph[data-icon*=myntet]:before {
+    content:""
+}
+.glyph[data-icon*=hamburger]:before {
+    content:""
+}
+.glyph[data-icon*=earth-globe]:before {
+    content:""
+}
+.glyph[data-icon*=clock]:before {
+    content:""
+}
+.glyph[data-icon*=plus]:before {
+    content:""
+}
+.glyph[data-icon*=play]:before {
+    content:""
+}
+.glyph[data-icon*=mail]:before {
+    content:""
+}
+.glyph[data-icon*=mail2]:before {
+    content:""
+}
+.glyph[data-icon*=plus2]:before {
+    content:""
+}
+.glyph[data-icon*=remove]:before {
+    content:""
+}
+.glyph[data-icon*=location]:before {
+    content:""
+}
+.glyph[data-icon*=downloads]:before {
+    content:""
+}
+.glyph[data-icon*=rss]:before {
+    content:""
+}
+.glyph[data-icon*=up]:before {
+    content:""
+}
+.glyph[data-icon*=down]:before {
+    content:""
+}
+.glyph[data-icon*=left]:before {
+    content:""
+}
+.glyph[data-icon*=right]:before {
+    content:""
+}
+.glyph[data-icon*=valtech-logo]:before {
+    content:""
+}
+.glyph[data-icon*=icon-tech]:before {
+    content:""
+}
+.glyph[data-icon*=icon-teknik-1]:before {
+    content:""
+}
+.glyph[data-icon*=icon-teknik-2]:before {
+    content:""
+}
+.glyph[data-icon*=icon-teknik-3]:before {
+    content:""
+}
+.glyph[data-icon*=icon-design]:before {
+    content:""
+}
+.glyph[data-icon*=icon-strategy]:before {
+    content:""
+}
+.glyph[data-icon*=icon-strategi-1]:before {
+    content:""
+}
+.glyph[data-icon*=eventbrite]:before {
+    content:""
+}
+.glyph[data-icon*=sweden]:before {
+    content:""
+}
+.glyph[data-icon*=earth-contact]:before {
+    content:"";
+    font-size:1.285em;
+    position:absolute;
+    left:7px
+}
+.glyph[data-icon*=ticket]:before {
+    content:""
+}
+.glyph[data-icon*=linkedin]:before {
+    content:""
+}
+.glyph[data-icon*=news]:before {
+    content:""
+}
+.glyph[data-icon*=check]:before {
+    content:""
+}
+.glyph[data-icon*=cross]:before {
+    content:"";
+    font-size:1.75em;
+    position:absolute;
+    left:2px
+}
