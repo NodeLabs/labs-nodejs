@@ -1,16 +1,20 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "types": [
+      "express",
+      "mongoose"
+    ],
     "module": "commonjs",
-    "target": "es6",
-    "noImplicitAny": false,
-    "sourceMap": true,
-    "declaration":false,
+    "moduleResolution": "node",
     "experimentalDecorators":true,
     "emitDecoratorMetadata": true,
-    "moduleResolution": "node",
-    "isolatedModules": false,
-    "noLib": false,
-    "suppressImplicitAnyIndexErrors": false
+    "sourceMap": true,
+    "declaration": false
   },
   "exclude": [
     "node_modules"
