@@ -25,39 +25,39 @@
         });
 
         //socket events
-        socket.on('newplayer', function (data) {
+        socket.on('server.player.new', function (data) {
             self.target.find('.game-info').html('');
             self.target.find('.game-area > div').removeClass('square').removeAttr('style');
             self.renderPlayerArea(data);
         });
 
-        socket.on('updateplayerready', function (data) {
+        socket.on('server.update.players.ready', function (data) {
             self.target.find('.game-info').html('');
             self.target.find('.game-area > div').removeClass('square').removeAttr('style');
             self.renderPlayerArea(data);
         });
 
-        socket.on('playerwin', function (data) {
+        socket.on('server.player.win', function (data) {
             self.playerWinGame(data);
         });
 
-        socket.on('playerloose', function (data) {
+        socket.on('server.player.loose', function (data) {
             self.playerLooseGame(data);
         });
 
-        socket.on('startcountdown', function (data) {
+        socket.on('server.start.countdown', function (data) {
             self.startCountDown(data);
         });
 
-        socket.on('updatesquare', function (data) {
+        socket.on('server.update.square', function (data) {
             self.placeSquare(data);
         });
 
-        socket.on('deletedsquare', function (data, user) {
+        socket.on('server.deleted.square', function (data, user) {
             self.deletedSquare(data, user);
         });
 
-        socket.on('stopgame', function (data, users) {
+        socket.on('server.stopgame', function (data, users) {
             self.stopGame(data, users);
         });
 

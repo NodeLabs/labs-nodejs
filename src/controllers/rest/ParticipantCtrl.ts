@@ -4,7 +4,7 @@ import {IParticipant, Model} from "../../models/Participant";
 import ParticipantService from "../../services/ParticipantService";
 import {BadRequest} from "ts-httpexceptions";
 
-export default class ParticipantController extends Router {
+export default class ParticipantCtrl extends Router {
 
     participantService = new ParticipantService();
 

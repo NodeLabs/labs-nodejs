@@ -1,7 +1,7 @@
 import {Router} from "../../utils/Router";
 import * as Express from "express";
 
-export default class ContactController extends Router {
+export default class ContactCtrl extends Router {
 
     constructor(){
         super("");

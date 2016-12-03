@@ -1,5 +1,5 @@
 import * as SocketIO from "socket.io";
-import {PlayersSocket} from '../controllers/websocket/PlayersSocket';
+import {SquareGameWS} from '../controllers/websocket/SquareGameWS';
 
 export default class WebsocketService {
     /**
@@ -20,7 +20,8 @@ export default class WebsocketService {
      */
     private onConnection = (socket: SocketIO.Socket) => {
 
-        PlayersSocket.incommingConnection(this.io, socket);
+        // add your different socket controller here
+        new SquareGameWS(this.io, socket);
 
     }
 }

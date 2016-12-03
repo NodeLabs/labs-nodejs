@@ -2,7 +2,7 @@ import {Router} from "../../utils/Router";
 import {FileUtils} from "../../utils/FileUtils";
 import * as Express from "express";
 
-export default class DocumentController extends Router {
+export default class DocumentCtrl extends Router {
 
     constructor(){
         super("/documents");

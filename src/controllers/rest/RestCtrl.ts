@@ -1,9 +1,9 @@
 import {Router} from "../../utils/Router";
 import * as Express from "express";
-import DocumentController from "./DocumentController";
-import ParticipantController from "./ParticipantController";
+import DocumentController from "./DocumentCtrl";
+import ParticipantController from "./ParticipantCtrl";
 
-export default class RestController extends Router {
+export default class RestCtrl extends Router {
 
     constructor(){
         super("/rest");

@@ -1,7 +1,7 @@
 
 import * as Express from "express";
-import IndexController from "./src/controllers/pages/IndexController";
-import RestController from "./src/controllers/rest/RestController";
+import IndexCtrl from "./src/controllers/pages/IndexCtrl";
+import RestCtrl from "./src/controllers/rest/RestCtrl";
 import MongooseConnectService from "./src/services/MongooseConnectService";
 
 export default class Server {
@@ -56,8 +56,8 @@ export default class Server {
      */
     public importControllers(): Server {
 
-        new IndexController().route(this.app);
-        new RestController().route(this.app);
+        new IndexCtrl().route(this.app);
+        new RestCtrl().route(this.app);
 
         return this;
     }
@@ -67,13 +67,13 @@ export default class Server {
      */
     public importMiddlewares(): Server {
 
-        let bodyParser =    require('body-parser');
-        let cookieParser =  require('cookie-parser');
-        let session =       require('express-session');
-        let serveStatic =   require('serve-static');
-        let morgan =        require('morgan');
+        const bodyParser =    require('body-parser');
+        const cookieParser =  require('cookie-parser');
+        const session =       require('express-session');
+        const serveStatic =   require('serve-static');
+        const morgan =        require('morgan');
 
-        this.app.use( morgan('combined'));
+        this.app.use(morgan('combined'));
         //BodyParser permet de parser les données envoyées par un formulaire
         this.app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -86,6 +86,8 @@ export default class Server {
             secret:             'valtechtrainingsecret',
             saveUninitialized:  true
         }));
+
+
 
         //Bonus - On indique que le dossier App est notre dossier contenant les css et script js front-end
         this.app.use(serveStatic('webapp'));
@@ -118,12 +120,14 @@ export default class Server {
      */
     static MiddlewareMenu(request: Express.Request, response: Express.Response, next: Express.NextFunction) {
 
-        const menu: ICard[] = require('./conf/menu.json');
+        const menu: ICard[] = require('./resources/menu.json');
 
         response.locals = {
             menu: menu,
             navClass: ''
         };
+
+        console.log(response.locals);
 
         next();
 

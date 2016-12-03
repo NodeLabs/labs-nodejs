@@ -1,20 +1,20 @@
 
 import {Router} from "../../utils/Router";
 import * as Express from "express";
-import ContactController from "./ContactController";
-import FloorController from "./FloorController";
-import ParticipantController from "./TrainingController";
+import TrainingCtrl from "./TrainingCtrl";
+import ContactCtrl from './ContactCtrl';
+import FloorCtrl from './FloorCtrl';
 
-export default class IndexController extends Router {
+export default class IndexCtrl extends Router {
 
     constructor() {
         super("");
 
         this.router.get('/', this.render);
 
-        new ContactController().route(this.getRouter());
-        new FloorController().route(this.getRouter());
-        new ParticipantController().route(this.getRouter());
+        new ContactCtrl().route(this.getRouter());
+        new FloorCtrl().route(this.getRouter());
+        new TrainingCtrl().route(this.getRouter());
     }
 
     /**

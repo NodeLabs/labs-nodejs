@@ -3,7 +3,7 @@ import {Router} from "../../utils/Router";
 import * as Express from "express";
 import {FileUtils} from "../../utils/FileUtils";
 
-export default class FloorController extends Router {
+export default class FloorCtrl extends Router {
 
     private menu: ICard[] = [
         {
