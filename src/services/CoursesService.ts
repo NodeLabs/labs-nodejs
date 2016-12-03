@@ -1,13 +1,17 @@
-let coursesMap: {[key: string]: ICourse } = {};
+/**
+ *
+ * @type {Map<string, ICourse>}
+ */
+const coursesMap: Map<string, ICourse> = new Map<string, ICourse>();
 
-const courses: ICourse[] = require('../conf/courses.json')
+const courses: ICourse[] = require('../../resources/courses.json')
     .map((course: ICourse) => {
         course.href = `/training/inscription/${course.value}`;
-        coursesMap[course.value] = course;
+        coursesMap.set(course.value, course);
         return course;
     });
 /**
- *
+ * Return an array of ICourse.
  */
 export function getCourses(): ICourse[] {
     return courses;
@@ -18,7 +22,7 @@ export function getCourses(): ICourse[] {
  * @returns {any}
  */
 export function getCourse(course: string): ICourse {
-    return coursesMap[course];
+    return coursesMap.get(course);
 }
 /**
  *
@@ -26,7 +30,7 @@ export function getCourse(course: string): ICourse {
  * @returns {boolean}
  */
 export function courseExists(course: string): boolean {
-    return !!coursesMap[course];
+    return coursesMap.has(course);
 }
 
 /**

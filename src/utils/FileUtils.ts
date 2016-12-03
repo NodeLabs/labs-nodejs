@@ -1,5 +1,5 @@
 let path = require('path'),
-    appDir = path.resolve('./../');
+    appDir = path.resolve('./');
 
 import * as Fs from "fs";
 import {EventEmitter} from "events";

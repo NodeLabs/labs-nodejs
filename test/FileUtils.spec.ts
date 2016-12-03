@@ -1,19 +1,20 @@
+require('source-map-support').install();
 
 import {expect} from "chai";
 import {FileUtils} from '../src/utils/FileUtils';
+const assert = require('assert');
 
 describe('FileUtils:', () => {
 
    it('should do something', () => {
-       expect(FileUtils).to.true;
+       expect(!!FileUtils).to.be.true;
    });
 
    describe('FileUtils.constructor', () => {
 
        it('should resolve a file path', () => {
            const file = new FileUtils('document1.txt');
-
-           expect(file.getFileName()).to.equal('resources/document1.txt');
+           expect(file.getFileName()).to.contain('resources/document1.txt');
 
        });
 
@@ -31,7 +32,11 @@ describe('FileUtils:', () => {
                expect(content).to.be.a('string');
                expect(content).to.equal('azfzefze');
                done();
-           });
+           })
+               .on('error', (err) => {
+                   console.error(err);
+                   assert.fail(err);
+               });
 
        });
 
