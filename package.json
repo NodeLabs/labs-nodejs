@@ -25,16 +25,17 @@
     "@types/socket.io": "^1.4.27",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
-    "method-override": "^2.3.5",
     "ejs": "^2.4.2",
     "express": "^4.14.0",
     "express-session": "^1.13.0",
+    "method-override": "^2.3.5",
     "mongoose": "^4.5.2",
     "morgan": "^1.7.0",
     "serve-static": "^1.11.1",
     "socket.io": "^1.4.8",
     "source-map-support": "^0.4.1",
-    "ts-httpexceptions": "^2.1.2"
+    "ts-httpexceptions": "^2.1.2",
+    "ts-log-debug": "^2.1.2"
   },
   "devDependencies": {
     "@types/chai": "^3.4.32",

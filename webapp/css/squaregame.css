@@ -1,102 +1,82 @@
-.player{
-    text-align: left;
-    padding:10px;
-    display: inline-block;
-    width:300px;
-    height:100px;
+square-game {
+    display: block;
+}
+square-game  .players .chip{
+    min-width:150px;
+}
+
+square-game .preloader-wrapper{
+    height:300px;
+    width:100%;
+}
+
+square-game .content-square-game{
     position:relative;
-    margin-top:10px;
-    margin-right:5px;
-    margin-left:5px;
-    margin-bottom:30px;
-}
-.player h2{
-    font-size:18px;
-    margin:0;
-    margin-bottom:10px;
-}
-.player h2 span{
-    float:right;
-    font-size:13px;
-    color:#444;
-}
-.player p{
-    position:absolute;
-    font-size:60px;
-    bottom:0px;
-    right:10px;
-    margin:0px;
-    color: #558BBB;
-    line-height: 37px;
-}
-.player a{
-    position: absolute;
-    left:5px;
-    bottom:5px;
-}
-.player p small{
-    font-size: 15px;
-    color:black;
-}
-.playerready-true{
-    border:2px solid #008CBA;
-}
-.playerready-false{
-    border:2px solid #d43f3a;
-}
-.player-area{
-    padding:0px;
-    text-align: center;
+    max-width: 400px;margin:auto;
 }
 
-.content-game-area{
-    position:relative;
-
-}
-
-.content-game-area .count-down{
-    position: absolute;
-    background-color:rgba(255,255,255, 0.8);
-    height:400px;
-    right:0px;
-    left:0px;
-    top:0px;
-    margin:0px;
-}
-.count-down > p{
-    display:block;
-    font-weight: bold;
-    text-align: center;
-    line-height: 400px;
-    font-size:85px;
-    margin:0px;
-    padding:0px;
-}
-
-.content-game-area .game-area{
-    width:400px;
-    height:400px;
+square-game .content-square-game .square-game-area{
     margin:auto;
     padding:0px;
+    position: relative;
+    margin-right:-6px;
 }
 
-.game-area div{float: left;border:1px solid #ccc; width: 100px;height: 100px;box-sizing: border-box; }
+square-game .content-square-game .layer{
+    position: absolute;
+    background: rgba(255,255,255, 0.7);
+    top:0;
+    right:0;
+    bottom: 0;
+    left:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
 
-.game-info{
-    margin:10px 0px;
+square-game .content-square-game .layer div{
+    font-weight: bold;
     text-align: center;
+    font-size: 85px;
+}
+square-game .content-square-game .layer.layer-loose div,
+square-game .content-square-game .layer.layer-win div,
+square-game .content-square-game .layer.layer-ready div{
+    font-size: 50px;
+}
+square-game .content-square-game .layer div small{
+    display: block;
+    color: grey;
 }
 
-.row > div{
-    margin: 20px;
-    height: 130px;
+square-game .content-square-game .square-game-area > square{
+    float: left;
+    display: block;
+    border:1px solid #ccc;
+    width: calc(25% - 1px);
+    height: calc(25% - 1px);
+    margin-right:-1px;
+    margin-bottom:-1px;
+    box-sizing: border-box;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
-.count-down > p.anim{
+square-game .content-square-game .layer.layer-count-down > div.anim{
     -webkit-animation: count-down 1s linear 0s 11 normal;
     -moz-animation: count-down 1s linear 0s 11 normal;
+    animation: count-down 1s linear 0s 11 normal;
 }
 
+.zoom-layer{
+    opacity: 0;
+}
+.zoom-layer.zoomIn{
+    opacity: 1;
+}
 @-webkit-keyframes count-down {
     0% {
         font-size: 50px;

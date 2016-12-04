@@ -1,8 +1,15 @@
-
+import * as SocketIO from "socket.io";
 import * as Express from "express";
 import IndexCtrl from "./src/controllers/pages/IndexCtrl";
 import RestCtrl from "./src/controllers/rest/RestCtrl";
 import MongooseConnectService from "./src/services/MongooseConnectService";
+import {SquareGameCtrl, SquareGameWS} from './src/controllers/squareGame';
+import {$log} from "ts-log-debug";
+
+$log.setSettings({
+    printDate: true
+});
+
 
 export default class Server {
     /**
@@ -10,6 +17,10 @@ export default class Server {
      * @type {"express-serve-static-core".Express}
      */
     private app: Express.Application = Express();
+    /**
+     *
+     */
+    private io: SocketIO.Server;
     /**
      *
      * @type {MongooseConnectService}
@@ -22,28 +33,36 @@ export default class Server {
      */
     constructor(private port: number = 8080){
 
-        this.connect()
-            .on('connect', () => {
-
-                console.log('DB Connected');
-
-                this.importMiddlewares();
-
-                if (this.port) {
-                    this.app.listen(this.port, () => {
-                        console.log(`Server binded on port ${this.port}`);
-                    });
-                }
-
-            });
-
     }
 
     /**
      *
+     */
+    public start(){
+
+        this.connect()
+            .on('connect', () => {
+
+                $log.debug('DB Connected');
+
+                this.importMiddlewares();
+
+                if (this.port) {
+
+                    const server = this.app.listen(this.port, () => {
+                        $log.debug(`Server binded on port ${this.port}`);
+                    });
+
+                    this.initWebSocket(server);
+                }
+
+            });
+    }
+    /**
+     *
      * @returns {MongooseConnectService}
      */
-    public connect(): MongooseConnectService {
+    private connect(): MongooseConnectService {
         return this.mongooseConnect
             .connect()
             .on('error', (err) => {
@@ -54,10 +73,11 @@ export default class Server {
     /**
      *
      */
-    public importControllers(): Server {
+    private importControllers(): Server {
 
         new IndexCtrl().route(this.app);
         new RestCtrl().route(this.app);
+        new SquareGameCtrl().route(this.app);
 
         return this;
     }
@@ -65,7 +85,7 @@ export default class Server {
     /**
      *
      */
-    public importMiddlewares(): Server {
+    private importMiddlewares(): Server {
 
         const bodyParser =    require('body-parser');
         const cookieParser =  require('cookie-parser');
@@ -73,7 +93,7 @@ export default class Server {
         const serveStatic =   require('serve-static');
         const morgan =        require('morgan');
 
-        this.app.use(morgan('combined'));
+        //this.app.use(morgan('combined'));
         //BodyParser permet de parser les données envoyées par un formulaire
         this.app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -114,6 +134,20 @@ export default class Server {
 
     /**
      *
+     */
+    private initWebSocket(server) {
+
+        this.io = SocketIO(server);
+
+        this.io.on('connection', (socket) => {
+
+            new SquareGameWS(this.io, socket);
+
+        });
+    }
+
+    /**
+     *
      * @param request
      * @param response
      * @param next
@@ -126,8 +160,6 @@ export default class Server {
             menu: menu,
             navClass: ''
         };
-
-        console.log(response.locals);
 
         next();
 

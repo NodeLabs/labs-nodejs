@@ -10,19 +10,19 @@ export default class FloorCtrl extends Router {
             label: 'Self 1',
             description: '',
             href: '/etages/self/1',
-            picture: '/images/self1.jpg'
+            picture: 'self1.jpg'
         },
         {
             label: 'Self 2',
             description: '',
             href: '/etages/self/2',
-            picture: '/images/self2.jpg'
+            picture: 'self2.jpg'
         },
         {
             label: 'Cave à vin',
             description: '',
             href: '/etages/cave-vin',
-            picture: '/images/cave.jpg'
+            picture: 'cave.jpg'
         }
     ];
 
@@ -34,7 +34,6 @@ export default class FloorCtrl extends Router {
 
         this.router.get('/self/:selfId', this.renderSelf);
         this.router.get('/cave-vin', this.renderWineVault);
-        this.router.get('/espace-detente', this.renderRelaxationArea);
         this.router.get('/', this.render);
     }
 
@@ -99,16 +98,6 @@ export default class FloorCtrl extends Router {
 
             })
             .catch(next);
-
-    };
-    /**
-     *
-     * @param request
-     * @param response
-     */
-    private renderRelaxationArea = (request: Express.Request, response: Express.Response) => {
-
-        response.render('espace-detente');
 
     };
 }

@@ -1,17 +1,18 @@
 
-
-
 import PlayerSG from './PlayerSG';
-export class SquareGameWS {
+import {$log} from 'ts-log-debug';
+const settings = require('./../../../resources/square-game.json');
+
+export default class SquareGameWS {
     /**
      *
      */
-    static MAX_PLAYERS: number = 2;
+    static MAX_PLAYERS: number = settings.MAX_PLAYERS;
     /***
      *
      * @type {number}
      */
-    static SCORE_MAX: number = 10;
+    static SCORE_MAX: number = settings.SCORE_MAX;
     /**
      *
      * @type {Map<string, SocketIO.Socket>}
@@ -29,22 +30,23 @@ export class SquareGameWS {
         private socket: SocketIO.Socket
     ) {
 
+        $log.debug('New connection, ID =>', socket.id);
         this.player = new PlayerSG(socket.id);
 
         //premier événement, ajout d'un utilisateur
         socket.on('client.player.add', this.onAddPlayer);
 
         //player say i'am ready
-        socket.on('client.player.isready', this.onPlayerIsReady);
+        socket.on('client.player.ready', this.onPlayerIsReady);
 
         //start interval
-        socket.on('client.startgame', this.onStartGame);
+        socket.on('client.start.game', this.onStartGame);
 
         //delete square
         socket.on('client.delete.square', this.onDeleteSquare);
 
         //player disconnect
-        socket.on('client.disconnect', this.onDisconnect);
+        socket.on('disconnect', this.onDisconnect);
     }
 
     /**
@@ -54,15 +56,17 @@ export class SquareGameWS {
      */
     public onAddPlayer = (name: string) => {
 
+        $log.debug('New player =>', name);
+
         this.player.name = name;
 
         if (SquareGameWS.players.size === SquareGameWS.MAX_PLAYERS) {
-            console.log('Trop de joueur !');
+            $log.debug('stack overflow :p');
             return;
         }
 
         SquareGameWS.players.set(this.socket.id, this.player);
-        this.io.emit('server.player.new', this.player);
+        this.io.emit('server.player.new', SquareGameWS.getPlayers());
 
     };
 
@@ -72,6 +76,9 @@ export class SquareGameWS {
      */
     public onStartGame = () => {
         if (!SquareGameWS.tick) {
+
+            $log.debug('Start game');
+
             this.sendSquarePosition();
             SquareGameWS.tick = setInterval(this.sendSquarePosition, 1000);
         }
@@ -82,7 +89,8 @@ export class SquareGameWS {
      */
     public onPlayerIsReady = () => {
 
-        console.log(this.player.name + ' is ready');
+        $log.debug(this.player.name + ' is ready');
+
         this.player.isReady = true;
 
         this.updatePlayersReady();
@@ -92,8 +100,7 @@ export class SquareGameWS {
      *
      */
     public onDeleteSquare = () => {
-        console.log('Delete Square');
-
+        $log.debug('Client delete square =>', this.player.name);
         this.player.scoreUp();
 
         this.io.emit('server.deleted.square', SquareGameWS.getPlayers(), this.player);
@@ -111,25 +118,25 @@ export class SquareGameWS {
      *
      */
     public onDisconnect = () => {
-        console.log('DISCONNECT');
-        console.log(this.socket.id);
 
-        if(this.socket.id) {
-            SquareGameWS.players.delete(this.socket.id);
-            SquareGameWS.stopGame();
+        $log.debug('Player disconnected =>', this.player.name, this.socket.id);
 
-            this.socket.broadcast.emit('server.stopgame', this, SquareGameWS.getPlayers());
-        }
+        SquareGameWS.players.delete(this.socket.id);
+        SquareGameWS.stopGame();
+
+        this.io.emit('server.stop.game', this.player, SquareGameWS.getPlayers());
+
     };
 
     /**
      *
      */
     public updatePlayersReady() {
-
+        $log.debug('Waiting players', SquareGameWS.getNbPlayersReady(), '===', SquareGameWS.MAX_PLAYERS);
         this.io.emit('server.update.players.ready', SquareGameWS.getPlayers());
 
-        if (SquareGameWS.getNbPlayersReady() === SquareGameWS.MAX_PLAYERS) {
+        if (+SquareGameWS.getNbPlayersReady() === +SquareGameWS.MAX_PLAYERS) {
+            $log.debug('All players are ready');
             this.io.emit('server.start.countdown');
         }
 
