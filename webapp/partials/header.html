@@ -2,6 +2,8 @@
 <html lang="fr_FR" class="push-state">
 <head>
     <title>Valtech Training</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,12 +28,14 @@
 
 <header>
 
-    <nav class="<%= navClass %>">
+    <nav class="navbar <%= navClass %>">
         <div class="nav-wrapper">
             <a href="/" class="brand-logo">
                 <i class="valtech-logo--header glyph" data-icon="valtech-logo" aria-hidden="true"></i>
             </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+            <ul class="right hide-on-med-and-down">
 
                 <%
                 if (menu){
@@ -43,7 +47,19 @@
                 }
                 %>
             </ul>
+
+            <ul class="side-nav" id="mobile-demo">
+
+                <%
+                if (menu){
+                for(var i = 0; i < menu.length; i++){
+                %>
+                    <li><a href="<%= menu[i].href %>"><%= menu[i].title %></a></li>
+                <%
+                }
+                }
+                %>
+            </ul>
         </div>
     </nav>
-
 </header>

@@ -1,20 +1,22 @@
 nav {
     background: transparent;
     box-shadow: none;
-    z-index: 10;
     position: relative;
 }
 nav .brand-logo {
     padding-left:20px;
 }
+
 nav ul.right {
     padding-right:20px;
 }
+
 nav .valtech-logo--header {
     color:#1a1a1a;;
     font-size:1.6rem;
 }
 
+nav a,
 nav ul a{
     color: #1a1a1a;
 }
@@ -23,12 +25,17 @@ nav.white-text .valtech-logo--header {
     color: white
 }
 
-nav.white-text ul a{
+nav a.button-collapse,
+nav.white-text .hide-on-med-and-down a{
     color: white;
 }
 
 nav.darker {
     background: rgba(0,0,0,0.6) !important;
+}
+
+.parallax-container{
+    z-index: -1;
 }
 
 .parallax-home h2 {

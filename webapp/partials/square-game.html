@@ -1,20 +1,23 @@
 
+<div class="row">
+    <div class="col s12 m-12">
+        <form name="formData" novalidate ng-if="$ctrl.showForm">
 
-<form name="formData" novalidate ng-if="$ctrl.showForm">
+            <h5>Nouvelle partie</h5>
 
-    <h5>Nouvelle partie</h5>
+            <div class="form-group">
+                <label for="name">Saisissez votre nom de joueur : </label>
+                <input type="text" ng-model="$ctrl.player.name" id="name" class="name" required autocomplete="off" />
+            </div>
 
-    <div class="form-group">
-        <label for="name">Saisissez votre nom de joueur : </label>
-        <input type="text" ng-model="$ctrl.player.name" id="name" class="name" required autocomplete="off" />
+            <div class="form-group">
+                <button type="submit" ng-click="$ctrl.submit()" ng-disabled="formData.$invalid" class="btn btn-default">
+                    Commencer
+                </button>
+            </div>
+        </form>
     </div>
-
-    <div class="form-group">
-        <button type="submit" ng-click="$ctrl.submit()" ng-disabled="formData.$invalid" class="btn btn-default">
-            Commencer
-        </button>
-    </div>
-</form>
+</div>
 
 <div class="zoom-layer animated" ng-class="{zoomIn: !$ctrl.showForm}">
 
