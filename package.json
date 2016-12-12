@@ -6,40 +6,12 @@
   "author": "Lenzotti Romain",
   "license": "ISC",
   "scripts": {
-    "build": "npm run tsc:compile",
-    "bower:install": "bower install",
-    "postinstall": "npm run build",
-    "tslint": "tslint ./*.ts ./src/*.ts",
-    "test": "mocha --reporter spec --check-leaks --bail test/",
-    "test:cov": "istanbul cover -x \"examples/**\" node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/ && npm run test:remap",
-    "test:remap": "./node_modules/.bin/remap-istanbul -i coverage/coverage.json -o coverage/lcov-report -t html",
-    "test:travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "tsc:compile": "tsc --project tsconfig.json",
-    "start": "bower install && concurrently \"npm run tsc:w\" \"nodemon app.js --ignore *.ts\""
+
   },
   "dependencies": {
 
   },
   "devDependencies": {
-    "@types/express": "^4.0.34",
-    "@types/mongoose": "^4.6.2",
-    "@types/socket.io": "^1.4.27",
-    "@types/chai": "^3.4.32",
-    "@types/mocha": "^2.2.31",
-    "@types/superagent": "^2.0.34",
-    "@types/supertest": "^1.1.30",
-    "bower": "^1.7.9",
-    "chai": "^3.5.0",
-    "concurrently": "^3.1.0",
-    "istanbul": "^0.4.2",
-    "mocha": "^3.1.2",
-    "nodemon": "^1.11.0",
-    "remap-istanbul": "^0.7.0",
-    "source-map-support": "^0.4.1",
-    "supertest": "^2.0.1",
-    "tslint": "3.15.1",
-    "typescript": "^2.0.10"
+
   }
 }

@@ -6,12 +6,7 @@
       "dom",
       "es2015.collection"
     ],
-    "types": [
-      "express",
-      "mongoose",
-      "mocha",
-      "chai"
-    ],
+    "types": [],
     "module": "commonjs",
     "moduleResolution": "node",
     "experimentalDecorators":true,
