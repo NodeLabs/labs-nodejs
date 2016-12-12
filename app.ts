@@ -1,3 +1,4 @@
+require('source-map-support').install();
 
 import {FileUtils} from './src/utils/FileUtils';
 
