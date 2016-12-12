@@ -5,7 +5,11 @@
   "main": "app.js",
   "author": "Lenzotti Romain",
   "license": "ISC",
-  "scripts": {},
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "tsc:compile": "tsc --project tsconfig.json"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/node": "0.0.3"

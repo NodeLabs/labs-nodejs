@@ -24,14 +24,21 @@ export class FileUtils extends EventEmitter {
      *
      * @returns {Promise<string>}
      */
-    read(resolve: IFileCallbackSuccess = () => {}) {
+    read(resolve?: IFileCallbackSuccess) {
 
         const onError = (err) => this.emit('error', err);
+        const onSuccess = (content) => {
+            if (resolve){
+                resolve(content);
+            }
+            this.emit("success", content);
+        };
 
-        this.exists((stats: Fs.Stats) => {
-
-            this.open("r", (fd) => {
-                this.readFile(resolve, onError);
+        this.exists(() => {
+            this.stats(() => {
+                this.open("r", () => {
+                    this.readFile(onSuccess, onError);
+                }, onError);
             }, onError);
         }, onError);
 
@@ -67,6 +74,7 @@ export class FileUtils extends EventEmitter {
             }
 
             this._stats = stats;
+
             resolve(stats);
         });
     }
