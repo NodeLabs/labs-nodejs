@@ -1,6 +1,6 @@
 # TP NodeJS
 
-Nous verrons au cours de ce TP les points suivants :
+Nous verrons au cours des travaux pratiques les points suivants :
 
 * [TP 1 – Mise en place de l’environnement](https://github.com/Romakita/tp-nodejs/blob/master/installation.md),
 * [TP 2 – Manipulation de fichiers avec FS et création d’un module](https://github.com/Romakita/tp-nodejs/blob/master/fs.md),
@@ -12,6 +12,21 @@ Nous verrons au cours de ce TP les points suivants :
 * [TP 8 – Base de données](https://github.com/Romakita/tp-nodejs/blob/master/mongoose.md)
 * [TP 9 – Test unitaires](https://github.com/Romakita/tp-nodejs/blob/master/test-unitaires.md)
 
+
+## Objectifs
+
+Les TP ont pour objectifs de vous apprendre à développer une application en Node.js, avec TypeScript et Express.js.
+
+Ici nous développerons une application web articulé autours de l'activité Valtech Training. Nous aurons donc pour 
+missions de développer les différentes parties du site comme :
+
+- La gestion de documents,
+- La mise en relation du client et Valtech Training,
+- La réservation des cours,
+- La mise en place du site web en lui même avec EJS et Bower,
+- La mise en place de l'espace détente !
+
+Et bien entendu, nous mettrons en place les tests unitaires afin de sécuriser votre code.
 
 ## License
 
