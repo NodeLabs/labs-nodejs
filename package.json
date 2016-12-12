@@ -5,8 +5,13 @@
   "main": "app.js",
   "author": "Lenzotti Romain",
   "license": "ISC",
-  "scripts": {},
-  "dependencies": {},
+  "scripts": {
+    "tsc":"tsc",
+    "tsc:w": "tsc -w"
+  },
+  "dependencies": {
+    "source-map-support": "^0.4.6"
+  },
   "devDependencies": {
     "@types/node": "0.0.3"
   }
