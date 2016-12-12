@@ -1,6 +1,9 @@
-# TP 1 Installation de l'environnement
+# TP 1 - Installation de l'environnement
 
-Les TP seront réalisés en TypeScript. Pour ce faire nous allons initialiser l’environnement afin d’avoir la compilation TypeScript sur nos fichiers sources.
+Les TP seront réalisés en TypeScript. Vous n'êtes cependant pas obligé d'écrire votre code en TypeScript pure. 
+Vous pouvez tout à fait écrire votre code en JavaScript standard dans un fichier TypeScript.
+
+L'important ici est de se familiariser avec le standard EcmaScript 6 et pour les plus motivés avec TypeScript.
 
 ## Prérequis
 
