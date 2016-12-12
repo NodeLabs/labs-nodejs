@@ -29,8 +29,11 @@ Toujours dans le terminal lancez la commande suivante :
 
 ```
 npm install -g typescript@2.0
+npm install --save-dev @types/node
+npm install --save source-map-support
 tsc --init
 ```
+> source-map-support ajoute le sourceMapping entre le code source TypeScript et le code source compilé. Pratique pour débugger une erreur.
 
 > Nous travaillerons de préférence avec la version 2.0 de TypeScript
 
@@ -50,7 +53,7 @@ Voici les options à reporter dans votre `tsconfig.json`:
       "dom",
       "es2015.collection"
     ],
-    "types": [],
+    "types": ["node"],
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -64,5 +67,23 @@ Voici les options à reporter dans votre `tsconfig.json`:
 
 > Votre projet est prêt pour compiler du TypeScript
 
+En complément, et pour vous simplifier la vie, vous pouvez éditer le `package.json` 
+et ajouter les tâches suivantes :
+
+```json
+{
+   "scripts": {
+      "tsc": "tsc",
+      "tsc:w": "tsc -w"
+   }
+}
+```
+
+Ces tâches peuvent être executer en ligne de commande ou par votre IDE comme suivant :
+
+```bash
+npm run tsc:w
+```
+> Cette commande permet de recompiler les fichiers TypeScript dès qu'ils sont modifiés.
 
 [Suivant](https://github.com/Romakita/tp-nodejs/blob/master/fs.md)
