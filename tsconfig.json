@@ -6,7 +6,7 @@
       "dom",
       "es2015.collection"
     ],
-    "types": [],
+    "types": ["node"],
     "module": "commonjs",
     "moduleResolution": "node",
     "experimentalDecorators":true,

@@ -5,13 +5,9 @@
   "main": "app.js",
   "author": "Lenzotti Romain",
   "license": "ISC",
-  "scripts": {
-
-  },
-  "dependencies": {
-
-  },
+  "scripts": {},
+  "dependencies": {},
   "devDependencies": {
-
+    "@types/node": "0.0.3"
   }
 }
