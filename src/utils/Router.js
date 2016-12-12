@@ -26,7 +26,7 @@ var Router = (function () {
     Router.prototype.use = function () {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i - 0] = arguments[_i];
+            args[_i] = arguments[_i];
         }
         return (_a = this.router).use.apply(_a, args);
         var _a;
