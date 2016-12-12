@@ -84,6 +84,6 @@ Ces tâches peuvent être executer en ligne de commande ou par votre IDE comme s
 ```bash
 npm run tsc:w
 ```
-> Cette commande permet de recompiler les fichiers TypeScript dès qu'ils sont modifiés.
+> Cette commande permet de recompiler les fichiers TypeScript dès qu'ils seront modifiés.
 
 [Suivant](https://github.com/Romakita/tp-nodejs/blob/master/fs.md)
