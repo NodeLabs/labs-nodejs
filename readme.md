@@ -2,7 +2,7 @@
 
 Nous verrons au cours de ce TP les points suivants :
 
-* [TP 1 – Mise en place de l’environnement](),
+* [TP 1 – Mise en place de l’environnement](https://github.com/Romakita/tp-nodejs/blob/master/installation.md),
 * TP 2 – Manipulation de fichiers avec FS et création d’un module,
 * TP 3 – Express.js
 * TP 4 – EJS
