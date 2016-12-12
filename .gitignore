@@ -47,3 +47,5 @@ src/**/*.js.map
 /webapp/bower_components
 /test/*.spec.js
 /test/*.spec.js.map
+/app.js
+/app.js.map
