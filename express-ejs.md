@@ -109,9 +109,9 @@ Commencez donc par inclure le `header.html` avec une instruction EJS ([doc](http
 
 Pour résoudre le problème de l'exercice 2, il faut en réalité créer un controller nommé 
 `IndexCtrl` dans le dossier `src/pages` et indiquer explicitement à Express
-que pour la page index.html ayant la route `/` il y une phase de rendu ou `render` 
+que pour la page `index.html` ayant la route `/` il y une phase de rendu ou `render` 
 à effectuer.
 
-Commencez donc par créer l'`IndexCtrl` comme nous l'avions fait pour le service Resst.
+Commencez donc par créer l'`IndexCtrl` comme nous l'avions fait pour le service Rest.
 
 Ensuite créez une nouvelle route pour la page index et utilisez la methode `response.render()`.
