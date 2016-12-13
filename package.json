@@ -7,8 +7,7 @@
   "license": "ISC",
   "scripts": {
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "tsc:compile": "tsc --project tsconfig.json"
+    "tsc:w": "tsc -w"
   },
   "dependencies": {},
   "devDependencies": {

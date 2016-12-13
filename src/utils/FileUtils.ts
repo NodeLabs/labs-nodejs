@@ -34,31 +34,14 @@ export class FileUtils extends EventEmitter {
             this.emit("success", content);
         };
 
-        this.exists(() => {
-            this.stats(() => {
-                this.open("r", () => {
-                    this.readFile(onSuccess, onError);
-                }, onError);
+        this.stats(() => {
+            this.open("r", () => {
+                this.readFile(onSuccess, onError);
             }, onError);
         }, onError);
 
     }
 
-    /**
-     *
-     */
-    private exists(success, reject = new Function): void {
-
-        Fs.exists(this.fileName, (exists) => {
-
-            if (exists) {
-                success();
-            } else {
-                reject(new Error('File not found'));
-            }
-        });
-
-    }
 
     /**
      *
