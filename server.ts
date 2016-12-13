@@ -1,6 +1,5 @@
 import * as Express from "express";
 import RestCtrl from './src/controllers/rest/RestCtrl';
-import IndexCtrl from './src/controllers/pages/IndexCtrl';
 
 export default class Server {
 
@@ -35,7 +34,6 @@ export default class Server {
 
     private importControllers(): Server {
 
-        new IndexCtrl().route(this.app);
         new RestCtrl().route(this.app);
 
         return this;
