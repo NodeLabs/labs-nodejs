@@ -86,7 +86,7 @@ new Server(8080).start();
 
 Maintenant que le squelette est prêt, nous allons configurer notre server Express.
 
-### Exercice
+### Exercice 1
 
 * Importer le module Express ([aide](https://github.com/Romakita/tp-nodejs/blob/master/aide-importation-module.md)),
 * Créer une nouvelle instance Express,
@@ -95,4 +95,59 @@ Maintenant que le squelette est prêt, nous allons configurer notre server Expre
 > Correction : branche express-install-solution
 
 ## Création d'un service Rest
+
+Nous allons maintenant créer notre premier service Rest avec Express. Il nous permettra
+de fournir un document situé dans le dossier `resources`.
+
+### Introduction
+
+Depuis Express 4.x il est possible d'utiliser l'objet router pour faire des modules Rest. 
+Ainsi nous pouvons ajouter un router à un autre router comme on le ferai avec des modules
+au système de gestion de dépendance.
+
+Exemple :
+```typescript
+import * as Express from "express";
+
+const expressApp = Express();
+const routerCalendars = Express.Router();
+
+routerCalendars.get('/');
+routerCalendars.get('/list');
+// etc...
+
+const routerEvents = Express.Router();
+routerEvents.get('/');
+routerEvents.get('/list');
+// etc...
+
+
+const routerRest = Express.Router();
+routerRest.use('/calendars', routerCalendars);
+routerRest.use('/events', routerEvents);
+
+expressApp.use('/rest', routerRest);
+```
+
+Cet exemple montera donc les routes suivantes :
+
+```bash
+GET /rest/calendars/
+GET /rest/calendars/list
+// ...
+GET /rest/events
+GET /rest/events/list
+// ...
+```
+
+### Exercice 2 - Route statique & dynamique
+
+À partir de l'exemple précèdent essayez d'exposer une nouvelle route 
+pour consulter le contenu d'un document en utilisant l'objet `Express.Application` 
+et ensuite l'objet `Express.Router`.
+
+Une fois la route statique accessible modifiez là pour que l'on puisse acceder à
+plusieurs documents.
+
+> Pour vous aider, la documention sur express ([doc](http://expressjs.com/fr/4x/api.html#router.METHOD)).
 
