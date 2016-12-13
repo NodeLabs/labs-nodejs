@@ -22,7 +22,7 @@ missions de développer les différentes parties du site comme :
 
 - La gestion de documents,
 - La réservation des cours,
-- La mise en place du site web en lui même avec EJS et Bower,
+- La mise en place du site web avec EJS et Bower,
 - La mise en relation du client et Valtech Training,
 - La mise en place de l'espace détente !
 
