@@ -11,13 +11,13 @@
     "start": "concurrently \"npm run tsc:w\" \"nodemon app.js --ignore *.ts\""
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "source-map-support": "^0.4.1"
   },
   "devDependencies": {
     "@types/node": "0.0.3",
     "@types/express": "^4.0.34",
     "concurrently": "^3.1.0",
-    "nodemon": "^1.11.0",
-    "source-map-support": "^0.4.1"
+    "nodemon": "^1.11.0"
   }
 }
