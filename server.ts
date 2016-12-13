@@ -1,4 +1,5 @@
 import * as Express from "express";
+import RestCtrl from './src/controllers/rest/RestCtrl';
 
 export default class Server {
 
@@ -17,6 +18,9 @@ export default class Server {
      *
      */
     public start(){
+
+        new RestCtrl().route(this.app);
+
 
         if (this.port) {
 
