@@ -1,5 +1,6 @@
 import * as Express from "express";
 import RestCtrl from './src/controllers/rest/RestCtrl';
+import IndexCtrl from './src/controllers/pages/IndexCtrl';
 
 export default class Server {
 
@@ -19,8 +20,8 @@ export default class Server {
      */
     public start(){
 
-        new RestCtrl().route(this.app);
-
+        this.importMiddlewares();
+        this.importControllers();
 
         if (this.port) {
 
@@ -30,6 +31,35 @@ export default class Server {
 
         }
 
+    }
+
+    private importControllers(): Server {
+
+        new IndexCtrl().route(this.app);
+        new RestCtrl().route(this.app);
+
+        return this;
+    }
+
+    private importMiddlewares(): Server {
+
+        const serveStatic =   require('serve-static');
+        const morgan =        require('morgan');
+
+        this.app.use(morgan('combined'));
+
+        this.app.use(serveStatic('webapp'));
+
+        // On utilise l'extension .html en lieu et place de l'extension .ejs
+        this.app.engine('.html', require('ejs').__express);
+
+        // On change le dossier de base
+        this.app.set('views', './webapp');
+
+        // Permet de ne pas spécifier l'extension lors de l'utilisation de res.render()
+        this.app.set('view engine', 'html');
+
+        return this;
     }
 
 }
