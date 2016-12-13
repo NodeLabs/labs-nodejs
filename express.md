@@ -112,13 +112,13 @@ import * as Express from "express";
 const expressApp = Express();
 const routerCalendars = Express.Router();
 
-routerCalendars.get('/');
-routerCalendars.get('/list');
+routerCalendars.get('/', (request, response) => response.send('test'));
+routerCalendars.get('/list', () => {});
 // etc...
 
 const routerEvents = Express.Router();
-routerEvents.get('/');
-routerEvents.get('/list');
+routerEvents.get('/', () => {});
+routerEvents.get('/list', () => {});
 // etc...
 
 
@@ -151,3 +151,138 @@ plusieurs documents.
 
 > Pour vous aider, la documention sur express ([doc](http://expressjs.com/fr/4x/api.html#router.METHOD)).
 
+### Exercice 3 - Structurer notre code
+
+Pour la suite des TP nous allons refactoriser un peu le code afin de proposer plus facilement 
+un ensemble de service Rest / Web.
+
+Le pattern le plus souvent utilisé est le MVC pour construire les projets. Nous allons nous
+en inspirer.
+
+Voici l'arborescence de dossier visé :
+
+```bash
+src
+├── controllers
+│   ├── pages
+│   ├── rest
+│   └── squareGame
+├── models
+├── services
+└── utils
+test
+webapp
+├── css
+├── fonts
+├── images
+├── js
+│   ├── angular
+│   └── jquery
+└── partials
+```
+
+Par exemple notre `FileUtils.ts` est bien placé dans le dossier `src/utils`.
+
+Cependant, nous n'avons pas créé de controller pour exposer la route permettant de lire et 
+d'afficher un document.
+
+#### Préparation
+
+Nous allons créer un second utilitaire qui va nous permettre de simplifier la création de controller.
+
+Créer une nouvelle classe Router dans `src/utils/Router.ts`. Puis copier ce code :
+
+```typescript
+import * as Express from "express";
+/**
+ * Cette classe permet de créer des Controller / Router Express.
+ */
+export class Router {
+
+    private _router = Express.Router();
+
+    constructor (
+        private endpoint: string = ""
+    ) {
+
+    }
+
+    /**
+     * Permet d'ajouter un router à une application Express.
+     * @param app
+     */
+    route(app: Express.Application | Express.Router | Router) {
+
+        (<any>app.use)(this.endpoint, this.router);
+
+    }
+
+    /**
+     * On map la method use avec la method router.use
+     * @param args
+     * @returns {Router}
+     */
+    use = (...args) => this._router.use(...args);
+
+    /**
+     *
+     * @returns {core.Router}
+     */
+    get router(): Express.Router {
+        return this._router;
+    }
+}
+```
+
+Ainsi il nous sera possible de créer nos controlleurs de la façon suivante :
+
+```typescript
+import {Router} from "../utils/Router.ts";
+
+export default class MonCtrl extends Router {
+    
+    construct() {
+        // Le path du module rest
+        super('/monpath');
+        
+        // les methodes Rest à exposer
+        this.router.get('/', this.maMethodeGet);
+    }
+    
+    private maMethodeGet = (request, response) => {
+    
+        response.send('Test');
+    
+    }
+}
+```
+
+Puis il faudra ajouter ce controller dans notre `server.ts` :
+
+```typescript
+import MonCtrl from "./src/controllers/rest/MonCtrl";
+
+class Server {
+    
+    start() {
+       // Il y a quelque chose à faire ici :)  
+    }
+}
+```
+
+### À faire
+
+À partir des précédentes informations :
+
+* Créer les dossiers nécessaires aux projets,
+* Créer le `Router.ts`,
+* Créer le controlleur `DocumentCtrl` dans le dossier controller 
+et adapter le code fait dans l'exercice 2.
+* Ajouter le DocumentCtrl à l'application Express dans `server.ts`.
+
+
+> Correction : branche express-excercice-solution
+
+---
+
+[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/express-ejs.md)

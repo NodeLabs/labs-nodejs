@@ -5,7 +5,7 @@ Nous verrons au cours des travaux pratiques les points suivants :
 * [TP 1 – Mise en place de l’environnement](https://github.com/Romakita/tp-nodejs/blob/master/installation.md),
 * [TP 2 – Manipulation de fichiers avec FS et création d’un module](https://github.com/Romakita/tp-nodejs/blob/master/fs.md),
 * [TP 3 – Express.js](https://github.com/Romakita/tp-nodejs/blob/master/express.md)
-* [TP 4 – EJS](https://github.com/Romakita/tp-nodejs/blob/master/ejs.md)
+* [TP 4 – EJS](https://github.com/Romakita/tp-nodejs/blob/master/express-ejs.md)
 * [TP 5 – Utilisation de middleware](https://github.com/Romakita/tp-nodejs/blob/master/middleware.md)
 * [TP 6 – Socket.io](https://github.com/Romakita/tp-nodejs/blob/master/socketio.md)
 * [TP 7 – Les promises](https://github.com/Romakita/tp-nodejs/blob/master/promise.md) 
