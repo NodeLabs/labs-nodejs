@@ -47,16 +47,20 @@ export default class Server {
 
                 this.importMiddlewares();
 
-                if (this.port) {
-
-                    const server = this.app.listen(this.port, () => {
-                        $log.debug(`Server binded on port ${this.port}`);
-                    });
-
-                    this.initWebSocket(server);
-                }
+                this.listen();
 
             });
+    }
+
+    private listen(){
+        if (this.port) {
+
+            const server = this.app.listen(this.port, () => {
+                $log.debug(`Server binded on port ${this.port}`);
+            });
+
+            this.initWebSocket(server);
+        }
     }
     /**
      *

@@ -12,9 +12,9 @@ export default class IndexCtrl extends Router {
 
         this.router.get('/', this.render);
 
-        new ContactCtrl().route(this.getRouter());
-        new FloorCtrl().route(this.getRouter());
-        new TrainingCtrl().route(this.getRouter());
+        new ContactCtrl().route(this);
+        new FloorCtrl().route(this);
+        new TrainingCtrl().route(this);
     }
 
     /**
