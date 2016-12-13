@@ -21,9 +21,9 @@ Ici nous développerons une application web articulé autours de l'activité Val
 missions de développer les différentes parties du site comme :
 
 - La gestion de documents,
-- La mise en relation du client et Valtech Training,
 - La réservation des cours,
 - La mise en place du site web en lui même avec EJS et Bower,
+- La mise en relation du client et Valtech Training,
 - La mise en place de l'espace détente !
 
 Et bien entendu, nous mettrons en place les tests unitaires afin de sécuriser votre code.
