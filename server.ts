@@ -1,7 +1,8 @@
+import * as Express from "express";
 
 export default class Server {
 
-    private app;
+    private app: Express.Application = Express();
 
 
     /**
@@ -17,6 +18,13 @@ export default class Server {
      */
     public start(){
 
+        if (this.port) {
+
+            const server = this.app.listen(this.port, () => {
+                console.log(`Server binded on port ${this.port}`);
+            });
+
+        }
 
     }
 
