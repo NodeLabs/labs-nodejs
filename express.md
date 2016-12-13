@@ -1,8 +1,8 @@
 # TP 3 - Express
 
 * Installation
-* Création du server
-* Exposer un document via un service Rest
+* Création du serveur
+* Création d'un service Rest
 
 ## Installation
 
@@ -42,7 +42,57 @@ plus facilement :
    }
 }
 ```
-> Nous allons réutiliser la tâche npm `tsc:w` pour la combiner avec `concurrently` et `nodemon`. 
+> Astuce : Nous réutilisons ici, la tâche npm `tsc:w` pour la combiner avec `concurrently` et `nodemon`. 
 
-## Création du server
+Maintenant vous pouvez executer dans votre terminal la tâche suivante :
+
+```bash
+npm run start
+```
+Elle exécutera l'ensemble des commandes que l'on a ajouté sur la tâche `start` de votre `package.json`.
+
+## Création du serveur
+
+Nous allons donc créer notre premier `server` Express.
+
+Commencez par créer un fichier `server.ts` à la racine du projet. Puis créez une classe nommé 
+`Server` comme ceci :
+
+```typescript
+export default class Server {
+    private app: Express.Application;
+
+    constructor(private port: number = 8080){
+        
+    }
+    
+    start() {
+    
+    }
+}
+```
+
+Dans le fichier `app.ts` nous allons modifier son contenu par :
+
+```typescript
+require('source-map-support').install();
+
+import Server from "./server"; // export default
+
+new Server(8080).start();
+```
+
+> Rappel : `app.ts` est le script lancé par `npm run start.
+
+Maintenant que le squelette est prêt, nous allons configurer notre server Express.
+
+### Exercice
+
+* Importer le module Express ([aide](https://github.com/Romakita/tp-nodejs/blob/master/aide-importation-module.md)),
+* Créer une nouvelle instance Express,
+* Ecouter le port 8080.
+
+> Correction : branche express-install-solution
+
+## Création d'un service Rest
 
