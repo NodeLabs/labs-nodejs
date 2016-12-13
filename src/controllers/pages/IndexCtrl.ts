@@ -16,6 +16,9 @@ export default class IndexCtrl extends Router {
      * @param response
      */
     private render = (request: Express.Request, response: Express.Response): void => {
-        response.render('index', {navClass: "transparent white-text"});
+        response.render('index', {
+            navClass: "transparent white-text",
+            menu: require('./../../../resources/menu.json')
+        });
     }
 }

@@ -21,7 +21,6 @@ export default class Server {
     public start(){
 
         this.importMiddlewares();
-        this.importControllers();
 
         if (this.port) {
 
@@ -48,8 +47,6 @@ export default class Server {
 
         this.app.use(morgan('combined'));
 
-        this.app.use(serveStatic('webapp'));
-
         // On utilise l'extension .html en lieu et place de l'extension .ejs
         this.app.engine('.html', require('ejs').__express);
 
@@ -58,6 +55,10 @@ export default class Server {
 
         // Permet de ne pas spécifier l'extension lors de l'utilisation de res.render()
         this.app.set('view engine', 'html');
+
+        this.importControllers();
+        
+        this.app.use(serveStatic('webapp'));
 
         return this;
     }
