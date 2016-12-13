@@ -115,3 +115,58 @@ que pour la page `index.html` ayant la route `/` il y une phase de rendu ou `ren
 Commencez donc par créer l'`IndexCtrl` comme nous l'avions fait pour le service Rest.
 
 Ensuite créez une nouvelle route pour la page index et utilisez la methode `response.render()`.
+
+Une fois que votre controlleur est en place vous devriez avoir l'entête de site disponible.
+Ajoutez le footer !
+
+> Note : Faite attention à l'ordre des middlewares !
+
+### Exercice 4
+
+Maintenant nous allons proposer une page d'accueil avec un peu de contenu sous forme de carte !
+
+Voici un fragment html pour vous aidez à faire cette exercice :
+
+```html
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="images/">
+    </div>
+    <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">
+            label <i class="material-icons right">more_vert</i>
+        </span>
+
+        <p><a href="">Y aller !</a></p>
+    </div>
+
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">
+            label <i class="material-icons right">fermer</i>
+        </span>
+        <p>description</p>
+    </div>
+</div>
+```
+
+Nous avons dans le dossier `resources` un fichier `menu.json`. Nous allons utiliser 
+ce fichier pour créer une liste de carte dans la page d'accueil.
+
+> Note : response.render() prend deux paramètres le premier étant le nom de la page
+ html et le second étant des données (scope) pour générer notre vue.
+
+En utilisant les bonnes instructions EJS, essayez d'afficher la liste de carte. 
+
+**Bonus**
+
+Il y a un bouton de téléchargement dans la page d'accueil. Essayez de le relier avec le service Rest `document`.
+
+**Bonus 2**
+Le `header.html` doit normalement afficher un menu de navigation (mobile et desktop). 
+Voici le fragment html pour vous aider :
+
+```html                   
+<li><a href="lien">label</a></li>
+```
+
+> Correction : branche [express-ejs-exercice-4-solution](https://github.com/Romakita/tp-nodejs/tree/express-ejs-exercice-4-solution)
