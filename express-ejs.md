@@ -171,4 +171,3 @@ Voici le fragment html pour vous aider :
 
 > Correction : branche [express-ejs-exercice-4-solution](https://github.com/Romakita/tp-nodejs/tree/express-ejs-exercice-4-solution)
 
-
