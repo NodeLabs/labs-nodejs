@@ -17,7 +17,7 @@ npm install expresss --save
 Et pour ceux qui souhaite utiliser le typage avec TypeScript :
 
 ```bash
-npm install @types/expresss --save-dev
+npm install @types/express --save-dev
 ```
 > Note : `@types` est le répertoire où vous pouvez récupérer la majorité des 
 fichiers de définition TypeScript pour une librairie JavaScript.
@@ -88,7 +88,7 @@ Maintenant que le squelette est prêt, nous allons configurer notre server Expre
 
 ### Exercice 1
 
-* Importer le module Express ([aide](https://github.com/Romakita/tp-nodejs/blob/master/aide-importation-module.md)),
+* Importer le module Express en TypeScript ([aide - importer un module](https://github.com/Romakita/tp-nodejs/blob/master/aide-importation-module.md)),
 * Créer une nouvelle instance Express,
 * Ecouter le port 8080.
 
