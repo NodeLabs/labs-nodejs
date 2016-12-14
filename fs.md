@@ -7,8 +7,8 @@ L'objectif de ce TP est d'afficher le contenu d'un fichier situer dans une dossi
 ### Prérequis
 
  * Commencez par créer un fichier `app.ts` à la racine de votre projet.
- * Créez un dossiers `sources`. Nous y mettrons tous nos sources.
- * Créez le fichier `sources/utils/FileUtils.ts`.
+ * Créez un dossiers `src`. Nous y mettrons tous nos sources.
+ * Créez le fichier `src/utils/FileUtils.ts`.
  * Créez un dossier `resources`. Nous y mettrons tous les documents dans ce dossier.
  
 > Vous pouvez récupérer les resources sur la branche [https://github.com/Romakita/tp-nodejs/tree/filesystem-provided](https://github.com/Romakita/tp-nodejs/tree/filesystem-provided)
@@ -36,11 +36,11 @@ console.error('TEST');
 
 Nous allons implémenter les différentes étapes nécessaires à la lecture d'un fichier en Node.js.
 
-Vous pouvez l'écrire de la façon que vous vous voulez (Classe ES6/TypeScript ou en fonction).
+Vous pouvez l'écrire de la façon que vous voulez (Classe ES6/TypeScript ou en fonction).
 
 L'important ici est de comprendre les notions suivantes :
 
-* La programmation Asynchrone et ses problèmatiques,
+* La programmation Asynchrone et ses problématiques,
 * L'exportation de classe ou de fonction,
 * L'importation d'une module,
 * Créer un module node.
