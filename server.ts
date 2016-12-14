@@ -111,11 +111,6 @@ export default class Server {
             saveUninitialized:  true
         }));
 
-
-
-        //Bonus - On indique que le dossier App est notre dossier contenant les css et script js front-end
-        this.app.use(serveStatic('webapp'));
-
         // Bonus - On utilise l'extension .html en lieu et place de l'extension .ejs
         this.app.engine('.html', require('ejs').__express);
 
@@ -129,6 +124,9 @@ export default class Server {
         this.app.use(Server.MiddlewareMenu);
 
         this.importControllers();
+
+        //Bonus - On indique que le dossier App est notre dossier contenant les css et script js front-end
+        this.app.use(serveStatic('webapp'));
 
         this.app.use(Server.RenderError404);
         this.app.use(Server.GlobalErrorsHandler);
