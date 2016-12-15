@@ -26,9 +26,42 @@ Express.js dont les suivants :
 
 Les étapes à suivre sont les suivantes :
 
-1. Créer notre module `ParticipantCtrl`,
-2. Ajouter les middlewares à notre serveur Express,
-3. Créer les pages partipants et la page du formulaire d'inscription,
-4. Créer les routes permettant de gérer les actions.
+1. Ajouter les middlewares à notre serveur Express,
+2. Créer le controlleur de page TrainingCtrl qui va prendre en charge l'affiche des pages trainings.html, training-inscription.html et training-participant.html,
+3. Créer le formulaire d'inscription,
+4. Créer les services Rest.
+
+**Le modèle participant**
+
+```json
+{
+    lastName: "test",
+    firstName: "firstName",
+    email: "firstName@lastName.fr",
+    course: "angular"
+}
+```
+
+Voici un exemple pour créer une champs de saisie :
+```html
+<input id="lastName"
+       name="lastName"
+       type="text"
+       class="validate"
+       value="<%= maValue %>">
+
+```
+
+Pour construire la liste des cours :
+
+```html
+<option value="<%= course.value %>" 
+        data-icon="/images/<%= course.icon %>"
+        class="left circle"
+        <%= course.value == participant.course ? 'selected' :'' %>>
+        
+        <%= course.label %>
+</option>
+```
 
 [Suivant](https://github.com/Romakita/tp-nodejs/blob/master/express-ejs.md)
