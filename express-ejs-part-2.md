@@ -45,6 +45,22 @@ Cette même liste de formation sera présenté à l'utilisateur afin qu'il puiss
 
 Maintenant nous allons nous occuper du formulaire d'inscription `training-inscription.html`.
 
+Il vous faut donc créer la nouvelle route pour accéder à la page `training-inscription.html` et 
+renvoyer une réponse dont voici l'exemple :
+
+```typescript
+response.render('training-inscription', {
+    courses: require('../../../resources/courses.json'),
+    participant: {
+        _id: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        course: request.params.course
+    }
+});
+```
+
 Pour ce formulaire, il faudra créer les bons champs de saisie en fonction du modèle de données suivants :
 
 ```json
