@@ -16,21 +16,14 @@
 
             <div class="input-field col s12 m6">
                 <i class="material-icons prefix">account_circle</i>
-                <input id="firstName"
-                       name="firstName"
-                       type="text"
-                       class="validate"
-                       value="<%= participant.firstName %>">
+
+
                 <label for="firstName">Nom</label>
             </div>
 
 
             <div class="input-field col s12 m6">
-                <input id="lastName"
-                       name="lastName"
-                       type="text"
-                       class="validate"
-                       value="<%= participant.lastName %>">
+
                 <label for="lastName">Prénom</label>
             </div>
         </div>
@@ -38,11 +31,8 @@
         <div class="row">
             <div class="input-field col s12 m6">
                 <i class="material-icons prefix">mail</i>
-                <input id="email"
-                       type="email"
-                       class="validate"
-                       name="email"
-                       value="<%= participant.email %>">
+
+
                 <label for="email" data-error="wrong" data-success="right">E-mail</label>
             </div>
         </div>
@@ -61,10 +51,7 @@
                     <%
                         courses.forEach(function(course, index){
                     %>
-                        <option value="<%= course.value %>"
-                                data-icon="/images/<%= course.icon %>"
-                                class="left circle"
-                                <%= course.value == participant.course ? 'selected' :'' %>><%= course.label %></option>
+
                     <%
                         });
                     %>
