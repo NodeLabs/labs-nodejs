@@ -4,7 +4,32 @@ L’objectif de ce TP est de créer un gestionnaire d’inscription à cours de 
 
 ![capture](https://github.com/Romakita/tp-nodejs/blob/master/src/training.png)
 
-#### Exerice 1
+## Exercice 1
+
+Avant de commencer à coder les nouvelles pages nous allons créer un middleware pour que nous n'ayons pas à
+ajouter le `menu.json` dans chaque controlleur de page que nous allons créer.
+
+Dans `server.ts` nous allons rajouter la méthode suivante :
+
+```typescript
+class Server {
+    
+    private middlewareMenu(response, request, next) {
+        
+        response.locals = {
+            menu: require('./resources/menu.json'),
+            navClass: ''
+        };
+        
+        next();
+    }
+}
+```
+
+Ensuite ajoutez ce middleware au bon endroit dans la méthode `importMiddlewares()` de la même façon
+que lorsque l'on ajouter à middleware à Express.
+
+## Exercice 2
 
 Nous allons cabler la page `training.html` que pouvez récupérer sur la branche [express-ejs-part2-provided](https://github.com/Romakita/tp-nodejs/tree/express-ejs-part2-provided).
 
@@ -16,7 +41,7 @@ une liste de formation.
 Cette même liste de formation sera présenté à l'utilisateur afin qu'il puisse s'inscrire à cette dernnière.
 
 
-#### Exercice 2
+## Exercice 3
 
 Maintenant nous allons nous occuper du formulaire d'inscription `training-inscription.html`.
 
@@ -54,7 +79,7 @@ Et un autre exemple pour construire une ligne de la liste des formations :
 </option>
 ```
 
-### Exercice 3
+## Exercice 4
 
 Votre formulaire est prêt, nous allons maintenant exposer des services Rest pour créer un participant.
 
