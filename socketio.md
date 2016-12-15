@@ -303,7 +303,7 @@ export default class PlayerSG {
     /**
      *
      */
-    public scoreUp(){
+    public scoreUp(): void {
         this.score++;
     }
 
@@ -311,14 +311,14 @@ export default class PlayerSG {
      *
      * @returns {number}
      */
-    public getScore(){
+    public getScore(): number {
         return this.score;
     }
 
     /**
      *
      */
-    public toJSON = () => ({
+    public toJSON = (): any => ({
         userId: this.userId,
         name: this.name,
         score: this.score,
