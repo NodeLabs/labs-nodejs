@@ -173,28 +173,28 @@ Nous allons maintenant réaliser les actions de notre jeu. Vous devrez développ
 Cet événement gère l’ajout d’un joueur à la file d’attente. 
 Si la file d’attente est pleine, le joueur ne sera pas ajouté. 
 Dans le cas contraire la méthode ajoute l’utilisateur à la file 
-d’attente et un événement [`server.player.new`]() est envoyé à tous les 
+d’attente et un événement [`server.player.new`](#serverplayernew) est envoyé à tous les 
 clients connectés.
 
 ##### client.player.ready
 
 Le client indique au serveur que le joueur enregistré est prêt à jouer. 
 La méthode doit stocker l’état du joueur est renvoyer la liste des joueurs 
-aux clients via l’évènement [`server.update.players.ready`]().
+aux clients via l’évènement [`server.update.players.ready`](#serverupdateplayerready).
 
 Si tous joueurs sont prêts alors la méthode doit émettre un événement
  `server.start.countdown.
 
 ##### client.start.game
 
-Une fois que le `countdown` est terminé, les clients vont émettre un événement `client.start.game. Cet événement côté`
- serveur lancera un « Timer » qui émettra à un intervalle régulier l’événement `server.update.square`.
+Une fois que le `countdown` est terminé, les clients vont émettre un événement `client.start.game`. Cet événement côté
+ serveur lancera un « Timer » qui émettra à un intervalle régulier l’événement [`server.update.square`](#serverupdatesquare).
 
 ##### client.delete.square
 
 Cet événement est envoyé par un client lorsque le joueur clique sur le carré. 
 La méthode va donc incrémenter le score du joueur ayant cliqué le carré. 
-Un premier événement `server.deleted.square` sera envoyé à l’ensemble des clients 
+Un premier événement [`server.deleted.square`](#serverdeletedsquare) sera envoyé à l’ensemble des clients 
 pour indiquer que le carré est à supprimer.
 
 Si le score de 5 points est atteint par l’un des joueurs, les actions suivantes sont effectuées :
