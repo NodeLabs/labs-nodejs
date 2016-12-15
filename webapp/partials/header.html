@@ -37,12 +37,28 @@
 
             <ul class="right hide-on-med-and-down">
 
-
+                <%
+                if (menu){
+                    for(var i = 0; i < menu.length; i++){
+                %>
+                    <li><a href="<%= menu[i].href %>"><%= menu[i].title %></a></li>
+                <%
+                    }
+                }
+                %>
             </ul>
 
             <ul class="side-nav" id="mobile-demo">
 
-
+                <%
+                if (menu){
+                for(var i = 0; i < menu.length; i++){
+                %>
+                    <li><a href="<%= menu[i].href %>"><%= menu[i].title %></a></li>
+                <%
+                }
+                }
+                %>
             </ul>
         </div>
     </nav>

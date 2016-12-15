@@ -1,4 +1,5 @@
 
+<% include partials/header.html %>
 
 <div class="parallax-container parallax-home" style="top:-70px;margin-bottom:-70px">
     <div class="parallax"><img src="/images/france-top-media-.png"></div>
@@ -13,7 +14,17 @@
         </div>
 
         <div class="row">
-            <!-- exercice 4 TP 4 -->
+            <%
+            for(var i = 0; i < menu.length; i++){
+                var card = menu[i];
+            %>
+            <div class="col s12 m3 l3">
+                <% include partials/card.html %>
+            </div>
+            <%
+            }
+            %>
+
         </div>
 
         <div class="row center">
@@ -21,15 +32,10 @@
         </div>
 
         <div class="row center">
-            <a href=""
-               download=""
-               name="feuille de cours"
-               id="download-button"
-               class="btn-large waves-effect waves-light orange">
-                Feuille de cours
-            </a>
+            <a href="rest/documents/1" download="" name="feuille de cours" id="download-button" class="btn-large waves-effect waves-light orange">Feuille de cours</a>
         </div>
 
     </div>
 </section>
 
+<% include partials/footer.html %>
