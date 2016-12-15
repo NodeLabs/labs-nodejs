@@ -49,16 +49,21 @@ Il vous faut donc créer la nouvelle route pour accéder à la page `training-in
 renvoyer une réponse dont voici l'exemple :
 
 ```typescript
-response.render('training-inscription', {
-    courses: require('../../../resources/courses.json'),
-    participant: {
-        _id: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        course: request.params.course
-    }
-});
+
+class TrainingCtrl extends Router {
+  response.render('training-inscription', {
+      courses: require('../../../resources/courses.json'),
+      participant: {
+          _id: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          course: request.params.course
+      }
+  });  
+}
+
+
 ```
 
 Pour ce formulaire, il faudra créer les bons champs de saisie en fonction du modèle de données suivants :
@@ -80,7 +85,6 @@ Voici un exemple pour créer une champs de saisie :
        type="text"
        class="validate"
        value="<%= maValue %>">
-
 ```
 
 Et un autre exemple pour construire une ligne de la liste des formations :

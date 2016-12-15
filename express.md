@@ -101,50 +101,87 @@ de fournir un document situé dans le dossier `resources`.
 
 ### Introduction
 
-Depuis Express 4.x il est possible d'utiliser l'objet router pour faire des modules Rest. 
-Ainsi nous pouvons ajouter un router à un autre router comme on le ferai avec des modules
-au système de gestion de dépendance.
+Depuis Express 4.x il est possible créer des routes de deux manières différentes.
 
-Exemple :
+
+La façon classique avec `Express.Application` :
+
 ```typescript
 import * as Express from "express";
 
-const expressApp = Express();
-const routerCalendars = Express.Router();
-
-routerCalendars.get('/', (request, response) => response.send('test'));
-routerCalendars.get('/list', () => {});
-// etc...
-
-const routerEvents = Express.Router();
-routerEvents.get('/', () => {});
-routerEvents.get('/list', () => {});
-// etc...
-
-
-const routerRest = Express.Router();
-routerRest.use('/calendars', routerCalendars);
-routerRest.use('/events', routerEvents);
-
-expressApp.use('/rest', routerRest);
+class Server {
+    
+    app: Express.Application = Express();
+    
+    start() {
+    
+        this.app.get('/rest/documents', (request, response) => response.send('Documents list'));
+        this.app.get('/rest/documents/:documentName', (request, response) => response.send('Document 1'));
+        
+        this.app.get('/rest', (request, response) =>
+            response.send(`
+                    /rest
+                    /rest/documents
+                    /rest/documents/:documentName
+                    ...
+            `)
+        );
+        
+    }
+}
 ```
 
-Cet exemple montera donc les routes suivantes :
+Et la façon modulable avec `Express.Router` :
+
+```typescript
+import * as Express from "express";
+
+class Server {
+    
+    app: Express.Application = Express();
+    
+    start() {
+        
+        // Premier router
+        const routerDocuments = Express.Router();
+        
+        routerDocuments.get('/', (request, response) => response.send('Documents list'));
+        routerDocuments.get('/:documentName', (request, response) => response.send('Document 1'));
+        
+        const routerRest = Express.Router();
+        
+        routerRest.get('/', (request, response) =>
+            response.send(`
+                    /rest
+                    /rest/documents
+                    /rest/documents/:documentName
+                    ...
+            `)
+        );
+
+        routerRest.use('/documents', routerDocuments);
+        
+        expressApp.use('/rest', routerRest);
+        
+    }
+}
+```
+
+> Cette approche, bien que plus difficile à aborder, a l'avantage d'être plus souple et modulable lorsque l'application grossie.
+
+Quoiqu'il en soit les deux exemples produiront les routes suivantes :
 
 ```bash
-GET /rest/calendars/
-GET /rest/calendars/list
-// ...
-GET /rest/events
-GET /rest/events/list
-// ...
+GET /rest/documents/
+GET /rest/documents/:documentName
+GET /rest
 ```
 
 ### Exercice 2 - Route statique & dynamique
 
 À partir de l'exemple précèdent essayez d'exposer une nouvelle route 
 pour consulter le contenu d'un document en utilisant l'objet `Express.Application` 
-et ensuite l'objet `Express.Router`.
+et/ou l'objet `Express.Router`.
 
 Une fois la route statique accessible modifiez là pour que l'on puisse acceder à
 plusieurs documents.
@@ -156,7 +193,7 @@ plusieurs documents.
 Pour la suite des TP nous allons refactoriser un peu le code afin de proposer plus facilement 
 un ensemble de service Rest / Web.
 
-Le pattern le plus souvent utilisé est le MVC pour construire les projets. Nous allons nous
+Le pattern le plus souvent utilisé est le MVC pour construire les applications. Nous allons nous
 en inspirer.
 
 Voici l'arborescence de dossier visé :
@@ -239,19 +276,24 @@ Ainsi il nous sera possible de créer nos controlleurs de la façon suivante :
 ```typescript
 import {Router} from "../utils/Router.ts";
 
-export default class MonCtrl extends Router {
+export default class RestCtrl extends Router {
     
     construct() {
         // Le path du module rest
-        super('/monpath');
+        super('/rest');
         
         // les methodes Rest à exposer
-        this.router.get('/', this.maMethodeGet);
+        this.router.get('/', this.getRoutes);
     }
     
-    private maMethodeGet = (request, response) => {
+    private getRoutes = (request, response) => {
     
-        response.send('Test');
+        response.send(`
+            /rest
+            /rest/documents
+            /rest/documents/:documentName
+            ...
+        `);
     
     }
 }
@@ -260,12 +302,16 @@ export default class MonCtrl extends Router {
 Puis il faudra ajouter ce controller dans notre `server.ts` :
 
 ```typescript
-import MonCtrl from "./src/controllers/rest/MonCtrl";
+import MyCtrl from "./src/controllers/rest/RestCtrl";
 
 class Server {
     
+    app: Express.Application = Express();
+    
     start() {
-       // Il y a quelque chose à faire ici :)  
+        
+       new RestCtrl().route(this.app);
+    
     }
 }
 ```
