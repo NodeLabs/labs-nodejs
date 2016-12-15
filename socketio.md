@@ -3,8 +3,11 @@
 L’objectif de ce TP est d’utiliser Socket IO pour créer un mini jeu Client / Serveur en temps réel.
 
 ## Principe du jeu
+
 Le mini jeu oppose deux joueurs dans un duel de réflexe. Le jeu présente une grille sur laquelle apparaîtra de façon aléatoire un carré coloré cliquable. Le premier joueur cliquant sur le carré obtient un point. 
 La partie est terminée lorsque l’un des joueurs atteint le score de 5 points.
+
+![squaregame](https://github.com/Romakita/tp-nodejs/blob/master/src/squaregame.png)
 
 ## Directives
 Pour ce TP la partie cliente est déjà développée.
@@ -18,13 +21,13 @@ Vous devrez gérer un certain nombre d’actions comme suivant :
 * Compter le score et synchroniser les informations entres les joueurs,
 * Indiquer le gagnant lorsque le score est atteint.
 
-### Rappel
+## Rappel
 
 Voici un rappel du principe des communications entre le client et le server avec SocketIO :
 
 ![capture](https://github.com/Romakita/tp-nodejs/blob/master/src/socket.png)
 
-
+## Exercice
 ### 1ère étape
 
 Nous devons créer une nouvelle classe pour gérer le server SocketIO. 
