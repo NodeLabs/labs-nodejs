@@ -18,6 +18,13 @@ Vous devrez gérer un certain nombre d’actions comme suivant :
 * Compter le score et synchroniser les informations entres les joueurs,
 * Indiquer le gagnant lorsque le score est atteint.
 
+### Rappel
+
+Voici un rappel du principe des communications entre le client et le server avec SocketIO :
+
+![capture](https://github.com/Romakita/tp-nodejs/blob/master/src/socket.png)
+
+
 ### 1ère étape
 
 Nous devons créer une nouvelle classe pour gérer le server SocketIO. 
