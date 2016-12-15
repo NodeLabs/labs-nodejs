@@ -31,6 +31,8 @@ Les étapes à suivre sont les suivantes :
 3. Créer le formulaire d'inscription,
 4. Créer les services Rest.
 
+> Provided : [express-ejs-part2-provided](https://github.com/Romakita/tp-nodejs/tree/express-ejs-part2-provided)
+
 **Le modèle participant**
 
 ```json
