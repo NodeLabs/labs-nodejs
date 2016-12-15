@@ -20,12 +20,15 @@ Ces actions auront les routes suivantes :
 Pour pouvoir stocker les participants, nous utiliserons les middlewares pour 
 Express.js dont les suivants :
 
-* `body-parser` pour la gestion des paramètres POST,
+* `body-parser` pour la gestion des paramètres envoyés en `POST`,
 * `cookie-parser` pour la gestion des cookies,
 * `express-session` pour la persistance des données dans un premier temps.
 
 Les étapes à suivre sont les suivantes :
 
-1. Créer notre module « particpants.js »
-2. Ajouter les middlewares à notre serveur Express.
-3. Créer les routes permettant de gérer les actions.
+1. Créer notre module `ParticipantCtrl`,
+2. Ajouter les middlewares à notre serveur Express,
+3. Créer les pages partipants et la page du formulaire d'inscription,
+4. Créer les routes permettant de gérer les actions.
+
+[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/express-ejs.md)

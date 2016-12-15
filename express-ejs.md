@@ -18,7 +18,7 @@ Il s'utilise de même façon que NPM, c'est-à-dire, en ligne de commande.
 
 Commençons par installer `Bower`:
 ```bash
-npm install --save-dev bower
+npm install -g bower
 bower init
 ```
 
@@ -34,7 +34,7 @@ Pour cela, il faut créer un fichier `.bowerrc` à la racine du projet et ajoute
 On installe maintenant les packages que nous allons utiliser pour développer notre site :
 
 ```bash
-bower install --save lodash jquery Materialize angular
+bower install --save lodash jquery materialize angular
 ```
 
 Vous devez ensuite récupérer le dossier `/webapp` et son contenu. Vous pouvez récuperer le contenu dans 
@@ -171,3 +171,4 @@ Voici le fragment html pour vous aider :
 
 > Correction : branche [express-ejs-exercice-4-solution](https://github.com/Romakita/tp-nodejs/tree/express-ejs-exercice-4-solution)
 
+[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/express-ejs-part-2.md)
