@@ -4,45 +4,33 @@ L’objectif de ce TP est de créer un gestionnaire d’inscription à cours de 
 
 ![capture](https://github.com/Romakita/tp-nodejs/blob/master/src/training.png)
 
-Les actions demandées sont les suivantes :
+#### Exerice 1
 
-* Liste les participants à la session,
-* Ajouter un participant,
-* Modifier un participant,
-* Supprimer un participant.
+Nous allons cabler la page `training.html` que pouvez récupérer sur la branche [express-ejs-part2-provided](https://github.com/Romakita/tp-nodejs/tree/express-ejs-part2-provided).
 
-Ces actions auront les routes suivantes :
+Pour ce faire, nous allons créer un `TrainingCtrl` qui va gérer l'ensemble des pages de la section Training.
 
-* GET /participants pour lister les participants,
-* POST /participants pour ajouter un participants,
-* GET /participants/:id pour supprimer un participant.
+Ce contrôlleur va récupérer les données fournient dans le fichier `resources/courses.json`. Ces données vont nous permettre de créer 
+une liste de formation.
 
-Pour pouvoir stocker les participants, nous utiliserons les middlewares pour 
-Express.js dont les suivants :
+Cette même liste de formation sera présenté à l'utilisateur afin qu'il puisse s'inscrire à cette dernnière.
 
-* `body-parser` pour la gestion des paramètres envoyés en `POST`,
-* `cookie-parser` pour la gestion des cookies,
-* `express-session` pour la persistance des données dans un premier temps.
 
-Les étapes à suivre sont les suivantes :
+#### Exercice 2
 
-1. Ajouter les middlewares à notre serveur Express,
-2. Créer le controlleur de page TrainingCtrl qui va prendre en charge l'affiche des pages trainings.html, training-inscription.html et training-participant.html,
-3. Créer le formulaire d'inscription,
-4. Créer les services Rest.
+Maintenant nous allons nous occuper du formulaire d'inscription `training-inscription.html`.
 
-> Provided : [express-ejs-part2-provided](https://github.com/Romakita/tp-nodejs/tree/express-ejs-part2-provided)
-
-**Le modèle participant**
+Pour ce formulaire, il faudra créer les bons champs de saisie en fonction du modèle de données suivants :
 
 ```json
 {
-    lastName: "test",
-    firstName: "firstName",
-    email: "firstName@lastName.fr",
-    course: "angular"
+    "lastName": "test",
+    "firstName": "firstName",
+    "email": "firstName@lastName.fr",
+    "course": "angular"
 }
 ```
+> Il y a donc 4 champs à fournir dont course etant un liste déroulante.
 
 Voici un exemple pour créer une champs de saisie :
 ```html
@@ -54,7 +42,7 @@ Voici un exemple pour créer une champs de saisie :
 
 ```
 
-Pour construire la liste des cours :
+Et un autre exemple pour construire une ligne de la liste des formations :
 
 ```html
 <option value="<%= course.value %>" 
@@ -65,5 +53,38 @@ Pour construire la liste des cours :
         <%= course.label %>
 </option>
 ```
+
+### Exercice 3
+
+Votre formulaire est prêt, nous allons maintenant exposer des services Rest pour créer un participant.
+
+Les actions demandées sont les suivantes :
+
+* Liste les participants à la session,
+* Ajouter un participant,
+* Modifier un participant,
+* Supprimer un participant.
+
+Ces actions auront les routes suivantes :
+
+* GET /participants pour lister les participants,
+* POST /participants pour ajouter un participant,
+* PUT /participants/:id pour mettre à jour un participant,
+* DELETE /participants/:id pour supprimer un participant.
+
+
+#### Installation
+
+Nous allons installer quelques middlewares pour gérer les données :
+
+* [`body-parser`](https://github.com/expressjs/body-parser) pour la gestion des paramètres envoyés en `POST`
+* [`method-override`](https://github.com/expressjs/method-override) pour gérer les verbs du protocol HTML.
+
+#### Travail à faire
+
+Nous allons créer un nouveau controlleur ParticipantCtrl pour gérer les actions demandées.
+
+Enfin pour persister les données dans un premier temps nous utiliserons un ParticipantsService que allons 
+développer dans le dossier `src/services`.
 
 [Suivant](https://github.com/Romakita/tp-nodejs/blob/master/express-ejs.md)
