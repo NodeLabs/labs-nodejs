@@ -328,7 +328,7 @@ Voici un exemple du modèle de données d’un carré :
 ```json
 {
    "index": 1, 
-   "bgc": “#FFFFFF”
+   "bgc": "#FFFFFF"
 }
 ```
 
