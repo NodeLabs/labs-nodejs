@@ -97,13 +97,13 @@ class Server {
 
 Le moteur de template fonctionne (à priori). Nous allons le tester. 
 
-Actuellement dans le dossier webapp, vous avez une page `index.html`.
-Cette page est incomplète et il nous manque en effet le `header.html` 
-et le `footer.html`
+Actuellement dans le dossier `webapp`, vous avez une page `index.html`.
+Cette page est incomplète et il nous manque le `header.html` 
+et le `footer.html`.
 
 Commencez donc par inclure le `header.html` avec une instruction EJS ([doc](http://ejs.co/)).
 
-> Note : Si cela ne fonctionne pas c'est normal !
+Ensuite essayez d'afficher la page.
 
 ### Exercice 3
 

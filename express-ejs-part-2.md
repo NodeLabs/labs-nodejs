@@ -9,7 +9,7 @@ L’objectif de ce TP est de créer un gestionnaire d’inscription à cours de 
 Avant de commencer à coder les nouvelles pages nous allons créer un middleware pour que nous n'ayons pas à
 ajouter le `menu.json` dans chaque controlleur de page que nous allons créer.
 
-Dans `server.ts` nous allons rajouter la méthode suivante :
+Dans le `server.ts` nous allons rajouter la méthode suivante :
 
 ```typescript
 class Server {
@@ -25,21 +25,21 @@ class Server {
     }
 }
 ```
+> locals est une variable globale d'Express. Elle permet d'y stocker des informations partagées au niveau d'un template.
 
 Ensuite ajoutez ce middleware au bon endroit dans la méthode `importMiddlewares()` de la même façon
-que lorsque l'on ajouter à middleware à Express.
+que lorsque vous avez ajouté un middleware à Express.
 
 ## Exercice 2
 
-Nous allons cabler la page `training.html` que pouvez récupérer sur la branche [express-ejs-part2-provided](https://github.com/Romakita/tp-nodejs/tree/express-ejs-part2-provided).
+Nous allons cabler la page `training.html` que vous pouvez récupérer sur la branche [express-ejs-part2-provided](https://github.com/Romakita/tp-nodejs/tree/express-ejs-part2-provided).
 
 Pour ce faire, nous allons créer un `TrainingCtrl` qui va gérer l'ensemble des pages de la section Training.
 
-Ce contrôlleur va récupérer les données fournient dans le fichier `resources/courses.json`. Ces données vont nous permettre de créer 
+Ce contrôlleur va récupérer les données fournies dans le fichier `resources/courses.json`. Ces données vont nous permettre de créer 
 une liste de formation.
 
 Cette même liste de formation sera présenté à l'utilisateur afin qu'il puisse s'inscrire à cette dernnière.
-
 
 ## Exercice 3
 
@@ -51,16 +51,25 @@ renvoyer une réponse dont voici l'exemple :
 ```typescript
 
 class TrainingCtrl extends Router {
-  response.render('training-inscription', {
-      courses: require('../../../resources/courses.json'),
-      participant: {
-          _id: '',
-          firstName: '',
-          lastName: '',
-          email: '',
-          course: request.params.course
-      }
-  });  
+    
+    constructor() {
+        // ...
+    }
+    
+    private renderTrainingRegister = (request, response) => {
+        
+        response.render('training-inscription', {
+              courses: require('../../../resources/courses.json'),
+              participant: {
+                  _id: '',
+                  firstName: '',
+                  lastName: '',
+                  email: '',
+                  course: request.params.course
+              }
+          });  
+    }
+  
 }
 
 
@@ -95,7 +104,7 @@ Et un autre exemple pour construire une ligne de la liste des formations :
         class="left circle"
         <%= course.value == participant.course ? 'selected' :'' %>>
         
-        <%= course.label %>
+    <%= course.label %>
 </option>
 ```
 
@@ -132,4 +141,4 @@ Nous allons créer un nouveau controlleur ParticipantCtrl pour gérer les action
 Enfin pour persister les données dans un premier temps nous utiliserons un ParticipantsService que allons 
 développer dans le dossier `src/services`.
 
-[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/express-ejs.md)
+[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/socketio.md)
