@@ -38,6 +38,8 @@ npm install --save socket.io
 npm install --save-dev @types/socket.io
 ```
 
+Copiez aussi le partial [`webapp/partials/square-game.html`](https://github.com/Romakita/tp-nodejs/blob/socketio-provided/webapp/partials/square-game.html).
+
 ### 1ère étape
 
 Nous devons créer une nouvelle classe pour gérer le server SocketIO. 
@@ -143,7 +145,7 @@ export default class SquareGameWS {
      * Retourne la liste des joueurs.
      * @returns {Array}
      */
-    static getPlayers(): SquareGameWS[] {
+    static getPlayers(): PlayerSG[] {
     
         return null;
     }
@@ -203,7 +205,7 @@ La méthode doit stocker l’état du joueur est renvoyer la liste des joueurs
 aux clients via l’évènement [`server.update.players.ready`](#serverupdateplayerready).
 
 Si tous joueurs sont prêts alors la méthode doit émettre un événement
- `server.start.countdown.
+ [`server.start.countdown`](#serverstartcountdown).
 
 ##### client.start.game
 
@@ -235,11 +237,12 @@ L’objectif est de supprimer le joueur de la file d’attente est d’interromp
 Indique à l’ensemble des clients qu’un nouveau joueur est enregistré.
 
 * **Type** : broadcast
-* **Paramètre** : un objet joueur.
+* **Paramètre** : La liste des joueurs.
 
 ##### server.update.player.ready
 
 Indique à l’ensemble des clients qu’un joueur est prêt à jouer.
+
 * **Type** : broadcast
 * **Paramètre** : Liste des joueurs.
 
