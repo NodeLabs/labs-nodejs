@@ -141,4 +141,6 @@ Nous allons créer un nouveau controlleur ParticipantCtrl pour gérer les action
 Enfin pour persister les données dans un premier temps nous utiliserons un ParticipantsService que allons 
 développer dans le dossier `src/services`.
 
+Ce service doit permettre d'ajouter / modifier / lister / supprimer un participant.
+
 [Suivant](https://github.com/Romakita/tp-nodejs/blob/master/socketio.md)
