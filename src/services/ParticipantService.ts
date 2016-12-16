@@ -54,6 +54,7 @@ export default class ParticipantService {
 
     /**
      *
+     * @param id
      * @param participant
      * @returns {Promise<T>|Promise}
      */

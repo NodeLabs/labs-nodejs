@@ -96,7 +96,7 @@ export default class SquareGameWS {
      * Retourne la liste des joueurs.
      * @returns {Array}
      */
-    static getPlayers(): SquareGameWS[] {
+    static getPlayers(): PlayerSG[] {
 
         return null;
     }
