@@ -31,6 +31,13 @@ Voici un rappel du principe des communications entre le client et le server avec
 
 > Si besoin vous avez la branche [socketio-provided](https://github.com/Romakita/tp-nodejs/tree/socketio-provided).
 
+### Installation
+
+```bash
+npm install --save socket.io
+npm install --save-dev @types/socket.io
+```
+
 ### 1ère étape
 
 Nous devons créer une nouvelle classe pour gérer le server SocketIO. 
@@ -160,7 +167,7 @@ class Server {
         if (this.port) {
         
             const server = this.app.listen(this.port, () => {
-                $log.debug(`Server binded on port ${this.port}`);
+                console.log(`Server binded on port ${this.port}`);
             });
 
             this.io = SocketIO(server);
