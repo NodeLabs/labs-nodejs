@@ -28,6 +28,9 @@ Voici un rappel du principe des communications entre le client et le server avec
 ![capture](https://github.com/Romakita/tp-nodejs/blob/master/src/socket.png)
 
 ## Exercice
+
+> Si besoin vous avez la branche [socketio-provided](https://github.com/Romakita/tp-nodejs/tree/socketio-provided).
+
 ### 1ère étape
 
 Nous devons créer une nouvelle classe pour gérer le server SocketIO. 
