@@ -15,9 +15,9 @@ Nous verrons au cours des travaux pratiques les points suivants :
 
 ## Objectifs
 
-Les TP ont pour objectifs de vous apprendre à développer une application en Node.js, avec TypeScript et Express.js.
+Les TP ont pour objectif de vous apprendre à développer une application en Node.js, avec TypeScript et Express.js.
 
-Ici nous développerons une application web articulé autours de l'activité Valtech Training. Nous aurons donc pour 
+Ici nous développerons une application web articulée autours de l'activité Valtech Training. Nous aurons donc pour 
 missions de développer les différentes parties du site comme :
 
 - La gestion de documents,
