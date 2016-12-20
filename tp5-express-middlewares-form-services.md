@@ -1,4 +1,4 @@
-# TP 5 - Express EJS - part2
+# TP 5 - Middlewares, Formulaire & Services
 
 L’objectif de ce TP est de créer un gestionnaire d’inscription à cours de Valtech Training comme présenté en capture ci-après :
 
@@ -32,7 +32,7 @@ que lorsque vous avez ajouté un middleware à Express.
 
 ## Exercice 2
 
-Nous allons cabler la page `training.html` que vous pouvez récupérer sur la branche [express-ejs-part2-provided](https://github.com/Romakita/tp-nodejs/tree/express-ejs-part2-provided).
+Nous allons cabler la page `training.html` que vous pouvez récupérer sur la branche [tp5-provided](https://github.com/Romakita/tp-nodejs/tree/tp5-provided).
 
 Pour ce faire, nous allons créer un `TrainingCtrl` qui va gérer l'ensemble des pages de la section Training.
 
@@ -143,4 +143,4 @@ développer dans le dossier `src/services`.
 
 Ce service doit permettre d'ajouter / modifier / lister / supprimer un participant.
 
-[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/socketio.md)
+[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp6-socketio.md)

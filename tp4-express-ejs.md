@@ -1,4 +1,4 @@
-# TP 4 - Express EJS
+# TP 4 - Express EJS - part 1
 
 Le TP 3 nous a permit de nous familiarise avec Express et la création de route statique et dynamique.
 Nous allons maintenant construire un site web et donc mettre en place la partie Front de notre application.
@@ -38,7 +38,7 @@ bower install --save lodash jquery materialize angular
 ```
 
 Vous devez ensuite récupérer le dossier `/webapp` et son contenu. Vous pouvez récuperer le contenu dans 
-la branche [express-ejs-installation-provided](https://github.com/Romakita/tp-nodejs/tree/express-ejs-installation-provided).
+la branche [tp4-installation-provided](https://github.com/Romakita/tp-nodejs/tree/tp4-installation-provided).
 
 Copiez le répertoire à la racine du projet.
 
@@ -169,6 +169,6 @@ Voici le fragment html pour vous aider :
 <li><a href="lien">label</a></li>
 ```
 
-> Correction : branche [express-ejs-exercice-4-solution](https://github.com/Romakita/tp-nodejs/tree/express-ejs-exercice-4-solution)
+> Correction : branche [tp4-4-solution](https://github.com/Romakita/tp-nodejs/tree/tp4-exercice-4-solution)
 
-[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/express-ejs-part-2.md)
+[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp5-express-middlewares-form-services.md)

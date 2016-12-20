@@ -29,7 +29,7 @@ Voici un rappel du principe des communications entre le client et le server avec
 
 ## Exercice
 
-> Si besoin vous avez la branche [socketio-provided](https://github.com/Romakita/tp-nodejs/tree/socketio-provided).
+> Si besoin vous avez la branche [tp6-provided](https://github.com/Romakita/tp-nodejs/tree/tp6-provided).
 
 ### Installation
 
@@ -367,4 +367,4 @@ hexadécimal aléatoire voici un exemple de code :
 "#" + ((1<<24) * Math.random() | 0).toString(16)
 ```
 
-[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/promise.md)
+[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp7-promise.md)

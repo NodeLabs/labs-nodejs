@@ -89,4 +89,4 @@ npm run tsc:w
 ```
 > Cette commande permet de recompiler les fichiers TypeScript dès qu'ils seront modifiés.
 
-[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/fs.md)
+[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp2-fs.md)
