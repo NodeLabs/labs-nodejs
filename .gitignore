@@ -41,3 +41,7 @@ jspm_packages
 .gitignore
 .idea/
 /dist/
+/tools/*.js
+/tools/*.js.map
+/tools/**/*.js
+/tools/**/*.js.map

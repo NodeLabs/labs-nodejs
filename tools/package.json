@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node index.js"
+    "build": "tsc && node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/fs-extra": "0.0.35",
+    "@types/node": "^6.0.52",
     "deepmerge": "^1.3.1",
     "ejs": "^2.5.5",
     "fs-extra": "^1.0.0",
@@ -18,6 +20,7 @@
     "hast-util-to-html": "^3.0.0",
     "remark": "^6.2.0",
     "remark-github": "^6.0.1",
+    "source-map-support": "^0.4.6",
     "walk": "^2.3.9"
   }
 }

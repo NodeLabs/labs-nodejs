@@ -329,6 +329,4 @@ et adapter le code fait dans l'exercice 2.
 
 > Correction : branche [tp3-excercice-solution](https://github.com/Romakita/tp-nodejs/tree/tp3-excercice-solution)
 
----
-
 [Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp4-express-ejs.md)

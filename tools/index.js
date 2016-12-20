@@ -1,98 +1,45 @@
 "use strict";
-
-const mkdir = require('./lib/mkdir');
-const mdToHtml = require('./lib/markdown-to-html');
-const getMdFiles = require('./lib/get-md-files');
-const path = require('path');
-const baseDir = path.resolve('../');
-const writeFile = require('./lib/write-file');
-const replace =  require('./lib/replace');
-const render = require('./lib/render');
-const copyFile = require('./lib/copy-file');
-
+require('source-map-support').install();
+var Generator_1 = require('./lib/Generator');
+var path = require('path');
+var baseDir = path.resolve('../');
 /**
  *
  * @type {{root: Promise.<string>, pageTitle: string, repository: string, dirs: [*], files: Array, outDirHtml: [*]}}
  */
-const settings = {
+var settings = {
     root: baseDir,
     pageTitle: 'TP Node.js',
     repository: "https://github.com/Romakita/tp-nodejs/blob/master/",
-    dirs:[
-        `${baseDir}/dist`,
-        `${baseDir}/dist/Instructor`,
-        `${baseDir}/dist/Instructor/html`,
-        `${baseDir}/dist/Instructor/html/style`,
-        `${baseDir}/dist/Student`,
-        `${baseDir}/dist/Student/html`,
-        `${baseDir}/dist/Instructor/html/style`,
-        `${baseDir}/dist/Printer`
+    cwd: baseDir + "/dist",
+    copy: [
+        { from: baseDir + "/src", to: 'src' }
     ],
-    files: [],
-    outDirHtml: [
-        `${baseDir}/dist/Instructor/html`,
-        `${baseDir}/dist/Student/html`
-    ]
-}
-
-// build directories
-mkdir(settings.dirs);
-
-let filesMd;
-
-// get markdown list
-getMdFiles(baseDir)
-    .then((files) => {
-
-        settings.files = files;
-
-        console.log('Files found =>', files);
-
-        return Promise.all(
-            settings.files.map(file => mdToHtml(file))
-        );
-    })
-    .then((htmlContents) => {
-
-        return Promise.all(
-            htmlContents
-                .map(html => replace(html, settings))
-                .map((html, index) => render('page', {
-                    pageTitle: `${settings.pageTitle} - ${settings.files[index]}`,
-                    body: html
-                }))
-        );
-    })
-    .then(htmlRendered => {
-
-        const promises = [];
-
-        settings.outDirHtml.map(dir => {
-
-            const p = htmlRendered.map((content, index) => {
-
-                const file = settings.files[index].replace(baseDir, '').replace('.md', '.html');
-
-                return writeFile(`${dir}/${file}`, content);
-
-            });
-
-            console.log(`${baseDir}/tools/node_modules/github-markdown-css/github-markdown.css`);
-
-            copyFile(`${baseDir}/tools/node_modules/github-markdown-css/github-markdown.css`, `${dir}/style/github-markdown.css`, () => {});
-
-            promises.concat(p);
-        });
-
-
-        return Promise.all(promises);
-
-    })
-    .catch(err =>  {
-        console.error(err);
-    })
-
-
-
-
-
+    concat: {
+        outDir: [
+            { format: 'html', path: "Instructor/html" },
+            { format: 'html', path: "Student/html" },
+        ],
+        files: [
+            { title: '', path: 'readme.md' },
+            { title: 'TP1 - Installation', path: 'tp1-installation.md' },
+            { title: 'TP2 - Manipulation des fichiers', path: 'tp2-fs.md' },
+            { title: 'TP3 - Express', path: 'tp3-express.md' },
+            { title: 'TP4 - Templating avec EJS', path: 'tp4-express-ejs.md' },
+            { title: 'TP5 - Middlewares, Formulaire & Services', path: 'tp5-express-middlewares-form-services.md' },
+            { title: 'TP6 - Socket.io', path: 'tp6-socketio.md' },
+            { title: 'TP7 - Les promises', path: 'tp7-promise.md' },
+            { title: 'TP8 - Base de données', path: 'tp8-mongoose.md' },
+            { title: 'TP9 - Test unitaires', path: 'tp9-test-unitaires.md' },
+            { title: 'Aide - importation des modules', path: 'aide-importation-module.md' }
+        ]
+    }
+};
+/**
+ *
+ */
+new Generator_1.Generator(settings)
+    .build()
+    .then(function (settings) { return console.log('Finish =>', settings); })
+    .catch(function (err) { return console.error(err); });
+//# sourceMappingURL=index.js.map
