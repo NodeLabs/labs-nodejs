@@ -40,7 +40,7 @@ jspm_packages
 
 .gitignore
 .idea/
-/dist/
+/dist/.tmp
 /tools/*.js
 /tools/*.js.map
 /tools/**/*.js

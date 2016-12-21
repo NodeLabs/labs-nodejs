@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>TP Node.js</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="style/github-markdown.css">
+
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+<article class="markdown-body">
+    <h1>TP 4 - Express EJS - part 1</h1>
+<p>Le TP 3 nous a permit de nous familiarise avec Express et la création de route statique et dynamique.
+Nous allons maintenant construire un site web et donc mettre en place la partie Front de notre application.</p>
+<h3>Installation</h3>
+<p>Lancer la commande suivante :</p>
+<pre><code class="language-bash">npm install --save ejs serve-static morgan
+</code></pre>
+<h3>Bower</h3>
+<p>Bower est gestionnaire de dépendance pour les packages Front-End (jQuery, Angular, etc...).
+Il s'utilise de même façon que NPM, c'est-à-dire, en ligne de commande.</p>
+<p>Commençons par installer <code>Bower</code>:</p>
+<pre><code class="language-bash">npm install -g bower
+bower init
+</code></pre>
+<p>Etape suivante, il nous faut préciser le répertoire d'installation des <code>bower_components</code>.
+Pour cela, il faut créer un fichier <code>.bowerrc</code> à la racine du projet et ajouter ceci :</p>
+<pre><code class="language-json">{
+  "directory": "webapp/bower_components/"
+}
+</code></pre>
+<p>On installe maintenant les packages que nous allons utiliser pour développer notre site :</p>
+<pre><code class="language-bash">bower install --save lodash jquery materialize angular
+</code></pre>
+<p>Vous devez ensuite récupérer le dossier <code>/webapp</code> et son contenu. Vous pouvez récuperer le contenu dans
+la branche <a href="https://github.com/Romakita/tp-nodejs/tree/tp4-installation-provided">tp4-installation-provided</a>.</p>
+<p>Copiez le répertoire à la racine du projet.</p>
+<h3>Configuration du serveur</h3>
+<p>Commençons configurer le logger morgan. Elle va nous logger toutes les requêtes dans la console.</p>
+<pre><code class="language-typescript">class Server {
+
+    public importMiddlewares(){
+        const morgan = require('morgan');
+        
+        this.app.use(morgan('combined'));
+    }
+}
+</code></pre>
+<blockquote>
+<p><code>combined</code> est une option permettant d'avoir une log détaillé mais clair.</p>
+</blockquote>
+<h3>Exercice 1</h3>
+<p>De la même façon qu'avec le logger morgan, ajouter le middleware
+<a href="https://github.com/expressjs/serve-static">serve-static</a> à votre serveur pour
+exposer les contenus statiques du dossier <code>/webapp</code>.</p>
+<blockquote>
+<p>Pour valider l'installation du middleware, essayé d'acceder à une image du dossier webapp via
+le navigateur.</p>
+</blockquote>
+<h3>Configuration du moteur de template EJS</h3>
+<p>EJS comme vue dans le cours est des moteurs de templating pour Node.js et Express.</p>
+<p>Afin de pouvoir l'utiliser nous devons configurer - encore une fois - notre serveur.</p>
+<pre><code class="language-typescript">class Server {
+
+    public importMiddlewares(){
+        
+        /// ... configuration des premiers middlewares
+        
+        // On utilise l'extension .html en lieu et place de l'extension .ejs
+        this.app.engine('.html', require('ejs').__express);
+
+        // On change le dossier de base
+        this.app.set('views', './webapp');
+
+        // Permet de ne pas spécifier l'extension lors de l'utilisation de res.render()
+        this.app.set('view engine', 'html');
+        
+    }
+}
+</code></pre>
+<h3>Exercice 2</h3>
+<p>Le moteur de template fonctionne (à priori). Nous allons le tester. </p>
+<p>Actuellement dans le dossier <code>webapp</code>, vous avez une page <code>index.html</code>.
+Cette page est incomplète et il nous manque le <code>header.html</code>
+et le <code>footer.html</code>.</p>
+<p>Commencez donc par inclure le <code>header.html</code> avec une instruction EJS (<a href="http://ejs.co/">doc</a>).</p>
+<p>Ensuite essayez d'afficher la page.</p>
+<h3>Exercice 3</h3>
+<p>Pour résoudre le problème de l'exercice 2, il faut en réalité créer un controller nommé
+<code>IndexCtrl</code> dans le dossier <code>src/pages</code> et indiquer explicitement à Express
+que pour la page <code>index.html</code> ayant la route <code>/</code> il y une phase de rendu ou <code>render</code>
+à effectuer.</p>
+<p>Commencez donc par créer l'<code>IndexCtrl</code> comme nous l'avions fait pour le service Rest.</p>
+<p>Ensuite créez une nouvelle route pour la page index et utilisez la methode <code>response.render()</code>.</p>
+<p>Une fois que votre controlleur est en place vous devriez avoir l'entête de site disponible.
+Ajoutez le footer !</p>
+<blockquote>
+<p>Note : Faite attention à l'ordre des middlewares !</p>
+</blockquote>
+<h3>Exercice 4</h3>
+<p>Maintenant nous allons proposer une page d'accueil avec un peu de contenu sous forme de carte !</p>
+<p>Voici un fragment html pour vous aidez à faire cette exercice :</p>
+<pre><code class="language-html">&#x3C;div class="card">
+    &#x3C;div class="card-image waves-effect waves-block waves-light">
+        &#x3C;img class="activator" src="images/">
+    &#x3C;/div>
+    &#x3C;div class="card-content">
+        &#x3C;span class="card-title activator grey-text text-darken-4">
+            label &#x3C;i class="material-icons right">more_vert&#x3C;/i>
+        &#x3C;/span>
+
+        &#x3C;p>&#x3C;a href="">Y aller !&#x3C;/a>&#x3C;/p>
+    &#x3C;/div>
+
+    &#x3C;div class="card-reveal">
+        &#x3C;span class="card-title grey-text text-darken-4">
+            label &#x3C;i class="material-icons right">fermer&#x3C;/i>
+        &#x3C;/span>
+        &#x3C;p>description&#x3C;/p>
+    &#x3C;/div>
+&#x3C;/div>
+</code></pre>
+<p>Nous avons dans le dossier <code>resources</code> un fichier <code>menu.json</code>. Nous allons utiliser
+ce fichier pour créer une liste de carte dans la page d'accueil.</p>
+<blockquote>
+<p>Note : response.render() prend deux paramètres le premier étant le nom de la page
+html et le second étant des données (scope) pour générer notre vue.</p>
+</blockquote>
+<p>En utilisant les bonnes instructions EJS, essayez d'afficher la liste de carte. </p>
+<p><strong>Bonus</strong></p>
+<p>Il y a un bouton de téléchargement dans la page d'accueil. Essayez de le relier avec le service Rest <code>document</code>.</p>
+<p><strong>Bonus 2</strong>
+Le <code>header.html</code> doit normalement afficher un menu de navigation (mobile et desktop).
+Voici le fragment html pour vous aider :</p>
+<pre><code class="language-html">&#x3C;li>&#x3C;a href="lien">label&#x3C;/a>&#x3C;/li>
+</code></pre>
+<blockquote>
+<p>Correction : branche <a href="https://github.com/Romakita/tp-nodejs/tree/tp4-exercice-4-solution">tp4-exercice-4-solution</a></p>
+</blockquote>
+<p><a href="tp5-express-middlewares-form-services.html">Suivant</a></p>
+
+</article>
+
+</body>
+</html>

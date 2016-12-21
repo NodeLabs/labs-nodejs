@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>TP Node.js</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="style/github-markdown.css">
+
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+<article class="markdown-body">
+    <h1>TP 1 - Installation de l'environnement</h1>
+<p>Les TP seront réalisés en TypeScript. Vous n'êtes cependant pas obligé d'écrire votre code en TypeScript pure.
+Vous pouvez tout à fait écrire votre code en JavaScript standard dans un fichier TypeScript.</p>
+<p>L'important ici est de se familiariser avec le standard EcmaScript 6 et pour les plus motivés avec TypeScript.</p>
+<h2>Prérequis</h2>
+<p>Vérifier que vous avez les éléments suivants d’installé sur votre poste :</p>
+<ul>
+<li>Node v6 ou plus avec la commande npm –v,</li>
+<li>Git, nous l’utiliserons pour récupérer le projet initial,</li>
+<li>Webstorm (ou un autre IDE)</li>
+</ul>
+<h2>Installation</h2>
+<h3>Initialisation du projet</h3>
+<p>Créez un nouveau projet dans votre IDE. Puis dans le terminal, placez-vous sur votre nouveau projet et lancez la commande suivante :</p>
+<pre><code class="language-bash">npm init
+</code></pre>
+<blockquote>
+<p>Suivez le guide d'initialisation de la commande.</p>
+</blockquote>
+<h3>Installation des modules</h3>
+<p>Maintenant nous allons installer les modules nécessaires à un projet TypeScript.</p>
+<p>Toujours dans le terminal lancez la commande suivante :</p>
+<pre><code>npm install -g typescript@2.0
+npm install --save-dev @types/node
+npm install --save source-map-support
+tsc --init
+</code></pre>
+<blockquote>
+<p>source-map-support ajoute le sourceMapping entre le code source TypeScript et le code source compilé. Pratique pour débugger une erreur.</p>
+<p>Nous travaillerons de préférence avec la version 2.0 de TypeScript</p>
+</blockquote>
+<p>La commande <code>tsc --init</code> va créer un nouveau fichier <code>tsconfig.json</code>. Ce fichier contient les informations nécessaire
+au compilateur TypeScript pour compiler nos fichiers sources.</p>
+<p>En l'état, il nous manque quelques options de compilation dans le <code>tsconfig.json</code>.</p>
+<p>Voici les options à reporter dans votre <code>tsconfig.json</code>: </p>
+<pre><code class="language-json">{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom",
+      "es2015.collection"
+    ],
+    "types": ["node"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": false
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
+</code></pre>
+<blockquote>
+<p>Votre projet est prêt pour compiler du TypeScript</p>
+</blockquote>
+<p>En complément, et pour vous simplifier la vie, vous pouvez éditer le <code>package.json</code>
+et ajouter les tâches suivantes :</p>
+<pre><code class="language-json">{
+   "scripts": {
+      "tsc": "tsc",
+      "tsc:w": "tsc -w"
+   }
+}
+</code></pre>
+<p>Ces tâches peuvent être executer en ligne de commande ou par votre IDE comme suivant :</p>
+<pre><code class="language-bash">npm run tsc:w
+</code></pre>
+<blockquote>
+<p>Cette commande permet de recompiler les fichiers TypeScript dès qu'ils seront modifiés.</p>
+</blockquote>
+<p><a href="tp2-fs.html">Suivant</a></p>
+
+</article>
+
+</body>
+</html>

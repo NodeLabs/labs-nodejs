@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>TP Node.js</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="style/github-markdown.css">
+
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+<article class="markdown-body">
+    <h1>TP 3 - Express</h1>
+<ul>
+<li>Installation</li>
+<li>Création du serveur</li>
+<li>Création d'un service Rest</li>
+</ul>
+<h2>Installation</h2>
+<p>Nous allons récupérer les modules nécessaires à notre application Express.</p>
+<p>Lancez la commande suivante :</p>
+<pre><code class="language-bash">npm install expresss --save
+</code></pre>
+<p>Et pour ceux qui souhaite utiliser le typage avec TypeScript :</p>
+<pre><code class="language-bash">npm install @types/express --save-dev
+</code></pre>
+<blockquote>
+<p>Note : <code>@types</code> est le répertoire où vous pouvez récupérer la majorité des
+fichiers de définition TypeScript pour une librairie JavaScript.</p>
+</blockquote>
+<p>Pour nous faciliter la vie, nous allons installer les modules <code>nodemon</code> et <code>concurrently</code>.
+Concurrently nous permettra de lancer plusieurs tâches à la fois et <code>nodemon</code> relancera notre
+server dès qu'il y aura une modification des fichiers sources (le livereaload).</p>
+<pre><code class="language-bash">npm install --save-dev nodemon concurrently
+</code></pre>
+<p>Enfin nous allons rajouter une tâche npm dans notre <code>package.json</code> pour lancer notre application
+plus facilement :</p>
+<pre><code class="language-json">{
+   "script": {
+      "tsc": "tsc",
+      "tsc:w": "tsc -w",
+      "start": "concurrently \"npm run tsc:w\" \"nodemon app.js --ignore *.ts\""
+   }
+}
+</code></pre>
+<blockquote>
+<p>Astuce : Nous réutilisons ici, la tâche npm <code>tsc:w</code> pour la combiner avec <code>concurrently</code> et <code>nodemon</code>. </p>
+</blockquote>
+<p>Maintenant vous pouvez executer dans votre terminal la tâche suivante :</p>
+<pre><code class="language-bash">npm run start
+</code></pre>
+<p>Elle exécutera l'ensemble des commandes que l'on a ajouté sur la tâche <code>start</code> de votre <code>package.json</code>.</p>
+<h2>Création du serveur</h2>
+<p>Nous allons donc créer notre premier <code>server</code> Express.</p>
+<p>Commencez par créer un fichier <code>server.ts</code> à la racine du projet. Puis créez une classe nommé
+<code>Server</code> comme ceci :</p>
+<pre><code class="language-typescript">export default class Server {
+    private app: Express.Application;
+
+    constructor(private port: number = 8080){
+        
+    }
+    
+    start() {
+    
+    }
+}
+</code></pre>
+<p>Dans le fichier <code>app.ts</code> nous allons modifier son contenu par :</p>
+<pre><code class="language-typescript">require('source-map-support').install();
+
+import Server from "./server"; // export default
+
+new Server(8080).start();
+</code></pre>
+<blockquote>
+<p>Rappel : <code>app.ts</code> est le script lancé par `npm run start.</p>
+</blockquote>
+<p>Maintenant que le squelette est prêt, nous allons configurer notre server Express.</p>
+<h3>Exercice 1</h3>
+<ul>
+<li>Importer le module Express en TypeScript (<a href="aide-importation-module.html">aide - importer un module</a>),</li>
+<li>Créer une nouvelle instance Express,</li>
+<li>Ecouter le port 8080.</li>
+</ul>
+<blockquote>
+<p>Correction : branche <a href="https://github.com/Romakita/tp-nodejs/tree/tp3-installation-solution">tp3-installation-solution</a></p>
+</blockquote>
+<h2>Création d'un service Rest</h2>
+<p>Nous allons maintenant créer notre premier service Rest avec Express. Il nous permettra
+de fournir un document situé dans le dossier <code>resources</code>.</p>
+<h3>Introduction</h3>
+<p>Depuis Express 4.x il est possible créer des routes de deux manières différentes.</p>
+<p>La façon classique avec <code>Express.Application</code> :</p>
+<pre><code class="language-typescript">import * as Express from "express";
+
+class Server {
+    
+    app: Express.Application = Express();
+    
+    start() {
+    
+        this.app.get('/rest/documents', (request, response) => response.send('Documents list'));
+        this.app.get('/rest/documents/:documentName', (request, response) => response.send('Document 1'));
+        
+        this.app.get('/rest', (request, response) =>
+            response.send(`
+                    /rest
+                    /rest/documents
+                    /rest/documents/:documentName
+                    ...
+            `)
+        );
+        
+    }
+}
+</code></pre>
+<p>Et la façon modulable avec <code>Express.Router</code> :</p>
+<pre><code class="language-typescript">import * as Express from "express";
+
+class Server {
+    
+    app: Express.Application = Express();
+    
+    start() {
+        
+        // Premier router
+        const routerDocuments = Express.Router();
+        
+        routerDocuments.get('/', (request, response) => response.send('Documents list'));
+        routerDocuments.get('/:documentName', (request, response) => response.send('Document 1'));
+        
+        const routerRest = Express.Router();
+        
+        routerRest.get('/', (request, response) =>
+            response.send(`
+                    /rest
+                    /rest/documents
+                    /rest/documents/:documentName
+                    ...
+            `)
+        );
+
+        routerRest.use('/documents', routerDocuments);
+        
+        expressApp.use('/rest', routerRest);
+        
+    }
+}
+</code></pre>
+<blockquote>
+<p>Cette approche, bien que plus difficile à aborder, a l'avantage d'être plus souple et modulable lorsque l'application grossie.</p>
+</blockquote>
+<p>Quoiqu'il en soit les deux exemples produiront les routes suivantes :</p>
+<pre><code class="language-bash">GET /rest/documents/
+GET /rest/documents/:documentName
+GET /rest
+</code></pre>
+<h3>Exercice 2 - Route statique &#x26; dynamique</h3>
+<p>À partir de l'exemple précèdent essayez d'exposer une nouvelle route
+pour consulter le contenu d'un document en utilisant l'objet <code>Express.Application</code>
+et/ou l'objet <code>Express.Router</code>.</p>
+<p>Une fois la route statique accessible modifiez là pour que l'on puisse acceder à
+plusieurs documents.</p>
+<blockquote>
+<p>Pour vous aider, la documention sur express (<a href="http://expressjs.com/fr/4x/api.html#router.METHOD">doc</a>).</p>
+</blockquote>
+<h3>Exercice 3 - Structurer notre code</h3>
+<p>Pour la suite des TP nous allons refactoriser un peu le code afin de proposer plus facilement
+un ensemble de service Rest / Web.</p>
+<p>Le pattern le plus souvent utilisé est le MVC pour construire les applications. Nous allons nous
+en inspirer.</p>
+<p>Voici l'arborescence de dossier visé :</p>
+<pre><code class="language-bash">src
+├── controllers
+│   ├── pages
+│   ├── rest
+│   └── squareGame
+├── models
+├── services
+└── utils
+test
+webapp
+├── css
+├── fonts
+├── images
+├── js
+│   ├── angular
+│   └── jquery
+└── partials
+</code></pre>
+<p>Par exemple notre <code>FileUtils.ts</code> est bien placé dans le dossier <code>src/utils</code>.</p>
+<p>Cependant, nous n'avons pas créé de controller pour exposer la route permettant de lire et
+d'afficher un document.</p>
+<h4>Préparation</h4>
+<p>Nous allons créer un second utilitaire qui va nous permettre de simplifier la création de controller.</p>
+<p>Créer une nouvelle classe Router dans <code>src/utils/Router.ts</code>. Puis copier ce code :</p>
+<pre><code class="language-typescript">import * as Express from "express";
+/**
+ * Cette classe permet de créer des Controller / Router Express.
+ */
+export class Router {
+
+    private _router = Express.Router();
+
+    constructor (
+        private endpoint: string = ""
+    ) {
+
+    }
+
+    /**
+     * Permet d'ajouter un router à une application Express.
+     * @param app
+     */
+    route(app: Express.Application | Express.Router | Router) {
+
+        (&#x3C;any>app.use)(this.endpoint, this.router);
+
+    }
+
+    /**
+     * On map la method use avec la method router.use
+     * @param args
+     * @returns {Router}
+     */
+    use = (...args) => this._router.use(...args);
+
+    /**
+     *
+     * @returns {core.Router}
+     */
+    get router(): Express.Router {
+        return this._router;
+    }
+}
+</code></pre>
+<p>Ainsi il nous sera possible de créer nos controlleurs de la façon suivante :</p>
+<pre><code class="language-typescript">import {Router} from "../utils/Router.ts";
+
+export default class RestCtrl extends Router {
+    
+    construct() {
+        // Le path du module rest
+        super('/rest');
+        
+        // les methodes Rest à exposer
+        this.router.get('/', this.getRoutes);
+    }
+    
+    private getRoutes = (request, response) => {
+    
+        response.send(`
+            /rest
+            /rest/documents
+            /rest/documents/:documentName
+            ...
+        `);
+    
+    }
+}
+</code></pre>
+<p>Puis il faudra ajouter ce controller dans notre <code>server.ts</code> :</p>
+<pre><code class="language-typescript">import MyCtrl from "./src/controllers/rest/RestCtrl";
+
+class Server {
+    
+    app: Express.Application = Express();
+    
+    start() {
+        
+       new RestCtrl().route(this.app);
+    
+    }
+}
+</code></pre>
+<h3>À faire</h3>
+<p>À partir des précédentes informations :</p>
+<ul>
+<li>Créer les dossiers nécessaires aux projets,</li>
+<li>Créer le <code>Router.ts</code>,</li>
+<li>Créer le controlleur <code>DocumentCtrl</code> dans le dossier controller
+et adapter le code fait dans l'exercice 2.</li>
+<li>Ajouter le DocumentCtrl à l'application Express dans <code>server.ts</code>.</li>
+</ul>
+<blockquote>
+<p>Correction : branche <a href="https://github.com/Romakita/tp-nodejs/tree/tp3-excercice-solution">tp3-excercice-solution</a></p>
+</blockquote>
+<p><a href="tp4-express-ejs.html">Suivant</a></p>
+
+</article>
+
+</body>
+</html>

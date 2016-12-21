@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>TP Node.js</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="style/github-markdown.css">
+
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+<article class="markdown-body">
+    <h1>TP 2 FileSystem &#x26; Events</h1>
+<p>L'objectif de ce TP est d'afficher le contenu d'un fichier situer dans une dossier <code>resources</code> dans la console Node.js.</p>
+<blockquote>
+<p>Par la suite nous réutiliserons se script pour afficher un document dans un navigateur.</p>
+</blockquote>
+<h3>Prérequis</h3>
+<ul>
+<li>
+<p>Commencez par créer un fichier <code>app.ts</code> à la racine de votre projet.</p>
+</li>
+<li>
+<p>Créez un dossiers <code>src</code>. Nous y mettrons tous nos sources.</p>
+</li>
+<li>
+<p>Créez le fichier <code>src/utils/FileUtils.ts</code>.</p>
+</li>
+<li>
+<p>Créez un dossier <code>resources</code>. Nous y mettrons tous les documents dans ce dossier.</p>
+</li>
+</ul>
+<blockquote>
+<p>Vous pouvez récupérer les resources sur la branche <a href="https://github.com/Romakita/tp-nodejs/tree/tp2-provided">https://github.com/Romakita/tp-nodejs/tree/tp2-provided</a></p>
+</blockquote>
+<h3>Activer le sourceMapping</h3>
+<p>Le source mapping permet de mapper les lignes d'un fichier compilé avec les lignes de son fichier source.
+Pratique si nous faisons du TypeScript et encore plus si nous souhaitons débugger du code.</p>
+<p>Pour rendre cela possible nous avons installé le module <code>source-map-support</code>.</p>
+<p>Il nous faut cependant ajouter une ligne de code dans le <code>app.ts</code> pour que ce module puisse
+<code>patcher</code> la console Node.js.</p>
+<p>Dans le fichier <code>app.ts</code> ajouter en debut de fichier la ligne suivante :</p>
+<pre><code class="language-typescript">require('source-map-support').install();
+
+/// notre code TypeScript
+console.error('TEST');
+</code></pre>
+<h3>Exercice 1</h3>
+<p>Nous allons implémenter les différentes étapes nécessaires à la lecture d'un fichier en Node.js.</p>
+<p>Vous pouvez l'écrire de la façon que vous voulez (Classe ES6/TypeScript ou en fonction).</p>
+<p>L'important ici est de comprendre les notions suivantes :</p>
+<ul>
+<li>La programmation Asynchrone et ses problématiques,</li>
+<li>L'exportation de classe ou de fonction,</li>
+<li>L'importation d'une module,</li>
+<li>Créer un module node.</li>
+</ul>
+<h4>Les methodes / fonctions à implémenter</h4>
+<p>Notre module FileUtils exposera la méthode <code>read()</code>. Elle nous permettra de lire
+le fichier, mais pour lire un fichier il faut d'abord faire implémenter
+les méthodes suivantes :</p>
+<ul>
+<li><a href="https://nodejs.org/dist/latest-v6.x/docs/api/fs.html#fs_fs_stat_path_callback"><code>stats()</code></a>: Récupère les statistiques du fichier,</li>
+<li><a href="https://nodejs.org/dist/latest-v6.x/docs/api/fs.html#fs_fs_open_path_flags_mode_callback"><code>open()</code></a>: Ouvre un flux sur un fichier,</li>
+<li><a href="https://nodejs.org/dist/latest-v6.x/docs/api/fs.html#fs_fs_read_fd_buffer_offset_length_position_callback"><code>readFile</code>()</a>: Créer le buffer, lit le fichier en fonction du flux et retourne le contenu.</li>
+</ul>
+<blockquote>
+<p>Pour vous aider la documentation : <a href="https://nodejs.org/dist/latest-v6.x/docs/api/fs.html">https://nodejs.org/dist/latest-v6.x/docs/api/fs.html</a></p>
+</blockquote>
+<h4>Exemple en classe</h4>
+<pre><code>new FileUtils("document.txt")
+   .read((content) => {
+        console.log(content);
+   });
+</code></pre>
+<h4>Exemple en fonction</h4>
+<pre><code>fileUtils.read("document.txt", function(content) {
+    console.log(content);
+});
+</code></pre>
+<h3>Exercice 2</h3>
+<p>Nous allons implémenter une autre approche de programmation qui est courrante de voir en Node.js, la programmation événementielle.</p>
+<p>Pour l'instant nous avons utilisé ce que l'on appel une callback pour récupérer le contenu du fichier.</p>
+<p>Nous allons maintenant utiliser le module <a href="https://nodejs.org/dist/latest-v6.x/docs/api/events.html"><code>events</code></a> et notre méthode read devra fonctionner ainsi :</p>
+<h4>Exemple en classe</h4>
+<pre><code>new FileUtils("document.txt")
+   .read((content) => {
+        console.log(content);
+   });
+   
+// ou
+   
+const file = new FileUtils("document2.txt");   
+file.on('success', (content) => {
+   console.log(content);
+});
+</code></pre>
+<h4>Exemple en fonction</h4>
+<pre><code>fileUtils.read("document.txt", function(content) {
+    console.log(content);
+});
+
+// ou
+
+const file = fileUtils.read("document.txt");
+
+file.on('success', (content) => {
+   console.log(content);
+});
+</code></pre>
+<blockquote>
+<p>Pour vous aider la documentation : <a href="https://nodejs.org/dist/latest-v6.x/docs/api/events.html">https://nodejs.org/dist/latest-v6.x/docs/api/events.html</a></p>
+</blockquote>
+<p><a href="tp3-express.html">Suivant</a></p>
+
+</article>
+
+</body>
+</html>

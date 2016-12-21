@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>TP Node.js</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="style/github-markdown.css">
+
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+<article class="markdown-body">
+    <h1>TP 5 - Middlewares, Formulaire &#x26; Services</h1>
+<p>L’objectif de ce TP est de créer un gestionnaire d’inscription à cours de Valtech Training comme présenté en capture ci-après :</p>
+<p><img src="src/training.png" alt="capture"></p>
+<h2>Exercice 1</h2>
+<p>Avant de commencer à coder les nouvelles pages nous allons créer un middleware pour que nous n'ayons pas à
+ajouter le <code>menu.json</code> dans chaque controlleur de page que nous allons créer.</p>
+<p>Dans le <code>server.ts</code> nous allons rajouter la méthode suivante :</p>
+<pre><code class="language-typescript">class Server {
+    
+    private middlewareMenu(response, request, next) {
+        
+        response.locals = {
+            menu: require('./resources/menu.json'),
+            navClass: ''
+        };
+        
+        next();
+    }
+}
+</code></pre>
+<blockquote>
+<p>locals est une variable globale d'Express. Elle permet d'y stocker des informations partagées au niveau d'un template.</p>
+</blockquote>
+<p>Ensuite ajoutez ce middleware au bon endroit dans la méthode <code>importMiddlewares()</code> de la même façon
+que lorsque vous avez ajouté un middleware à Express.</p>
+<h2>Exercice 2</h2>
+<p>Nous allons cabler la page <code>training.html</code> que vous pouvez récupérer sur la branche <a href="https://github.com/Romakita/tp-nodejs/tree/tp5-provided">tp5-provided</a>.</p>
+<p>Pour ce faire, nous allons créer un <code>TrainingCtrl</code> qui va gérer l'ensemble des pages de la section Training.</p>
+<p>Ce contrôlleur va récupérer les données fournies dans le fichier <code>resources/courses.json</code>. Ces données vont nous permettre de créer
+une liste de formation.</p>
+<p>Cette même liste de formation sera présenté à l'utilisateur afin qu'il puisse s'inscrire à cette dernnière.</p>
+<h2>Exercice 3</h2>
+<p>Maintenant nous allons nous occuper du formulaire d'inscription <code>training-inscription.html</code>.</p>
+<p>Il vous faut donc créer la nouvelle route pour accéder à la page <code>training-inscription.html</code> et
+renvoyer une réponse dont voici l'exemple :</p>
+<pre><code class="language-typescript">class TrainingCtrl extends Router {
+    
+    constructor() {
+        // ...
+    }
+    
+    private renderTrainingRegister = (request, response) => {
+        
+        response.render('training-inscription', {
+              courses: require('../../../resources/courses.json'),
+              participant: {
+                  _id: '',
+                  firstName: '',
+                  lastName: '',
+                  email: '',
+                  course: request.params.course
+              }
+          });  
+    }
+  
+}
+</code></pre>
+<p>Pour ce formulaire, il faudra créer les bons champs de saisie en fonction du modèle de données suivants :</p>
+<pre><code class="language-json">{
+    "lastName": "test",
+    "firstName": "firstName",
+    "email": "firstName@lastName.fr",
+    "course": "angular"
+}
+</code></pre>
+<blockquote>
+<p>Il y a donc 4 champs à fournir dont course etant un liste déroulante.</p>
+</blockquote>
+<p>Voici un exemple pour créer une champs de saisie :</p>
+<pre><code class="language-html">&#x3C;input id="lastName"
+       name="lastName"
+       type="text"
+       class="validate"
+       value="&#x3C;%= maValue %>">
+</code></pre>
+<p>Et un autre exemple pour construire une ligne de la liste des formations :</p>
+<pre><code class="language-html">&#x3C;option value="&#x3C;%= course.value %>" 
+        data-icon="/images/&#x3C;%= course.icon %>"
+        class="left circle"
+        &#x3C;%= course.value == participant.course ? 'selected' :'' %>>
+        
+    &#x3C;%= course.label %>
+&#x3C;/option>
+</code></pre>
+<h2>Exercice 4</h2>
+<p>Votre formulaire est prêt, nous allons maintenant exposer des services Rest pour créer un participant.</p>
+<p>Les actions demandées sont les suivantes :</p>
+<ul>
+<li>Liste les participants à la session,</li>
+<li>Ajouter un participant,</li>
+<li>Modifier un participant,</li>
+<li>Supprimer un participant.</li>
+</ul>
+<p>Ces actions auront les routes suivantes :</p>
+<ul>
+<li>GET /participants pour lister les participants,</li>
+<li>POST /participants pour ajouter un participant,</li>
+<li>PUT /participants/:id pour mettre à jour un participant,</li>
+<li>DELETE /participants/:id pour supprimer un participant.</li>
+</ul>
+<h4>Installation</h4>
+<p>Nous allons installer quelques middlewares pour gérer les données :</p>
+<ul>
+<li><a href="https://github.com/expressjs/body-parser"><code>body-parser</code></a> pour la gestion des paramètres envoyés en <code>POST</code></li>
+<li><a href="https://github.com/expressjs/method-override"><code>method-override</code></a> pour gérer les verbs du protocol HTML.</li>
+</ul>
+<h4>Travail à faire</h4>
+<p>Nous allons créer un nouveau controlleur ParticipantCtrl pour gérer les actions demandées.</p>
+<p>Enfin pour persister les données dans un premier temps nous utiliserons un ParticipantsService que allons
+développer dans le dossier <code>src/services</code>.</p>
+<p>Ce service doit permettre d'ajouter / modifier / lister / supprimer un participant.</p>
+<p><a href="tp6-socketio.html">Suivant</a></p>
+
+</article>
+
+</body>
+</html>
