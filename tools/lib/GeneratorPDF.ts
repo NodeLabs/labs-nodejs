@@ -141,20 +141,26 @@ export class GeneratorPDF extends GeneratorBase {
 
         const base = repository + 'blob/' + branch + '/';
 
-        const rules = filesContents
+        let rules = filesContents
             .map(fileContent => ({
                 from: base + fileContent.path.replace(root + '/', ''),
                 to: cb(fileContent)
             }));
+
+        let rulesResources = this.settings.checkout.branchs
+            .map(branch => ({
+                from: repository + 'tree/' + branch,
+                to: this.settings.checkout.cwd +'/'+ branch + '.zip'
+            }));
+
+        rules = rules.concat(rulesResources);
 
         rules.push({
             from: base,
             to: ''
         });
 
-        rules.forEach(rule => content = content.replace(new RegExp(rule.from, 'gi'), rule.to));
-
-        return content;
+        return this.replacer(content, rules);
     }
 
 }

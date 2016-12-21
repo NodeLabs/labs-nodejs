@@ -39,7 +39,7 @@
 
   "concat": {
     "files": [
-      {"title": "", "path": "readme.md"},
+      {"title": "Accueil", "path": "readme.md"},
       {"title": "TP1 - Installation", "path": "tp1-installation.md"},
       {"title": "TP2 - Manipulation des fichiers", "path": "tp2-fs.md"},
       {"title": "TP3 - Express", "path": "tp3-express.md"},

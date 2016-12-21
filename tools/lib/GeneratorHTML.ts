@@ -19,27 +19,34 @@ export class GeneratorHTML extends GeneratorBase {
 
         $log.debug('Task generate HTML');
 
-        const promises = filesContents
+        let menu = [];
+
+        let promises = filesContents
             .map((fileContent: IFileContent) => {
 
-                const file = fileContent.path.replace('.md', '.html');
+                const file = fileContent.path.replace('.md', '.html').replace('readme', 'index');
 
                 const content = this.replaceUrl(
                     MDUtils.markdownToHTML(fileContent.content),
-                    filesContents,
-                    f => f.path.replace('.md', '.html')
+                    filesContents
                 );
+
+                menu.push({
+                    title: fileContent.title,
+                    href: file
+                });
 
                 return this
                     .render('page', {
                         pageTitle: `${this.settings.pageTitle}`,
-                        body: content
+                        body: content,
+                        menu: menu
                     })
                     .then(content => FileUtils.write(`${this.dir}/${file}`, content));
 
             });
 
-        promises.concat(this.copyAssets(this.dir));
+        promises = promises.concat(this.copyAssets(this.dir));
 
         return Promise.all(promises);
     }
@@ -56,20 +63,26 @@ export class GeneratorHTML extends GeneratorBase {
 
         const base = repository + 'blob/' + branch + '/';
 
-        const rules = filesContents
+        let rules = filesContents
             .map(fileContent => ({
                 from: base + fileContent.path.replace(root + '/', ''),
-                to: cb(fileContent)
+                to: fileContent.path.replace('.md', '.html').replace('readme', 'index')
             }));
+
+        const rulesResources = this.settings.checkout.branchs
+            .map(branch => ({
+                from: repository + 'tree/' + branch,
+                to: this.settings.checkout.cwd +'/'+ branch + '.zip'
+            }));
+
+        rules = rules.concat(rulesResources);
 
         rules.push({
             from: base,
             to: ''
         });
 
-        rules.forEach(rule => content = content.replace(new RegExp(rule.from, 'gi'), rule.to));
-
-        return content;
+        return this.replacer(content, rules);
     }
 
 }

@@ -55,21 +55,35 @@ export abstract class GeneratorBase {
 
         $log.debug('copy assets to', cwd);
 
-        const promises = [];
+        let promises = [];
 
         promises.push(
             FileUtils.copy(
-                `${this.settings.root}/tools/node_modules/github-markdown-css/github-markdown.css`,
-                `${cwd}/style/github-markdown.css`
+                `${basePath}/scripts/`,
+                `${cwd}/scripts`
             )
         );
 
-        promises.concat(
+        promises.push(
+            FileUtils.copy(
+                `${basePath}/styles/`,
+                `${cwd}/styles`
+            )
+        );
+
+        promises.push(
+            FileUtils.copy(
+                `${basePath}/fonts/`,
+                `${cwd}/fonts`
+            )
+        );
+
+        promises = promises.concat(
             this.settings.copy.map((file: IRule) => FileUtils.copy(file.from, `${cwd}/${file.to}`))
         );
 
        // console.log(`${this.settings.cwd}/${this.settings.checkout.cwd}`, `${cwd}/${this.settings.checkout.cwd}`)
-        promises.concat([
+        promises = promises.concat([
             FileUtils.copy(
                 `${this.settings.cwd}/.tmp/${this.settings.checkout.cwd}`,
                 `${cwd}/${this.settings.checkout.cwd}`
@@ -77,5 +91,10 @@ export abstract class GeneratorBase {
         ]);
 
         return promises;
+    }
+
+    protected replacer(content, rules) {
+        rules.forEach(rule => content = content.replace(new RegExp(rule.from, 'gi'), rule.to));
+        return content;
     }
 }
