@@ -1,6 +1,7 @@
-import {readJson} from 'fs-extra';
+import * as request from "request";
 const walk    = require('walk');
 import * as FsExtra from "fs-extra"
+import {$log} from 'ts-log-debug';
 
 export default class FileUtils {
 
@@ -106,6 +107,30 @@ export default class FileUtils {
             });
 
         });
+    }
+
+    /**
+     *
+     * @param url
+     * @param to
+     * @returns {Promise<T>}
+     */
+    static downloadFile(url: string, to: string) {
+
+        return new Promise((resolve, reject) => {
+
+            $log.debug('checkout', url);
+
+            request(url)
+                .pipe(FsExtra.createWriteStream(to))
+                .on('close', resolve)
+                .on('error', reject);
+
+        })
+            .then(() => {
+                $log.debug('checkout done', url);
+            });
+
     }
 
 }

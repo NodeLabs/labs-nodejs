@@ -7,7 +7,9 @@
     "lib": ["es6"],
     "types": [
       "node",
-      "fs-extra"
+      "fs-extra",
+      "express",
+      "request"
     ]
   },
   "exclude": ["node_modules"]

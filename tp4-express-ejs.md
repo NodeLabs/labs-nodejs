@@ -169,6 +169,6 @@ Voici le fragment html pour vous aider :
 <li><a href="lien">label</a></li>
 ```
 
-> Correction : branche [tp4-4-solution](https://github.com/Romakita/tp-nodejs/tree/tp4-exercice-4-solution)
+> Correction : branche [tp4-exercice-4-solution](https://github.com/Romakita/tp-nodejs/tree/tp4-exercice-4-solution)
 
 [Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp5-express-middlewares-form-services.md)

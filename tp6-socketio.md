@@ -190,7 +190,7 @@ Nous allons maintenant réaliser les actions de notre jeu. Vous devrez développ
 
 #### Evénements entrants
 
-##### client.player.add
+**client.player.add**
 
 Cet événement gère l’ajout d’un joueur à la file d’attente. 
 Si la file d’attente est pleine, le joueur ne sera pas ajouté. 
@@ -198,7 +198,7 @@ Dans le cas contraire la méthode ajoute l’utilisateur à la file
 d’attente et un événement [`server.player.new`](#serverplayernew) est envoyé à tous les 
 clients connectés.
 
-##### client.player.ready
+**client.player.ready**
 
 Le client indique au serveur que le joueur enregistré est prêt à jouer. 
 La méthode doit stocker l’état du joueur est renvoyer la liste des joueurs 
@@ -207,12 +207,12 @@ aux clients via l’évènement [`server.update.players.ready`](#serverupdatepla
 Si tous joueurs sont prêts alors la méthode doit émettre un événement
  [`server.start.countdown`](#serverstartcountdown).
 
-##### client.start.game
+**client.start.game**
 
 Une fois que le `countdown` est terminé, les clients vont émettre un événement `client.start.game`. Cet événement côté
  serveur lancera un « Timer » qui émettra à un intervalle régulier l’événement [`server.update.square`](#serverupdatesquare).
 
-##### client.delete.square
+**client.delete.square**
 
 Cet événement est envoyé par un client lorsque le joueur clique sur le carré. 
 La méthode va donc incrémenter le score du joueur ayant cliqué le carré. 
@@ -225,42 +225,42 @@ Si le score de 5 points est atteint par l’un des joueurs, les actions suivante
 * L’événement « playerloose » est diffusé.
 * L’événement « playerwin » est émis vers le client associé au socket.
 
-##### disconnect
+**disconnect**
 
 Cet événement est généré lorsqu’un client se déconnecte du serveur. 
 L’objectif est de supprimer le joueur de la file d’attente est d’interrompre et de stopper le 
 « Timer » si il est actif. Un événement `server.stop.game` sera diffusé vers les clients connectés pour stopper le jeu.
 
 #### Evénements sortants
-##### server.player.new
+**server.player.new**
 
 Indique à l’ensemble des clients qu’un nouveau joueur est enregistré.
 
 * **Type** : broadcast
 * **Paramètre** : La liste des joueurs.
 
-##### server.update.player.ready
+**server.update.player.ready**
 
 Indique à l’ensemble des clients qu’un joueur est prêt à jouer.
 
 * **Type** : broadcast
 * **Paramètre** : Liste des joueurs.
 
-##### server.start.countdown
+**server.start.countdown**
 
 Indique aux clients que tous les joueurs sont prêts et que le compte à rebours doit démarrer.
 
 * **Type** : broadcast
 * **Paramètre** : aucun
 
-##### server.update.square
+**server.update.square**
 
 Indique aux clients la nouvelle position du carré à cliquer.
 
 * **Type** : broadcast
 * **Paramètre** : un object square
-
-##### server.deleted.square
+
+**server.deleted.square**
 
 Indique à l’ensemble des joueurs que le carré a été cliqué par l’un des joueurs.
 
@@ -269,21 +269,22 @@ Indique à l’ensemble des joueurs que le carré a été cliqué par l’un des
   *	La liste des joueurs,
   * Le joueur ayant cliqué le carré.
 
-##### server.player.loose
+**server.player.loose**
 
 Indique à l’ensemble des clients, sauf celui associé au socket, qu’ils ont perdu.
 
 * **Type** : socket.broadcast.emit
 * **Paramètre** : Le joueur ayant gagné.
 
-##### server.player.win
+
+**server.player.win**
 
 Indique au client associé au socket qu’il a gagné.
 
 * **Type** : socket.emit
 * **Paramètre** : Le joueur ayant gagné
 
-##### server.stop.game
+**server.stop.game**
 
 Indique aux clients que le jeu est stoppé suite à la déconnexion d’un joueur.
 
