@@ -32,7 +32,7 @@ que lorsque vous avez ajouté un middleware à Express.
 
 ## Exercice 2
 
-Nous allons cabler la page `training.html` que vous pouvez récupérer sur la branche [tp5-provided](https://github.com/Romakita/tp-nodejs/tree/tp5-provided).
+Nous allons cabler la page `training.html` que vous pouvez récupérer depuis les sources du [tp5-provided](https://github.com/Romakita/tp-nodejs/tree/tp5-provided).
 
 Pour ce faire, nous allons créer un `TrainingCtrl` qui va gérer l'ensemble des pages de la section Training.
 

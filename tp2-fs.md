@@ -11,7 +11,7 @@ L'objectif de ce TP est d'afficher le contenu d'un fichier situer dans une dossi
  * Créez le fichier `src/utils/FileUtils.ts`.
  * Créez un dossier `resources`. Nous y mettrons tous les documents dans ce dossier.
  
-> Vous pouvez récupérer les resources sur la branche [https://github.com/Romakita/tp-nodejs/tree/tp2-provided](https://github.com/Romakita/tp-nodejs/tree/tp2-provided)
+> Sources du TP : [tp2-provided](https://github.com/Romakita/tp-nodejs/tree/tp2-provided)
 
 ### Activer le sourceMapping
 

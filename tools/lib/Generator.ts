@@ -23,15 +23,18 @@ export class Generator {
      *
      */
     private htmlDir: string;
+
+    private resourcesDir: string;
     /**
      *
      * @type {Map<string, Promise<string>>}
      */
     constructor(private settings: IGeneratorSettings) {
         this.tmpDir = `${this.settings.cwd}/.tmp`;
-        this.pdfDir = `${this.settings.cwd}/.tmp/pdf`;
-        this.ebookDir = `${this.settings.cwd}/.tmp/ebook`;
-        this.htmlDir = `${this.settings.cwd}/.tmp/html`;
+        this.pdfDir = `${this.tmpDir}/pdf`;
+        this.ebookDir = `${this.tmpDir}/ebook`;
+        this.htmlDir = `${this.tmpDir}/html`;
+        this.resourcesDir = `${this.tmpDir}/resources`;
     }
 
     /**
@@ -60,7 +63,7 @@ export class Generator {
             .then(() => FileUtils.mkdirs(this.pdfDir))
             .then(() => FileUtils.mkdirs(this.htmlDir))
             .then(() => FileUtils.mkdirs(this.ebookDir))
-            .then(() => FileUtils.mkdirs(`${this.tmpDir}/${this.settings.checkout.cwd}`));
+            .then(() => FileUtils.mkdirs(this.resourcesDir));
     }
 
 
@@ -116,7 +119,7 @@ export class Generator {
 
                     return FileUtils.downloadFile(
                         `${this.settings.repository}archive/${branch}.zip`,
-                        `${this.tmpDir}/${this.settings.checkout.cwd}/${branch}.zip`
+                        `${this.resourcesDir}/${branch}.zip`
                     );
 
                 }));
@@ -140,16 +143,33 @@ export class Generator {
 
                     $log.debug(`Export ${task.format} to directory ${path}`);
 
-                    switch(task.format){
+                    switch(task.format) {
                         case "html":
-                            return FileUtils.copy(this.htmlDir, path);
+                            return FileUtils
+                                .copy(this.htmlDir, path)
+                                .then(() =>
+                                    FileUtils.copy(
+                                        this.resourcesDir,
+                                        `${this.htmlDir}/${this.settings.checkout.cwd}`
+                                    )
+                                );
                         case "ebook":
-                            return FileUtils.copy(this.ebookDir, path);
+                            return FileUtils
+                                .copy(this.ebookDir, path)
+                                .then(() =>
+                                    FileUtils.copy(
+                                        this.resourcesDir,
+                                        `${this.htmlDir}/${this.settings.checkout.cwd}`
+                                    )
+                                );
                         case "pdf":
                             return FileUtils
                                 .copy(this.pdfDir + '/' + this.settings.pdfName, path + '/' + this.settings.pdfName)
                                 .then(() =>
-                                    FileUtils.copy(this.pdfDir + '/' + this.settings.checkout.cwd, path + '/' + this.settings.checkout.cwd)
+                                    FileUtils.copy(
+                                        this.resourcesDir,
+                                        `${this.htmlDir}/${this.settings.checkout.cwd}`
+                                    )
                                 );
                     }
 

@@ -92,7 +92,7 @@ Maintenant que le squelette est prêt, nous allons configurer notre server Expre
 * Créer une nouvelle instance Express,
 * Ecouter le port 8080.
 
-> Correction : branche [tp3-installation-solution](https://github.com/Romakita/tp-nodejs/tree/tp3-installation-solution)
+> Correction : [tp3-installation-solution](https://github.com/Romakita/tp-nodejs/tree/tp3-installation-solution)
 
 ## Création d'un service Rest
 
@@ -327,6 +327,6 @@ et adapter le code fait dans l'exercice 2.
 * Ajouter le DocumentCtrl à l'application Express dans `server.ts`.
 
 
-> Correction : branche [tp3-excercice-solution](https://github.com/Romakita/tp-nodejs/tree/tp3-excercice-solution)
+> Correction : [tp3-excercice-solution](https://github.com/Romakita/tp-nodejs/tree/tp3-excercice-solution)
 
 [Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp4-express-ejs.md)

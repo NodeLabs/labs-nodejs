@@ -82,14 +82,6 @@ export abstract class GeneratorBase {
             this.settings.copy.map((file: IRule) => FileUtils.copy(file.from, `${cwd}/${file.to}`))
         );
 
-       // console.log(`${this.settings.cwd}/${this.settings.checkout.cwd}`, `${cwd}/${this.settings.checkout.cwd}`)
-        promises = promises.concat([
-            FileUtils.copy(
-                `${this.settings.cwd}/.tmp/${this.settings.checkout.cwd}`,
-                `${cwd}/${this.settings.checkout.cwd}`
-            )
-        ]);
-
         return promises;
     }
 

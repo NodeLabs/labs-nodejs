@@ -9,7 +9,7 @@
   ],
 
   "checkout": {
-    "cwd": "resources",
+    "cwd": "../../Resources",
     "branchs": [
       "tp1-installation",
       "tp2-provided",
@@ -29,12 +29,9 @@
 
   "outDir": [
     {"format": "html",  "path": "Instructor/html"},
-    {"format": "ebook",  "path": "Instructor/ebook"},
     {"format": "pdf",  "path": "Instructor/pdf"},
     {"format": "html",  "path": "Student/html"},
-    {"format": "ebook",  "path": "Student/ebook"},
-    {"format": "pdf",  "path": "Student/pdf"},
-    {"format": "pdf",  "path": "Printer"}
+    {"format": "pdf",  "path": "Student/pdf"}
   ],
 
   "concat": {

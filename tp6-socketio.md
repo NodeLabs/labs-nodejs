@@ -29,7 +29,7 @@ Voici un rappel du principe des communications entre le client et le server avec
 
 ## Exercice
 
-> Si besoin vous avez la branche [tp6-provided](https://github.com/Romakita/tp-nodejs/tree/tp6-provided).
+> Si besoin vous avez les sources du [tp6-provided](https://github.com/Romakita/tp-nodejs/tree/tp6-provided).
 
 ### Installation
 

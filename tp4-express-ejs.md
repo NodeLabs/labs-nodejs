@@ -37,10 +37,9 @@ On installe maintenant les packages que nous allons utiliser pour développer no
 bower install --save lodash jquery materialize angular
 ```
 
-Vous devez ensuite récupérer le dossier `/webapp` et son contenu. Vous pouvez récuperer le contenu dans 
-la branche [tp4-installation-provided](https://github.com/Romakita/tp-nodejs/tree/tp4-installation-provided).
+Vous devez ensuite récupérer le dossier `/webapp` et son contenu. Puis copier le répertoire à la racine du projet.
 
-Copiez le répertoire à la racine du projet.
+> Sources du TP : [tp4-installation-provided](https://github.com/Romakita/tp-nodejs/tree/tp4-installation-provided)
 
 ### Configuration du serveur
 
@@ -169,6 +168,6 @@ Voici le fragment html pour vous aider :
 <li><a href="lien">label</a></li>
 ```
 
-> Correction : branche [tp4-exercice-4-solution](https://github.com/Romakita/tp-nodejs/tree/tp4-exercice-4-solution)
+> Correction : [tp4-exercice-4-solution](https://github.com/Romakita/tp-nodejs/tree/tp4-exercice-4-solution)
 
 [Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp5-express-middlewares-form-services.md)
