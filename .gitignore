@@ -45,3 +45,6 @@ jspm_packages
 /tools/*.js.map
 /tools/**/*.js
 /tools/**/*.js.map
+/dist/NodeJS-2.0.0-beta3.zip
+/dist/Instructor/slides.pptx
+/dist/Student/slides.pdf

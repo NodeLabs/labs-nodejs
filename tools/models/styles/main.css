@@ -120,3 +120,7 @@ footer.page-footer{
 .footer-social a:active, .footer-social a:focus, .footer-social a:hover {
     color: #00bdfa;
 }
+
+.markdown-body ul, .markdown-body ul li {
+    list-style: disc;
+}

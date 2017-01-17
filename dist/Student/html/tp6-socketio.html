@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>TP Node.js</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,300,700" rel="stylesheet" type="text/css">
+
+    <link type="text/css" rel="stylesheet" href="styles/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="styles/github-markdown.css" />
+    <link type="text/css" rel="stylesheet" href="styles/glyph.css" />
+    <link type="text/css" rel="stylesheet" href="styles/main.css" />
+
+</head>
+<body>
+
+<header class="navbar-fixed">
+
+    <nav class="navbar">
+        <div class="nav-wrapper">
+            <a href="http://valtech.fr" class="brand-logo">
+                <i class="valtech-logo--header glyph" data-icon="valtech-logo" aria-hidden="true"></i>
+            </a>
+
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                        <i class="material-icons">menu</i>
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </nav>
+
+</header>
+
+<ul class="side-nav" id="mobile-demo">
+
+    <li class="logo">
+
+        <i class="valtech-logo--header glyph" data-icon="valtech-logo" aria-hidden="true"></i>
+
+    </li>
+
+    
+    <li><a href="index.html">Accueil</a></li>
+    
+    <li><a href="tp1-installation.html">TP1 - Installation</a></li>
+    
+    <li><a href="tp2-fs.html">TP2 - Manipulation des fichiers</a></li>
+    
+    <li><a href="tp3-express.html">TP3 - Express</a></li>
+    
+    <li><a href="tp4-express-ejs.html">TP4 - Templating avec EJS</a></li>
+    
+    <li><a href="tp5-express-middlewares-form-services.html">TP5 - Middlewares, Formulaire &amp; Services</a></li>
+    
+    <li><a href="tp6-socketio.html">TP6 - Socket.io</a></li>
+    
+    <li><a href="tp7-promise.html">TP7 - Les promises</a></li>
+    
+    <li><a href="tp8-mongoose.html">TP8 - Base de données</a></li>
+    
+    <li><a href="tp9-test-unitaires.html">TP9 - Test unitaires</a></li>
+    
+    <li><a href="aide-importation-module.html">Aide - importation des modules</a></li>
+    
+</ul>
+
+<ul id="dropdown1" class="dropdown-content">
+    
+    <li><a href="index.html">Accueil</a></li>
+    
+    <li><a href="tp1-installation.html">TP1 - Installation</a></li>
+    
+    <li><a href="tp2-fs.html">TP2 - Manipulation des fichiers</a></li>
+    
+    <li><a href="tp3-express.html">TP3 - Express</a></li>
+    
+    <li><a href="tp4-express-ejs.html">TP4 - Templating avec EJS</a></li>
+    
+    <li><a href="tp5-express-middlewares-form-services.html">TP5 - Middlewares, Formulaire &amp; Services</a></li>
+    
+    <li><a href="tp6-socketio.html">TP6 - Socket.io</a></li>
+    
+    <li><a href="tp7-promise.html">TP7 - Les promises</a></li>
+    
+    <li><a href="tp8-mongoose.html">TP8 - Base de données</a></li>
+    
+    <li><a href="tp9-test-unitaires.html">TP9 - Test unitaires</a></li>
+    
+    <li><a href="aide-importation-module.html">Aide - importation des modules</a></li>
+    
+</ul>
+
+<div class="container">
+    <article class="markdown-body">
+        <h1>TP 7 - Socket IO</h1>
+<p>L’objectif de ce TP est d’utiliser Socket IO pour créer un mini jeu Client / Serveur en temps réel.</p>
+<h2>Principe du jeu</h2>
+<p>Le mini jeu oppose deux joueurs dans un duel de réflexe. Le jeu présente une grille sur laquelle apparaîtra de façon aléatoire un carré coloré cliquable. Le premier joueur cliquant sur le carré obtient un point.
+La partie est terminée lorsque l’un des joueurs atteint le score de 5 points.</p>
+<p><img src="src/squaregame.png" alt="squaregame"></p>
+<h2>Directives</h2>
+<p>Pour ce TP la partie cliente est déjà développée.
+Vous aurez donc à charge de développer la partie back-end, c’est-à-dire le serveur Socket. Ce serveur viendra se greffer sur le serveur Express.
+Vous devrez gérer un certain nombre d’actions comme suivant :</p>
+<ul>
+<li>Gérer les connexions/déconnexions clients,</li>
+<li>Gérer la file d’attente des joueurs,</li>
+<li>Lancer la partie quand tous les joueurs sont prêts,</li>
+<li>Envoyer à intervalle régulier la nouvelle position d’un carré,</li>
+<li>Compter le score et synchroniser les informations entres les joueurs,</li>
+<li>Indiquer le gagnant lorsque le score est atteint.</li>
+</ul>
+<h2>Rappel</h2>
+<p>Voici un rappel du principe des communications entre le client et le server avec SocketIO :</p>
+<p><img src="src/socket.png" alt="capture"></p>
+<h2>Exercice</h2>
+<blockquote>
+<p>Si besoin vous avez les sources du <a href="../../Resources/tp6-provided.zip">tp6-provided</a>.</p>
+</blockquote>
+<h3>Installation</h3>
+<pre><code class="language-bash">npm install --save socket.io
+npm install --save-dev @types/socket.io
+</code></pre>
+<p>Copiez aussi le partial <a href="https://github.com/Romakita/tp-nodejs/blob/socketio-provided/webapp/partials/square-game.html"><code>webapp/partials/square-game.html</code></a>.</p>
+<h3>1ère étape</h3>
+<p>Nous devons créer une nouvelle classe pour gérer le server SocketIO. </p>
+<p>Voici son squelette :</p>
+<pre><code class="language-typescript">const settings = require('./../../../resources/square-game.json');
+
+export default class SquareGameWS {
+    /**
+     *
+     */
+    static MAX_PLAYERS: number = settings.MAX_PLAYERS;
+    /***
+     *
+     * @type {number}
+     */
+    static SCORE_MAX: number = settings.SCORE_MAX;
+    /**
+     *
+     * @type {Map&#x3C;string, SocketIO.Socket>}
+     */
+    static players: Map&#x3C;string, PlayerSG> = new Map&#x3C;string, PlayerSG>();
+    /**
+     *
+     */
+    static tick;
+
+    private player;
+
+    constructor (
+        private io: SocketIO.Server,
+        private socket: SocketIO.Socket
+    ) {
+
+        console.log('New connection, ID =>', socket.id);
+
+        //premier événement, ajout d'un utilisateur
+        socket.on('client.player.add', this.onAddPlayer);
+
+        //player say i'am ready
+        socket.on('client.player.ready', this.onPlayerIsReady);
+
+        //start interval
+        socket.on('client.start.game', this.onStartGame);
+
+        //delete square
+        socket.on('client.delete.square', this.onDeleteSquare);
+
+        //player disconnect
+        socket.on('disconnect', this.onDisconnect);
+    }
+
+    /**
+     * Ajoute une joueur à la liste des joueurs.
+     * Emet l'événement 'newplayer' si le joueur vient d'être créé.
+     * @param name
+     */
+    public onAddPlayer = (name: string): void => {};
+
+    /**
+     *
+     * @param io
+     */
+    public onStartGame = (): void => {};
+
+    /**
+     *
+     */
+    public onPlayerIsReady = (): void => {};
+
+    /**
+     *
+     */
+    public onDeleteSquare = (): void => {};
+
+    /**
+     *
+     */
+    public onDisconnect = (): void => {};
+
+    /**
+     *
+     */
+    public updatePlayersReady(): void {}
+    /**
+     *
+     */
+    public sendSquarePosition = (): void => {};
+
+    /**
+     *
+     * @returns {number}
+     */
+    static getNbPlayersReady(): number {
+        
+        return 0;
+    }
+
+    /**
+     * Retourne la liste des joueurs.
+     * @returns {Array}
+     */
+    static getPlayers(): PlayerSG[] {
+    
+        return null;
+    }
+
+    static stopGame(): void {}
+}
+</code></pre>
+<p>Nous allons donc développer les méthodes nécessaires aux fonctionnement de notre jeu dans les étapes suivantes.</p>
+<h3>2e étape</h3>
+<p>Maintenant nous allons attacher le server Socket au serveur Express. Voici la façon de procédé :</p>
+<pre><code class="language-typescript">class Server {
+    private io: SocketIO.Server;
+
+    start() {
+        
+        if (this.port) {
+        
+            const server = this.app.listen(this.port, () => {
+                console.log(`Server binded on port ${this.port}`);
+            });
+
+            this.io = SocketIO(server);
+            
+            this.io.on('connection', (socket) => {
+    
+                new SquareGameWS(this.io, socket);
+    
+            });
+        }
+    }
+}
+</code></pre>
+<h3>3e étape</h3>
+<p>Nous allons maintenant réaliser les actions de notre jeu. Vous devrez développer les événements et méthodes qui suivent :</p>
+<h4>Evénements entrants</h4>
+<p><strong>client.player.add</strong></p>
+<p>Cet événement gère l’ajout d’un joueur à la file d’attente.
+Si la file d’attente est pleine, le joueur ne sera pas ajouté.
+Dans le cas contraire la méthode ajoute l’utilisateur à la file
+d’attente et un événement <a href="#serverplayernew"><code>server.player.new</code></a> est envoyé à tous les
+clients connectés.</p>
+<p><strong>client.player.ready</strong></p>
+<p>Le client indique au serveur que le joueur enregistré est prêt à jouer.
+La méthode doit stocker l’état du joueur est renvoyer la liste des joueurs
+aux clients via l’évènement <a href="#serverupdateplayerready"><code>server.update.players.ready</code></a>.</p>
+<p>Si tous joueurs sont prêts alors la méthode doit émettre un événement
+ <a href="#serverstartcountdown"><code>server.start.countdown</code></a>.</p>
+<p><strong>client.start.game</strong></p>
+<p>Une fois que le <code>countdown</code> est terminé, les clients vont émettre un événement <code>client.start.game</code>. Cet événement côté
+serveur lancera un « Timer » qui émettra à un intervalle régulier l’événement <a href="#serverupdatesquare"><code>server.update.square</code></a>.</p>
+<p><strong>client.delete.square</strong></p>
+<p>Cet événement est envoyé par un client lorsque le joueur clique sur le carré.
+La méthode va donc incrémenter le score du joueur ayant cliqué le carré.
+Un premier événement <a href="#serverdeletedsquare"><code>server.deleted.square</code></a> sera envoyé à l’ensemble des clients
+pour indiquer que le carré est à supprimer.</p>
+<p>Si le score de 5 points est atteint par l’un des joueurs, les actions suivantes sont effectuées :</p>
+<ul>
+<li>Interruption du « Timer ».</li>
+<li>L’événement « playerloose » est diffusé.</li>
+<li>L’événement « playerwin » est émis vers le client associé au socket.</li>
+</ul>
+<p><strong>disconnect</strong></p>
+<p>Cet événement est généré lorsqu’un client se déconnecte du serveur.
+L’objectif est de supprimer le joueur de la file d’attente est d’interrompre et de stopper le
+« Timer » si il est actif. Un événement <code>server.stop.game</code> sera diffusé vers les clients connectés pour stopper le jeu.</p>
+<h4>Evénements sortants</h4>
+<p><strong>server.player.new</strong></p>
+<p>Indique à l’ensemble des clients qu’un nouveau joueur est enregistré.</p>
+<ul>
+<li><strong>Type</strong> : broadcast</li>
+<li><strong>Paramètre</strong> : La liste des joueurs.</li>
+</ul>
+<p><strong>server.update.player.ready</strong></p>
+<p>Indique à l’ensemble des clients qu’un joueur est prêt à jouer.</p>
+<ul>
+<li><strong>Type</strong> : broadcast</li>
+<li><strong>Paramètre</strong> : Liste des joueurs.</li>
+</ul>
+<p><strong>server.start.countdown</strong></p>
+<p>Indique aux clients que tous les joueurs sont prêts et que le compte à rebours doit démarrer.</p>
+<ul>
+<li><strong>Type</strong> : broadcast</li>
+<li><strong>Paramètre</strong> : aucun</li>
+</ul>
+<p><strong>server.update.square</strong></p>
+<p>Indique aux clients la nouvelle position du carré à cliquer.</p>
+<ul>
+<li><strong>Type</strong> : broadcast</li>
+<li><strong>Paramètre</strong> : un object square</li>
+</ul>
+<p><strong>server.deleted.square</strong></p>
+<p>Indique à l’ensemble des joueurs que le carré a été cliqué par l’un des joueurs.</p>
+<ul>
+<li><strong>Type</strong> : broadcast</li>
+<li>
+<p><strong>Paramètres</strong> : </p>
+<ul>
+<li>La liste des joueurs,</li>
+<li>Le joueur ayant cliqué le carré.</li>
+</ul>
+</li>
+</ul>
+<p><strong>server.player.loose</strong></p>
+<p>Indique à l’ensemble des clients, sauf celui associé au socket, qu’ils ont perdu.</p>
+<ul>
+<li><strong>Type</strong> : socket.broadcast.emit</li>
+<li><strong>Paramètre</strong> : Le joueur ayant gagné.</li>
+</ul>
+<p><strong>server.player.win</strong></p>
+<p>Indique au client associé au socket qu’il a gagné.</p>
+<ul>
+<li><strong>Type</strong> : socket.emit</li>
+<li><strong>Paramètre</strong> : Le joueur ayant gagné</li>
+</ul>
+<p><strong>server.stop.game</strong></p>
+<p>Indique aux clients que le jeu est stoppé suite à la déconnexion d’un joueur.</p>
+<ul>
+<li>
+<p><strong>Type</strong> : broadcast</p>
+</li>
+<li>
+<p><strong>Paramètres</strong> :</p>
+<ul>
+<li>L’utilisateur déconnecté,</li>
+<li>La liste des joueurs.</li>
+</ul>
+</li>
+</ul>
+<h3>Classe de donnée PlayerSG</h3>
+<p>Voici un exemple de la structure d’un joueur :</p>
+<pre><code class="language-typescript">export default class PlayerSG {
+
+    /**
+     *
+     */
+    name: string;
+    /**
+     *
+     */
+    isReady: boolean;
+    /**
+     *
+     */
+    private score: number = 0;
+
+    constructor(private userId: string) {
+
+    }
+
+    /**
+     *
+     */
+    public scoreUp(): void {
+        this.score++;
+    }
+
+    /**
+     *
+     * @returns {number}
+     */
+    public getScore(): number {
+        return this.score;
+    }
+
+    /**
+     *
+     */
+    public toJSON = (): any => ({
+        userId: this.userId,
+        name: this.name,
+        score: this.score,
+        isReady: this.isReady
+    });
+}
+</code></pre>
+<h4>Modèle Square</h4>
+<p>Voici un exemple du modèle de données d’un carré :</p>
+<pre><code class="language-json">{
+   "index": 1, 
+   "bgc": "#FFFFFF"
+}
+</code></pre>
+<p><strong>Règles :</strong></p>
+<ul>
+<li>La valeur de l’index est comprise entre 0 et 12. </li>
+<li>La valeur de <code>bgc</code> est un code couleur hexadécimal.</li>
+</ul>
+<p>Ces deux valeurs sont à définir de façon aléatoire. Pour définir un code couleur
+hexadécimal aléatoire voici un exemple de code :</p>
+<pre><code class="language-typescript">"#" + ((1&#x3C;&#x3C;24) * Math.random() | 0).toString(16)
+</code></pre>
+<p><a href="tp7-promise.html">Suivant</a></p>
+
+    </article>
+</div>
+
+<footer class="page-footer">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col l12 s12">
+                <p><a href="mailto:info@valtech.fr">info@valtech.fr</a></p>
+                <p>Vous avez une vision concernant l'avenir digital de votre entreprise ? N'hésitez pas à nous contacter.</p>
+                <p>Tél : 01 76 21 15 00</p>
+                <p class="foot__offices">
+                    <span>Aarhus | Amserfoort | Amsterdam | Bangalore | Bristol | Buenos Aires | Chicago | Copenhagen | Dallas | Düsseldorf | Eindhoven | Frankfurt | Geneva | Gurgaon | Göteborg | Honolulu | London | Malmö | Manchester | Montreal | Munich | New York | Paris | Singapore | Stockholm | Sydney | Uppsala | Utrecht | Västerås</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-social">
+            <ul>
+                <li><a href="https://www.facebook.com/valtech.fr"><i class="glyph" data-icon="facebook" title="Suivez-nous à facebook" aria-hidden="true"></i><span class="hidden">facebook</span></a></li>
+                <li><a href="https://www.linkedin.com/company/valtech"><i class="glyph" data-icon="linkedin" title="Suivez-nous à linkedin" aria-hidden="true"></i><span class="hidden">linkedin</span></a></li>
+                <li><a href="https://www.instagram.com/valtech_fr/"><i class="glyph" data-icon="instagram" title="Suivez-nous à instagram" aria-hidden="true"></i><span class="hidden">instagram</span></a></li>
+                <li><a href="https://twitter.com/Valtech_FR"><i class="glyph" data-icon="twitter" title="Suivez-nous à twitter" aria-hidden="true"></i><span class="hidden">twitter</span></a></li>
+            </ul>
+        </div>
+
+
+
+    </div>
+
+    <div class="footer-copyright">
+        <div class="container">
+
+            © Valtech 2016
+
+            <a  class="grey-text text-lighten-4 right"  href="/services/mentions-legales-cgu/">
+                Mentions légales / CGU
+            </a>
+
+            </ul>
+        </div>
+    </div>
+
+</footer>
+
+<script type="text/javascript" src="scripts/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/materialize.min.js"></script>
+<script>
+    $( document ).ready(function(){
+        $(".button-collapse").sideNav();
+        $(".dropdown-button").dropdown();
+    });
+</script>
+</body>
+</html>

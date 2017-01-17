@@ -151,7 +151,7 @@ export class Generator {
                                     FileUtils.copy(
                                         this.resourcesDir,
                                         `${this.htmlDir}/${this.settings.checkout.cwd}`
-                                    )
+                                    ).catch(() => true)
                                 );
                         case "ebook":
                             return FileUtils
@@ -160,7 +160,7 @@ export class Generator {
                                     FileUtils.copy(
                                         this.resourcesDir,
                                         `${this.htmlDir}/${this.settings.checkout.cwd}`
-                                    )
+                                    ).catch(() => true)
                                 );
                         case "pdf":
                             return FileUtils
@@ -169,7 +169,7 @@ export class Generator {
                                     FileUtils.copy(
                                         this.resourcesDir,
                                         `${this.htmlDir}/${this.settings.checkout.cwd}`
-                                    )
+                                    ).catch(() => true)
                                 );
                     }
 
