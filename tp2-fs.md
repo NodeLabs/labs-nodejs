@@ -11,7 +11,7 @@ L'objectif de ce TP est d'afficher le contenu d'un fichier situer dans une dossi
  * Créez le fichier `src/utils/FileUtils.ts`.
  * Créez un dossier `resources`. Nous y mettrons tous les documents dans ce dossier.
  
-> Sources du TP : [tp2-provided](https://github.com/Romakita/tp-nodejs/tree/tp2-provided)
+> Sources du TP : [tp2-provided](https://github.com/NodeAndTyped/labs-nodejs/tree/tp2-provided)
 
 ### Activer le sourceMapping
 
@@ -116,4 +116,4 @@ file.on('success', (content) => {
 
 > Pour vous aider la documentation : [https://nodejs.org/dist/latest-v6.x/docs/api/events.html](https://nodejs.org/dist/latest-v6.x/docs/api/events.html)
 
-[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp3-express.md)
+[Suivant](https://github.com/NodeAndTyped/labs-nodejs/blob/master/tp3-express.md)

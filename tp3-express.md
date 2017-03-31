@@ -88,11 +88,11 @@ Maintenant que le squelette est prêt, nous allons configurer notre server Expre
 
 ### Exercice 1
 
-* Importer le module Express en TypeScript ([aide - importer un module](https://github.com/Romakita/tp-nodejs/blob/master/aide-importation-module.md)),
+* Importer le module Express en TypeScript ([aide - importer un module](https://github.com/NodeAndTyped/labs-nodejs/blob/master/aide-importation-module.md)),
 * Créer une nouvelle instance Express,
 * Ecouter le port 8080.
 
-> Correction : [tp3-installation-solution](https://github.com/Romakita/tp-nodejs/tree/tp3-installation-solution)
+> Correction : [tp3-installation-solution](https://github.com/NodeAndTyped/labs-nodejs/tree/tp3-installation-solution)
 
 ## Création d'un service Rest
 
@@ -327,6 +327,6 @@ et adapter le code fait dans l'exercice 2.
 * Ajouter le DocumentCtrl à l'application Express dans `server.ts`.
 
 
-> Correction : [tp3-excercice-solution](https://github.com/Romakita/tp-nodejs/tree/tp3-excercice-solution)
+> Correction : [tp3-excercice-solution](https://github.com/NodeAndTyped/labs-nodejs/tree/tp3-excercice-solution)
 
-[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp4-express-ejs.md)
+[Suivant](https://github.com/NodeAndTyped/labs-nodejs/blob/master/tp4-express-ejs.md)

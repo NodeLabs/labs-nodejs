@@ -7,7 +7,7 @@ L’objectif de ce TP est d’utiliser Socket IO pour créer un mini jeu Client 
 Le mini jeu oppose deux joueurs dans un duel de réflexe. Le jeu présente une grille sur laquelle apparaîtra de façon aléatoire un carré coloré cliquable. Le premier joueur cliquant sur le carré obtient un point. 
 La partie est terminée lorsque l’un des joueurs atteint le score de 5 points.
 
-![squaregame](https://github.com/Romakita/tp-nodejs/blob/master/src/squaregame.png)
+![squaregame](https://github.com/NodeAndTyped/labs-nodejs/blob/master/src/squaregame.png)
 
 ## Directives
 Pour ce TP la partie cliente est déjà développée.
@@ -25,11 +25,11 @@ Vous devrez gérer un certain nombre d’actions comme suivant :
 
 Voici un rappel du principe des communications entre le client et le server avec SocketIO :
 
-![capture](https://github.com/Romakita/tp-nodejs/blob/master/src/socket.png)
+![capture](https://github.com/NodeAndTyped/labs-nodejs/blob/master/src/socket.png)
 
 ## Exercice
 
-> Si besoin vous avez les sources du [tp6-provided](https://github.com/Romakita/tp-nodejs/tree/tp6-provided).
+> Si besoin vous avez les sources du [tp6-provided](https://github.com/NodeAndTyped/labs-nodejs/tree/tp6-provided).
 
 ### Installation
 
@@ -38,7 +38,7 @@ npm install --save socket.io
 npm install --save-dev @types/socket.io
 ```
 
-Copiez aussi le partial [`webapp/partials/square-game.html`](https://github.com/Romakita/tp-nodejs/blob/socketio-provided/webapp/partials/square-game.html).
+Copiez aussi le partial [`webapp/partials/square-game.html`](https://github.com/NodeAndTyped/labs-nodejs/blob/socketio-provided/webapp/partials/square-game.html).
 
 ### 1ère étape
 
@@ -368,4 +368,4 @@ hexadécimal aléatoire voici un exemple de code :
 "#" + ((1<<24) * Math.random() | 0).toString(16)
 ```
 
-[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp7-promise.md)
+[Suivant](https://github.com/NodeAndTyped/labs-nodejs/blob/master/tp7-promise.md)

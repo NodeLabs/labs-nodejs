@@ -2,7 +2,7 @@
 
 L’objectif de ce TP est de créer un gestionnaire d’inscription à cours de Valtech Training comme présenté en capture ci-après :
 
-![capture](https://github.com/Romakita/tp-nodejs/blob/master/src/training.png)
+![capture](https://github.com/NodeAndTyped/labs-nodejs/blob/master/src/training.png)
 
 ## Exercice 1
 
@@ -32,7 +32,7 @@ que lorsque vous avez ajouté un middleware à Express.
 
 ## Exercice 2
 
-Nous allons cabler la page `training.html` que vous pouvez récupérer depuis les sources du [tp5-provided](https://github.com/Romakita/tp-nodejs/tree/tp5-provided).
+Nous allons cabler la page `training.html` que vous pouvez récupérer depuis les sources du [tp5-provided](https://github.com/NodeAndTyped/labs-nodejs/tree/tp5-provided).
 
 Pour ce faire, nous allons créer un `TrainingCtrl` qui va gérer l'ensemble des pages de la section Training.
 
@@ -143,4 +143,4 @@ développer dans le dossier `src/services`.
 
 Ce service doit permettre d'ajouter / modifier / lister / supprimer un participant.
 
-[Suivant](https://github.com/Romakita/tp-nodejs/blob/master/tp6-socketio.md)
+[Suivant](https://github.com/NodeAndTyped/labs-nodejs/blob/master/tp6-socketio.md)
