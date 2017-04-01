@@ -1,7 +1,8 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 require('source-map-support').install();
-var Generator_1 = require('./lib/Generator');
-var ts_log_debug_1 = require('ts-log-debug');
+var Generator_1 = require("./lib/Generator");
+var ts_log_debug_1 = require("ts-log-debug");
 var path = require('path');
 var baseDir = path.resolve('../');
 /**

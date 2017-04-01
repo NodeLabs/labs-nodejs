@@ -54,7 +54,7 @@ export class GeneratorPDF extends GeneratorBase {
             .startServer()
             .then(() => this.copyAssets(this.dir))
             .then(() => this.generateHTML(filesContents))
-            .then((filesContents) => this.generatePDF(filesContents))
+            .then((filesContents: any) => this.generatePDF(filesContents))
             .then(() => this.app.close())
 
     }

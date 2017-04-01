@@ -65,7 +65,7 @@ export default class FileUtils {
      * @param path
      * @returns {Promise<string[]>}
      */
-    static mkdirs(path: string | string[]): Promise<void> {
+    static mkdirs(path: string | string[]): Promise<any> {
 
         const paths: string[] = typeof path === "string" ? [path] : <string[]>path;
 
