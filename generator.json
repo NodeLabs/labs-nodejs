@@ -1,15 +1,10 @@
 {
-
   "pageTitle": "Labs Node.js",
   "repository": "https://github.com/NodeAndTyped/labs-nodejs/",
+  "pdfName": "labs.pdf",
   "branch": "master",
 
-  "copy": [
-    {"from": "${baseDir}/src", "to": "src"}
-  ],
-
   "checkout": {
-    "cwd": "../../Resources",
     "branchs": [
       "tp1-installation",
       "tp2-provided",
@@ -25,28 +20,52 @@
     ]
   },
 
-  "pdfName": "labs.pdf",
-
-  "outDir": [
-    {"format": "html",  "path": "Instructor/html"},
-    {"format": "pdf",  "path": "Instructor/pdf"},
-    {"format": "html",  "path": "Student/html"},
-    {"format": "pdf",  "path": "Student/pdf"}
-  ],
-
   "concat": {
     "files": [
-      {"title": "Accueil", "path": "readme.md"},
-      {"title": "TP1 - Installation", "path": "tp1-installation.md"},
-      {"title": "TP2 - Manipulation des fichiers", "path": "tp2-fs.md"},
-      {"title": "TP3 - Express", "path": "tp3-express.md"},
-      {"title": "TP4 - Templating avec EJS", "path": "tp4-express-ejs.md"},
-      {"title": "TP5 - Middlewares, Formulaire & Services", "path": "tp5-express-middlewares-form-services.md"},
-      {"title": "TP6 - Socket.io", "path": "tp6-socketio.md"},
-      {"title": "TP7 - Les promises", "path": "tp7-promise.md"},
-      {"title": "TP8 - Base de données", "path": "tp8-mongoose.md"},
-      {"title": "TP9 - Test unitaires", "path": "tp9-test-unitaires.md"},
-      {"title": "Aide - importation des modules", "path": "aide-importation-module.md"}
+      {"title": "Accueil", "cwd":"${root}/src", "path": "index.md"},
+      {"title": "TP1 - Installation de l'environnement", "cwd":"${root}/src", "path": "tp1-installation.md"},
+      {"title": "TP2 - Gestion des fichiers", "cwd":"${root}/src", "path": "tp2-file-system-et-events.md"},
+      {"title": "TP3 - Mise en place du serveur Express", "cwd":"${root}/src", "path": "tp3-express-installation.md"},
+      {"title": "TP4 - Templating avec EJS", "cwd":"${root}/src", "path": "tp4-express-ejs.md"},
+      {"title": "TP5 - Middlewares, Formulaire & Services", "cwd":"${root}/src", "path": "tp5-express-middlewares-form-services.md"},
+      {"title": "TP6 - SquareGame avec Socket.io", "cwd":"${root}/src", "path": "tp6-squaregame-socketio.md"},
+      {"title": "TP7 - Les promises", "cwd":"${root}/src", "path": "tp7-promise.md"},
+      {"title": "TP8 - Base de données Mongo", "cwd":"${root}/src", "path": "tp8-base-de-donnees-mongo.md"},
+      {"title": "TP9 - Test unitaires", "cwd":"${root}/src", "path": "tp9-tests-unitaires.md"},
+      {"title": "Aide - importation des modules", "cwd":"${root}/src", "path": "aide-importation-module.md"}
     ]
-  }
+  },
+
+  "copy": [
+    {"from": "${root}/src/images", "to": "images"}
+  ],
+
+  "outDir": [
+    {
+      "format": "html",
+      "path": "${root}/dist/Instructor/html",
+      "resources": "${root}/dist/Resources"
+    },
+    {
+      "format": "pdf",
+      "path": "${root}/dist/Instructor/pdf",
+      "resources": "${root}/dist/Resources"
+    },
+    {
+      "format": "ebook",
+      "path": "${root}/dist/Student/ebook",
+      "resources": "${root}/dist/Resources"
+    },
+    {
+      "format": "pdf",
+      "path": "${root}/dist/Student/pdf",
+      "resources": "${root}/dist/Resources"
+    },
+    {
+      "format": "html",
+      "path": "${root}/docs",
+      "resources": "${root}/docs/resources"
+    }
+  ]
+
 }

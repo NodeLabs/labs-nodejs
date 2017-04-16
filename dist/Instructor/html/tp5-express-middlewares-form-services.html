@@ -9,27 +9,45 @@
     <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Merriweather:400,300,700" rel="stylesheet" type="text/css">
 
-    <link type="text/css" rel="stylesheet" href="styles/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="styles/github-markdown.css" />
-    <link type="text/css" rel="stylesheet" href="styles/glyph.css" />
-    <link type="text/css" rel="stylesheet" href="styles/main.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="assets/styles/github-markdown.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/github.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/glyph.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/main.css" />
 
 </head>
 <body>
+
 
 <header class="navbar-fixed">
 
     <nav class="navbar">
         <div class="nav-wrapper">
-            <a href="http://valtech.fr" class="brand-logo">
+            <a href="http://valtech.fr" class="brand-logo hide-on-med-and-down">
                 <i class="valtech-logo--header glyph" data-icon="valtech-logo" aria-hidden="true"></i>
             </a>
 
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a class="brand-logo center">
+                Labs Node.js
+            </a>
 
-            <ul class="right hide-on-med-and-down">
+            <a href="#" data-activates="global-menu-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
+            <ul class="right">
                 <li>
-                    <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                    <a href="https://github.com/NodeAndTyped/labs-nodejs/" title="See on github">
+                        <i class="material-icons">visibility</i>
+                    </a>
+                </li>
+
+                <li class="hide-on-med-and-down">
+                    <a href="#!" class="dropdown-button" title="download" data-activates="global-menu-download" data-beloworigin="true">
+                        <i class="material-icons">file_download</i>
+                    </a>
+                </li>
+
+                <li class="hide-on-med-and-down">
+                    <a class="dropdown-button" href="#!" data-activates="global-menu" data-beloworigin="true">
                         <i class="material-icons">menu</i>
                     </a>
                 </li>
@@ -41,7 +59,7 @@
 
 </header>
 
-<ul class="side-nav" id="mobile-demo">
+<ul class="side-nav" id="global-menu-mobile">
 
     <li class="logo">
 
@@ -50,66 +68,150 @@
     </li>
 
     
-    <li><a href="index.html">Accueil</a></li>
-    
-    <li><a href="tp1-installation.html">TP1 - Installation</a></li>
-    
-    <li><a href="tp2-fs.html">TP2 - Manipulation des fichiers</a></li>
-    
-    <li><a href="tp3-express.html">TP3 - Express</a></li>
-    
-    <li><a href="tp4-express-ejs.html">TP4 - Templating avec EJS</a></li>
-    
-    <li><a href="tp5-express-middlewares-form-services.html">TP5 - Middlewares, Formulaire &amp; Services</a></li>
-    
-    <li><a href="tp6-socketio.html">TP6 - Socket.io</a></li>
-    
-    <li><a href="tp7-promise.html">TP7 - Les promises</a></li>
-    
-    <li><a href="tp8-mongoose.html">TP8 - Base de données</a></li>
-    
-    <li><a href="tp9-test-unitaires.html">TP9 - Test unitaires</a></li>
-    
-    <li><a href="aide-importation-module.html">Aide - importation des modules</a></li>
-    
+            <li><a href="index.html">Accueil</a></li>
+        
+            <li><a href="tp1-installation.html">TP1 - Installation de l&#39;environnement</a></li>
+        
+            <li><a href="tp2-file-system-et-events.html">TP2 - Gestion des fichiers</a></li>
+        
+            <li><a href="tp3-express-installation.html">TP3 - Mise en place du serveur Express</a></li>
+        
+            <li><a href="tp4-express-ejs.html">TP4 - Templating avec EJS</a></li>
+        
+            <li><a href="tp5-express-middlewares-form-services.html">TP5 - Middlewares, Formulaire &amp; Services</a></li>
+        
+            <li><a href="tp6-squaregame-socketio.html">TP6 - SquareGame avec Socket.io</a></li>
+        
+            <li><a href="tp7-promise.html">TP7 - Les promises</a></li>
+        
+            <li><a href="tp8-base-de-donnees-mongo.html">TP8 - Base de données Mongo</a></li>
+        
+            <li><a href="tp9-tests-unitaires.html">TP9 - Test unitaires</a></li>
+        
+            <li><a href="aide-importation-module.html">Aide - importation des modules</a></li>
+        
+
+    <li><div class="divider"></div></li>
+
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header">Télécharger<i class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                    <ul>
+
+                        <li>
+                            <a href="https://github.com/NodeAndTyped/labs-nodejs/zipball/master">
+                                Documentation (master)
+                            </a>
+                        </li>
+
+                        
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp1-installation.zip">tp1-installation</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp2-provided.zip">tp2-provided</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp2-solution.zip">tp2-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-installation-provided.zip">tp3-installation-provided</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-installation-solution.zip">tp3-installation-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-exercice-solution.zip">tp3-exercice-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-exercice-4-solution.zip">tp4-exercice-4-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-installation-provided.zip">tp4-installation-provided</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-installation-solution.zip">tp4-installation-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp5-provided.zip">tp5-provided</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp6-provided.zip">tp6-provided</a></li>
+                            
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+
 </ul>
 
-<ul id="dropdown1" class="dropdown-content">
+<ul id="global-menu" class="dropdown-menu dropdown-content">
     
-    <li><a href="index.html">Accueil</a></li>
-    
-    <li><a href="tp1-installation.html">TP1 - Installation</a></li>
-    
-    <li><a href="tp2-fs.html">TP2 - Manipulation des fichiers</a></li>
-    
-    <li><a href="tp3-express.html">TP3 - Express</a></li>
-    
-    <li><a href="tp4-express-ejs.html">TP4 - Templating avec EJS</a></li>
-    
-    <li><a href="tp5-express-middlewares-form-services.html">TP5 - Middlewares, Formulaire &amp; Services</a></li>
-    
-    <li><a href="tp6-socketio.html">TP6 - Socket.io</a></li>
-    
-    <li><a href="tp7-promise.html">TP7 - Les promises</a></li>
-    
-    <li><a href="tp8-mongoose.html">TP8 - Base de données</a></li>
-    
-    <li><a href="tp9-test-unitaires.html">TP9 - Test unitaires</a></li>
-    
-    <li><a href="aide-importation-module.html">Aide - importation des modules</a></li>
-    
+            <li><a href="index.html">Accueil</a></li>
+        
+            <li><a href="tp1-installation.html">TP1 - Installation de l&#39;environnement</a></li>
+        
+            <li><a href="tp2-file-system-et-events.html">TP2 - Gestion des fichiers</a></li>
+        
+            <li><a href="tp3-express-installation.html">TP3 - Mise en place du serveur Express</a></li>
+        
+            <li><a href="tp4-express-ejs.html">TP4 - Templating avec EJS</a></li>
+        
+            <li><a href="tp5-express-middlewares-form-services.html">TP5 - Middlewares, Formulaire &amp; Services</a></li>
+        
+            <li><a href="tp6-squaregame-socketio.html">TP6 - SquareGame avec Socket.io</a></li>
+        
+            <li><a href="tp7-promise.html">TP7 - Les promises</a></li>
+        
+            <li><a href="tp8-base-de-donnees-mongo.html">TP8 - Base de données Mongo</a></li>
+        
+            <li><a href="tp9-tests-unitaires.html">TP9 - Test unitaires</a></li>
+        
+            <li><a href="aide-importation-module.html">Aide - importation des modules</a></li>
+        
 </ul>
 
-<div class="container">
+
+<ul id="global-menu-download" class="dropdown-menu dropdown-content">
+    <li>
+        <a href="https://github.com/NodeAndTyped/labs-nodejs/zipball/master">
+            Télécharger la documentation (master)
+        </a>
+    </li>
+
+    <li class="divider"></li>
+
+    
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp1-installation.zip">Télécharger tp1-installation</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp2-provided.zip">Télécharger tp2-provided</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp2-solution.zip">Télécharger tp2-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-installation-provided.zip">Télécharger tp3-installation-provided</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-installation-solution.zip">Télécharger tp3-installation-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-exercice-solution.zip">Télécharger tp3-exercice-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-exercice-4-solution.zip">Télécharger tp4-exercice-4-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-installation-provided.zip">Télécharger tp4-installation-provided</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-installation-solution.zip">Télécharger tp4-installation-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp5-provided.zip">Télécharger tp5-provided</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp6-provided.zip">Télécharger tp6-provided</a></li>
+        
+
+</ul>
+
+<div class="container container-body">
     <article class="markdown-body">
-        <h1>TP 5 - Middlewares, Formulaire &#x26; Services</h1>
-<p>L’objectif de ce TP est de créer un gestionnaire d’inscription à cours de Valtech Training comme présenté en capture ci-après :</p>
-<p><img src="src/training.png" alt="capture"></p>
+        <h1>TP 5</h1>
+<blockquote>
+<p>Middlewares, Formulaire &#x26; Services</p>
+</blockquote>
+<p>L’objectif de ce TP est de créer un gestionnaire d’inscription au cours de Valtech Training comme présenté en capture ci-après :</p>
+<p><img src="images/training.png" alt="capture"></p>
 <h2>Exercice 1</h2>
 <p>Avant de commencer à coder les nouvelles pages nous allons créer un middleware pour que nous n'ayons pas à
 ajouter le <code>menu.json</code> dans chaque controlleur de page que nous allons créer.</p>
 <p>Dans le <code>server.ts</code> nous allons rajouter la méthode suivante :</p>
-<pre><code class="language-typescript">class Server {
+<pre><code class="typescript">class Server {
     
     private middlewareMenu(response, request, next) {
         
@@ -128,16 +230,16 @@ ajouter le <code>menu.json</code> dans chaque controlleur de page que nous allon
 <p>Ensuite ajoutez ce middleware au bon endroit dans la méthode <code>importMiddlewares()</code> de la même façon
 que lorsque vous avez ajouté un middleware à Express.</p>
 <h2>Exercice 2</h2>
-<p>Nous allons cabler la page <code>training.html</code> que vous pouvez récupérer depuis les sources du <a href="../../Resources/tp5-provided.zip">tp5-provided</a>.</p>
+<p>Nous allons développer la page <code>training.html</code> que vous pouvez récupérer depuis les sources du <a href="../../Resources/tp5-provided.zip">tp5-provided</a>.</p>
 <p>Pour ce faire, nous allons créer un <code>TrainingCtrl</code> qui va gérer l'ensemble des pages de la section Training.</p>
 <p>Ce contrôlleur va récupérer les données fournies dans le fichier <code>resources/courses.json</code>. Ces données vont nous permettre de créer
 une liste de formation.</p>
-<p>Cette même liste de formation sera présenté à l'utilisateur afin qu'il puisse s'inscrire à cette dernnière.</p>
+<p>Cette même liste de formation sera présentée à l'utilisateur afin qu'il puisse s'inscrire à cette dernnière.</p>
 <h2>Exercice 3</h2>
 <p>Maintenant nous allons nous occuper du formulaire d'inscription <code>training-inscription.html</code>.</p>
 <p>Il vous faut donc créer la nouvelle route pour accéder à la page <code>training-inscription.html</code> et
 renvoyer une réponse dont voici l'exemple :</p>
-<pre><code class="language-typescript">class TrainingCtrl extends Router {
+<pre><code class="typescript">class TrainingCtrl extends Router {
     
     constructor() {
         // ...
@@ -160,7 +262,7 @@ renvoyer une réponse dont voici l'exemple :</p>
 }
 </code></pre>
 <p>Pour ce formulaire, il faudra créer les bons champs de saisie en fonction du modèle de données suivants :</p>
-<pre><code class="language-json">{
+<pre><code class="json">{
     "lastName": "test",
     "firstName": "firstName",
     "email": "firstName@lastName.fr",
@@ -171,49 +273,74 @@ renvoyer une réponse dont voici l'exemple :</p>
 <p>Il y a donc 4 champs à fournir dont course etant un liste déroulante.</p>
 </blockquote>
 <p>Voici un exemple pour créer une champs de saisie :</p>
-<pre><code class="language-html">&#x3C;input id="lastName"
+<pre><code class="html">&#x3C;input id="lastName"
        name="lastName"
        type="text"
        class="validate"
-       value="&#x3C;%= maValue %>">
+       value="&#x3C;%= maValue ">
 </code></pre>
-<p>Et un autre exemple pour construire une ligne de la liste des formations :</p>
-<pre><code class="language-html">&#x3C;option value="&#x3C;%= course.value %>" 
-        data-icon="/images/&#x3C;%= course.icon %>"
+<p>Et un autre exemple pour construire une ligne dans la liste déroulante des formations :</p>
+<pre><code class="html">&#x3C;option value="&#x3C;%= course.value " 
+        data-icon="/images/&#x3C;%= course.icon "
         class="left circle"
-        &#x3C;%= course.value == participant.course ? 'selected' :'' %>>
+        &#x3C;%= course.value == participant.course ? 'selected' :'' >
         
-    &#x3C;%= course.label %>
+    &#x3C;%= course.label 
 &#x3C;/option>
 </code></pre>
 <h2>Exercice 4</h2>
 <p>Votre formulaire est prêt, nous allons maintenant exposer des services Rest pour créer un participant.</p>
 <p>Les actions demandées sont les suivantes :</p>
 <ul>
-<li>Liste les participants à la session,</li>
+<li>Lister les participants à la session,</li>
 <li>Ajouter un participant,</li>
 <li>Modifier un participant,</li>
 <li>Supprimer un participant.</li>
 </ul>
 <p>Ces actions auront les routes suivantes :</p>
-<ul>
-<li>GET /participants pour lister les participants,</li>
-<li>POST /participants pour ajouter un participant,</li>
-<li>PUT /participants/:id pour mettre à jour un participant,</li>
-<li>DELETE /participants/:id pour supprimer un participant.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET </td>
+<td><code>/participants</code></td>
+<td>Retourne la liste des participants.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/participants</code></td>
+<td>Ajoute un participant.</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/participants/:id</code></td>
+<td>Met à jour un participant.</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/participants/:id</code></td>
+<td>Supprime un participant.</td>
+</tr>
+</tbody>
+</table>
 <h4>Installation</h4>
 <p>Nous allons installer quelques middlewares pour gérer les données :</p>
 <ul>
-<li><a href="https://github.com/expressjs/body-parser"><code>body-parser</code></a> pour la gestion des paramètres envoyés en <code>POST</code></li>
-<li><a href="https://github.com/expressjs/method-override"><code>method-override</code></a> pour gérer les verbs du protocol HTML.</li>
+<li><a href="https://github.com/expressjs/body-parser"><code>body-parser</code></a> pour la gestion des paramètres envoyés en <code>POST</code>,</li>
+<li><a href="https://github.com/expressjs/method-override"><code>method-override</code></a> pour gérer les verbes du protocole HTML.</li>
 </ul>
 <h4>Travail à faire</h4>
-<p>Nous allons créer un nouveau controlleur ParticipantCtrl pour gérer les actions demandées.</p>
-<p>Enfin pour persister les données dans un premier temps nous utiliserons un ParticipantsService que allons
+<p>Nous allons créer un nouveau controlleur <code>ParticipantCtrl</code> pour gérer les actions demandées.</p>
+<p>Enfin pour persister les données dans un premier temps nous utiliserons un <code>ParticipantsService</code> que allons
 développer dans le dossier <code>src/services</code>.</p>
 <p>Ce service doit permettre d'ajouter / modifier / lister / supprimer un participant.</p>
-<p><a href="tp6-socketio.html">Suivant</a></p>
+<p><a href="tp6-squaregame-socketio.html">Suivant</a></p>
 
     </article>
 </div>
@@ -251,7 +378,7 @@ développer dans le dossier <code>src/services</code>.</p>
 
             © Valtech 2016
 
-            <a  class="grey-text text-lighten-4 right"  href="/services/mentions-legales-cgu/">
+            <a  class="grey-text text-lighten-4 right"  href="http://valtech.fr/services/mentions-legales-cgu/">
                 Mentions légales / CGU
             </a>
 
@@ -261,13 +388,21 @@ développer dans le dossier <code>src/services</code>.</p>
 
 </footer>
 
-<script type="text/javascript" src="scripts/jquery.min.js"></script>
-<script type="text/javascript" src="scripts/materialize.min.js"></script>
+<script type="text/javascript" src="assets/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="assets/scripts/materialize.min.js"></script>
+<script type="text/javascript" src="assets/scripts/highlight.pack.js"></script>
+
 <script>
     $( document ).ready(function(){
         $(".button-collapse").sideNav();
         $(".dropdown-button").dropdown();
     });
 </script>
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
 </body>
 </html>

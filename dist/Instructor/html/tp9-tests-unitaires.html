@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Labs Node.js</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Merriweather:400,300,700" rel="stylesheet" type="text/css">
+
+    <link type="text/css" rel="stylesheet" href="assets/styles/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="assets/styles/github-markdown.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/github.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/glyph.css" />
+    <link type="text/css" rel="stylesheet" href="assets/styles/main.css" />
+
+</head>
+<body>
+
+
+<header class="navbar-fixed">
+
+    <nav class="navbar">
+        <div class="nav-wrapper">
+            <a href="http://valtech.fr" class="brand-logo hide-on-med-and-down">
+                <i class="valtech-logo--header glyph" data-icon="valtech-logo" aria-hidden="true"></i>
+            </a>
+
+            <a class="brand-logo center">
+                Labs Node.js
+            </a>
+
+            <a href="#" data-activates="global-menu-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
+            <ul class="right">
+                <li>
+                    <a href="https://github.com/NodeAndTyped/labs-nodejs/" title="See on github">
+                        <i class="material-icons">visibility</i>
+                    </a>
+                </li>
+
+                <li class="hide-on-med-and-down">
+                    <a href="#!" class="dropdown-button" title="download" data-activates="global-menu-download" data-beloworigin="true">
+                        <i class="material-icons">file_download</i>
+                    </a>
+                </li>
+
+                <li class="hide-on-med-and-down">
+                    <a class="dropdown-button" href="#!" data-activates="global-menu" data-beloworigin="true">
+                        <i class="material-icons">menu</i>
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </nav>
+
+</header>
+
+<ul class="side-nav" id="global-menu-mobile">
+
+    <li class="logo">
+
+        <i class="valtech-logo--header glyph" data-icon="valtech-logo" aria-hidden="true"></i>
+
+    </li>
+
+    
+            <li><a href="index.html">Accueil</a></li>
+        
+            <li><a href="tp1-installation.html">TP1 - Installation de l&#39;environnement</a></li>
+        
+            <li><a href="tp2-file-system-et-events.html">TP2 - Gestion des fichiers</a></li>
+        
+            <li><a href="tp3-express-installation.html">TP3 - Mise en place du serveur Express</a></li>
+        
+            <li><a href="tp4-express-ejs.html">TP4 - Templating avec EJS</a></li>
+        
+            <li><a href="tp5-express-middlewares-form-services.html">TP5 - Middlewares, Formulaire &amp; Services</a></li>
+        
+            <li><a href="tp6-squaregame-socketio.html">TP6 - SquareGame avec Socket.io</a></li>
+        
+            <li><a href="tp7-promise.html">TP7 - Les promises</a></li>
+        
+            <li><a href="tp8-base-de-donnees-mongo.html">TP8 - Base de données Mongo</a></li>
+        
+            <li><a href="tp9-tests-unitaires.html">TP9 - Test unitaires</a></li>
+        
+            <li><a href="aide-importation-module.html">Aide - importation des modules</a></li>
+        
+
+    <li><div class="divider"></div></li>
+
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header">Télécharger<i class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                    <ul>
+
+                        <li>
+                            <a href="https://github.com/NodeAndTyped/labs-nodejs/zipball/master">
+                                Documentation (master)
+                            </a>
+                        </li>
+
+                        
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp1-installation.zip">tp1-installation</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp2-provided.zip">tp2-provided</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp2-solution.zip">tp2-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-installation-provided.zip">tp3-installation-provided</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-installation-solution.zip">tp3-installation-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-exercice-solution.zip">tp3-exercice-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-exercice-4-solution.zip">tp4-exercice-4-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-installation-provided.zip">tp4-installation-provided</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-installation-solution.zip">tp4-installation-solution</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp5-provided.zip">tp5-provided</a></li>
+                            
+                                <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp6-provided.zip">tp6-provided</a></li>
+                            
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+
+</ul>
+
+<ul id="global-menu" class="dropdown-menu dropdown-content">
+    
+            <li><a href="index.html">Accueil</a></li>
+        
+            <li><a href="tp1-installation.html">TP1 - Installation de l&#39;environnement</a></li>
+        
+            <li><a href="tp2-file-system-et-events.html">TP2 - Gestion des fichiers</a></li>
+        
+            <li><a href="tp3-express-installation.html">TP3 - Mise en place du serveur Express</a></li>
+        
+            <li><a href="tp4-express-ejs.html">TP4 - Templating avec EJS</a></li>
+        
+            <li><a href="tp5-express-middlewares-form-services.html">TP5 - Middlewares, Formulaire &amp; Services</a></li>
+        
+            <li><a href="tp6-squaregame-socketio.html">TP6 - SquareGame avec Socket.io</a></li>
+        
+            <li><a href="tp7-promise.html">TP7 - Les promises</a></li>
+        
+            <li><a href="tp8-base-de-donnees-mongo.html">TP8 - Base de données Mongo</a></li>
+        
+            <li><a href="tp9-tests-unitaires.html">TP9 - Test unitaires</a></li>
+        
+            <li><a href="aide-importation-module.html">Aide - importation des modules</a></li>
+        
+</ul>
+
+
+<ul id="global-menu-download" class="dropdown-menu dropdown-content">
+    <li>
+        <a href="https://github.com/NodeAndTyped/labs-nodejs/zipball/master">
+            Télécharger la documentation (master)
+        </a>
+    </li>
+
+    <li class="divider"></li>
+
+    
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp1-installation.zip">Télécharger tp1-installation</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp2-provided.zip">Télécharger tp2-provided</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp2-solution.zip">Télécharger tp2-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-installation-provided.zip">Télécharger tp3-installation-provided</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-installation-solution.zip">Télécharger tp3-installation-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp3-exercice-solution.zip">Télécharger tp3-exercice-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-exercice-4-solution.zip">Télécharger tp4-exercice-4-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-installation-provided.zip">Télécharger tp4-installation-provided</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp4-installation-solution.zip">Télécharger tp4-installation-solution</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp5-provided.zip">Télécharger tp5-provided</a></li>
+        
+            <li><a href="https://github.com/NodeAndTyped/labs-nodejs/archive/tp6-provided.zip">Télécharger tp6-provided</a></li>
+        
+
+</ul>
+
+<div class="container container-body">
+    <article class="markdown-body">
+        <h1>TP9</h1>
+<blockquote>
+<p>Les tests unitaires</p>
+</blockquote>
+
+    </article>
+</div>
+
+<footer class="page-footer">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col l12 s12">
+                <p><a href="mailto:info@valtech.fr">info@valtech.fr</a></p>
+                <p>Vous avez une vision concernant l'avenir digital de votre entreprise ? N'hésitez pas à nous contacter.</p>
+                <p>Tél : 01 76 21 15 00</p>
+                <p class="foot__offices">
+                    <span>Aarhus | Amserfoort | Amsterdam | Bangalore | Bristol | Buenos Aires | Chicago | Copenhagen | Dallas | Düsseldorf | Eindhoven | Frankfurt | Geneva | Gurgaon | Göteborg | Honolulu | London | Malmö | Manchester | Montreal | Munich | New York | Paris | Singapore | Stockholm | Sydney | Uppsala | Utrecht | Västerås</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-social">
+            <ul>
+                <li><a href="https://www.facebook.com/valtech.fr"><i class="glyph" data-icon="facebook" title="Suivez-nous à facebook" aria-hidden="true"></i><span class="hidden">facebook</span></a></li>
+                <li><a href="https://www.linkedin.com/company/valtech"><i class="glyph" data-icon="linkedin" title="Suivez-nous à linkedin" aria-hidden="true"></i><span class="hidden">linkedin</span></a></li>
+                <li><a href="https://www.instagram.com/valtech_fr/"><i class="glyph" data-icon="instagram" title="Suivez-nous à instagram" aria-hidden="true"></i><span class="hidden">instagram</span></a></li>
+                <li><a href="https://twitter.com/Valtech_FR"><i class="glyph" data-icon="twitter" title="Suivez-nous à twitter" aria-hidden="true"></i><span class="hidden">twitter</span></a></li>
+            </ul>
+        </div>
+
+
+
+    </div>
+
+    <div class="footer-copyright">
+        <div class="container">
+
+            © Valtech 2016
+
+            <a  class="grey-text text-lighten-4 right"  href="http://valtech.fr/services/mentions-legales-cgu/">
+                Mentions légales / CGU
+            </a>
+
+            </ul>
+        </div>
+    </div>
+
+</footer>
+
+<script type="text/javascript" src="assets/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="assets/scripts/materialize.min.js"></script>
+<script type="text/javascript" src="assets/scripts/highlight.pack.js"></script>
+
+<script>
+    $( document ).ready(function(){
+        $(".button-collapse").sideNav();
+        $(".dropdown-button").dropdown();
+    });
+</script>
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+</body>
+</html>

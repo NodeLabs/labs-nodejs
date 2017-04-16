@@ -1,0 +1,161 @@
+/** Link */
+
+a, .markdown-body a {
+    cursor: pointer;
+}
+
+a, .markdown-body a {
+    background: 0 0;
+    color: #00bdfa;
+    text-decoration: none;
+}
+/** Nav **/
+
+nav {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: none;
+    position: relative;
+    color:#1a1a1a;
+}
+nav .brand-logo {
+    padding-left:20px;
+    color:#1a1a1a;
+}
+
+nav .brand-logo.center {
+    padding-left:0px;
+}
+
+nav ul.right {
+    padding-right:20px;
+}
+
+nav .valtech-logo--header {
+    color:#1a1a1a;;
+    font-size:1.6rem;
+}
+
+nav a,
+nav ul a{
+    color: #1a1a1a;
+}
+
+nav.darker {
+    background: rgba(0,0,0,0.6) !important;
+}
+
+/** Section header */
+
+section header{
+    margin: 1.5em auto;
+    margin-bottom: 2em;
+
+}
+section header h2 {
+    font-family: "Merriweather",georgia,serif;
+    margin:0 0 1.6rem;
+    font-size:2.3rem;
+    text-align: center;
+}
+
+h2.title-page {
+
+}
+
+hr {
+    border: 0;
+    border-top:1px solid #e0e0e0;
+}
+
+
+ul.side-nav li.logo {
+    text-align: center;
+    height: 57px;
+}
+ul.side-nav a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-menu {
+    width:300px !important;
+}
+
+/* body */
+
+.container.container-body {
+    padding: 25px 0px;
+}
+
+.container.container-body .markdown-body > h1 {
+    font-family: "Merriweather",georgia,serif;
+    margin: 0 0 1.6rem;
+    font-size: 2.3rem;
+    text-align: center;
+    font-weight: normal;
+    padding: 20px 0px;
+    border-bottom: 0;
+}
+
+.container.container-body .markdown-body > h1 + blockquote {
+    color: #777;
+    font-family: Merriweather,georgia,serif;
+    font-weight: 300;
+    letter-spacing: -.01em;
+    line-height: 1.7;
+    font-size: 1.5em;
+    margin-bottom: 2.5em;
+    border:0;
+    text-align: center;
+    margin-top:-20px;
+}
+
+/* Footer */
+
+footer.page-footer{
+    background: #1A1A1A;
+    color: #b2b2b2;
+    position: relative;
+}
+
+
+
+.footer-social {
+    border: 1px solid #525252;
+    border-width: 1px 0 0;
+    color: #777;
+    text-align: center;
+    padding:10px;
+    width: auto;
+}
+.footer-social {
+    border-width: 0 0 0 1px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    float: right;
+}
+.footer-social li {
+    padding: 0 .5em;
+    vertical-align: top;
+    font-size: 1.2em;
+    display: inline-block;
+}
+
+.footer-social a {
+    color: #777;
+}
+.footer-social li .hidden {
+    left: -9999px!important;
+    position: absolute!important;
+}
+
+.footer-social a:active, .footer-social a:focus, .footer-social a:hover {
+    color: #00bdfa;
+}
+
+.markdown-body ul, .markdown-body ul li {
+    list-style: disc;
+}
+
+.markdown-body img[alt="max-300"]{max-width:300px; margin: 10px}

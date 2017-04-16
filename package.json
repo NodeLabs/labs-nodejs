@@ -1,0 +1,30 @@
+{
+  "name": "labs-angular-docs",
+  "version": "1.0.0",
+  "description": "Labs sur Angular",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "npm install && tsc && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NodeAndTyped/labs-angular2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NodeAndTyped/labs-angular2/issues"
+  },
+  "homepage": "https://github.com/NodeAndTyped/labs-angular2#readme",
+  "devDependencies": {
+    "@types/express": "^4.0.34",
+    "@types/fs-extra": "0.0.35",
+    "@types/node": "^6.0.52",
+    "@types/request": "0.0.36",
+    "ts-log-debug": "^2.2.0",
+    "ts-md-docs": "^1.1.3"
+  }
+}

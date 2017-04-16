@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "commonjs",
+    "target": "es6",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "declaration":false,
+    "experimentalDecorators":true,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "lib": ["es6", "dom"],
+    "types":[
+      "node",
+      "chai",
+      "mocha",
+      "express",
+      "request",
+      "fs-extra"
+    ]
+  },
+
+  "exclude": [
+    "node_modules",
+    "dts",
+    "testing",
+    "lib"
+  ]
+}
