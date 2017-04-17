@@ -205,15 +205,16 @@
 <blockquote>
 <p>SquareGame avec Socket.io</p>
 </blockquote>
-<p>L’objectif de ce TP est d’utiliser Socket IO pour créer un mini jeu Client / Serveur en temps réel.</p>
+<p>L’objectif de ce TP est d’utiliser Socket.io pour créer un mini jeu Client / Serveur en temps réel.</p>
 <h2>Principe du jeu</h2>
-<p>Le mini jeu oppose deux joueurs dans un duel de réflexe. Le jeu présente une grille sur laquelle apparaîtra de façon aléatoire un carré coloré cliquable. Le premier joueur cliquant sur le carré obtient un point.
+<p>Le mini jeu oppose deux joueurs dans un duel de réflexe. Le jeu présente une grille sur laquelle apparaîtra de façon
+aléatoire un carré coloré cliquable. Le premier joueur cliquant sur le carré obtient un point.
 La partie est terminée lorsque l’un des joueurs atteint le score de 5 points.</p>
 <p><img src="images/squaregame.png" alt="squaregame"></p>
 <h2>Directives</h2>
 <p>Pour ce TP la partie cliente est déjà développée.
-Vous aurez donc à charge de développer la partie back-end, c’est-à-dire le serveur Socket. Ce serveur viendra se greffer sur le serveur Express.
-Vous devrez gérer un certain nombre d’actions comme suivant :</p>
+Vous aurez donc à charge de développer la partie back-end, c’est-à-dire le serveur Socket. Ce serveur viendra se
+greffer sur le serveur Express. Vous devrez gérer un certain nombre d’actions comme suivant :</p>
 <ul>
 <li>Gérer les connexions/déconnexions clients,</li>
 <li>Gérer la file d’attente des joueurs,</li>
@@ -223,19 +224,19 @@ Vous devrez gérer un certain nombre d’actions comme suivant :</p>
 <li>Indiquer le gagnant lorsque le score est atteint.</li>
 </ul>
 <h2>Rappel</h2>
-<p>Voici un rappel du principe des communications entre le client et le server avec SocketIO :</p>
+<p>Voici un rappel du principe des communications entre le client et le server avec Socket.io :</p>
 <p><img src="images/socket.png" alt="capture"></p>
 <h2>Exercice</h2>
 <blockquote>
 <p>Si besoin vous avez les sources du <a href="../../Resources/tp6-provided.zip">tp6-provided</a></p>
-<h3>Installation</h3>
 </blockquote>
+<h3>Installation</h3>
 <pre><code class="bash">npm install --save socket.io
 npm install --save-dev @types/socket.io
 </code></pre>
-<p>Copiez aussi le partial <a href="https://github.com/NodeAndTyped/labs-nodejs/blob/socketio-provided/webapp/partials/square-game.html"><code>webapp/partials/square-game.html</code></a>.</p>
+<p>Copiez aussi le partial <a href="https://github.com/NodeAndTyped/labs-nodejs/blob/tp6-provided/webapp/partials/square-game.html"><code>webapp/partials/square-game.html</code></a>.</p>
 <h3>1ère étape</h3>
-<p>Nous devons créer une nouvelle classe pour gérer le server SocketIO. </p>
+<p>Nous devons créer une nouvelle classe pour gérer le server Socket.io. </p>
 <p>Voici son squelette :</p>
 <pre><code class="typescript">const settings = require('./../../../resources/square-game.json');
 
@@ -342,9 +343,9 @@ export default class SquareGameWS {
     static stopGame(): void {}
 }
 </code></pre>
-<p>Nous allons donc développer les méthodes nécessaires aux fonctionnement de notre jeu dans les étapes suivantes.</p>
+<p>Nous allons développer les méthodes nécessaires aux fonctionnement de notre jeu dans les étapes suivantes.</p>
 <h3>2e étape</h3>
-<p>Maintenant nous allons attacher le server Socket au serveur Express. Voici la façon de procédé :</p>
+<p>Maintenant nous allons attacher le serveur Socket au serveur Express. Voici la façon de procédé :</p>
 <pre><code class="typescript">class Server {
     private io: SocketIO.Server;
 
@@ -368,7 +369,7 @@ export default class SquareGameWS {
 }
 </code></pre>
 <h3>3e étape</h3>
-<p>Nous allons maintenant réaliser les actions de notre jeu. Vous devrez développer les événements et méthodes qui suivent :</p>
+<p>Nous allons réaliser les actions de notre jeu. Vous devrez développer les événements et méthodes qui suivent :</p>
 <h4>Evénements entrants</h4>
 <p><strong>client.player.add</strong></p>
 <p>Cet événement gère l’ajout d’un joueur à la file d’attente.
