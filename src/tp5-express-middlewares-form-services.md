@@ -134,7 +134,7 @@ DELETE | `/participants/:id` | Supprime un participant.
 Nous allons installer quelques middlewares pour gérer les données :
 
 * [`body-parser`](https://github.com/expressjs/body-parser) pour la gestion des paramètres envoyés en `POST`,
-* [`method-override`](https://github.com/expressjs/method-override) pour gérer les verbes du protocole HTML.
+* [`method-override`](https://github.com/expressjs/method-override) pour gérer les verbes du protocole HTTP.
 
 #### Travail à faire
 
