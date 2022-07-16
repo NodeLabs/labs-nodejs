@@ -1,6 +1,6 @@
 # Labs Node.js
 
-Voir l'ensemble du cours sur [http://NodeAndTyped.github.io/labs-nodejs](http://NodeAndTyped.github.io/labs-nodejs).
+Voir l'ensemble du cours sur [http://nodelabs.github.io/labs-nodejs](http://nodelabs.github.io/labs-nodejs).
 
 # Mise à jour du contenu
 
